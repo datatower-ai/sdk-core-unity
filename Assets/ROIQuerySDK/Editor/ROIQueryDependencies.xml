@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dependencies>
+        <androidPackages>
+            <!-- Global set of repositories to search for packages.
+                 These repos will be searched for all packages specified by
+                 androidPackage. -->
+            <repositories>
+                <repository>https://www.jitpack.io</repository>
+            </repositories>
+            
+            <repositories>
+                <repository>https://repo-public.en2joy.com/repository/maven-releases/</repository>
+            </repositories>
+            <androidPackage spec="com.roiquery.android:core:1.1.43" />
+            <androidPackage spec="com.roiquery.android:ad:1.1.43" />
+            <androidPackage spec="com.roiquery.android:iap:1.1.43" />
+            
+            <!-- The "spec" attribute is *required* and provides the Maven package
+                 specification.
+                 Currently this only supports group:artifact:version_specification where
+                 group:artifact:version_specification references a Maven package that
+                 can be located in:
+                 * Maven central.
+                 * Google's Maven repo.
+                 * Local Android SDK Maven repo.
+                 Additional repositories can be added using the "repositories" element.
+            -->
+        </androidPackages>
+    <iosPods >
+        <iosPod name="ROIQueryCore" minTargetSdk="12.1" addToAllTargets="true" >
+            <!-- Set of source URIs to search for this Cocoapod spec.
+                 By default Cocoapods will attempt to fetch the pod specs from:
+                 * $HOME/.cocoapods/repos
+                 * https://github.com/CocoaPods/Specs
+                 -->
+            <!--            <sources>-->
+            <!--                <source>https://github.com/CocoaPods/Specs</source>-->
+            <!--            </sources>-->
+        </iosPod>
+    </iosPods>
+</dependencies>
