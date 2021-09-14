@@ -11,9 +11,9 @@
             <repositories>
                 <repository>https://repo-public.en2joy.com/repository/maven-releases/</repository>
             </repositories>
-            <androidPackage spec="com.roiquery.android:core:1.1.43" />
-            <androidPackage spec="com.roiquery.android:ad:1.1.43" />
-            <androidPackage spec="com.roiquery.android:iap:1.1.43" />
+            <androidPackage spec="com.roiquery.android:core:1.1.47" />
+            <androidPackage spec="com.roiquery.android:ad:1.1.47" />
+            <androidPackage spec="com.roiquery.android:iap:1.1.47" />
             
             <!-- The "spec" attribute is *required* and provides the Maven package
                  specification.
