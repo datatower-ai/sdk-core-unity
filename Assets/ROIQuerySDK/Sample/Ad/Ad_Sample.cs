@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using ROIQuery.Utils;
 using ROIQuery.AdReport;
 using ROIQuery.Analytics;
@@ -16,30 +17,32 @@ public class Ad_Sample : MonoBehaviour
 
     // Start is called before the first frame update
     void Awake()
-    {
-        print("sample awake====");
+    {     
+        Dictionary<string, object> dictionary = new Dictionary<string, object>();
+
+        dictionary.Add("test_ad_properties", "adProperties");
 
         buttons1[0].onClick.AddListener(delegate {
             R_Log.Debug("report entrance----");
-            ROIQueryAdReport.ReportEntrance("0130", AdType.INTERSTITIAL, AdPlatform.ADMOB, "home", seq, "center");
+            ROIQueryAdReport.ReportEntrance("0130", AdType.INTERSTITIAL, AdPlatform.ADMOB, "home", seq, "center",dictionary);
 
         });
         buttons1[1].onClick.AddListener(delegate {
             R_Log.Debug("report toShow");
-            ROIQueryAdReport.ReportToShow("0130", AdType.NATIVE, AdPlatform.ADMOB, "home7", seq, "center");
+            ROIQueryAdReport.ReportToShow("0130", AdType.NATIVE, AdPlatform.ADMOB, "home7", seq, "center",dictionary);
 
         });
 
         buttons1[9].onClick.AddListener(delegate {
             R_Log.Debug("report show");
-            ROIQueryAdReport.ReportShow("0130", AdType.REWARDED, AdPlatform.ADMOB, "user", seq, "center2");
+            ROIQueryAdReport.ReportShow("0130", AdType.REWARDED, AdPlatform.ADMOB, "user", seq, "center2",dictionary);
 
         });
 
         buttons1[2].onClick.AddListener(delegate {
             R_Log.Debug("report impression");
-            ROIQueryAdReport.ReportImpression("0130", AdType.REWARDED, AdPlatform.ADMOB, "home4", seq, "center");
-            ROIQueryAdReport.ReportConversionByImpression("0130", AdType.REWARDED, AdPlatform.ADMOB, "home4", seq, "center");
+            ROIQueryAdReport.ReportImpression("0130", AdType.REWARDED, AdPlatform.ADMOB, "home4", seq, "center",dictionary);
+            ROIQueryAdReport.ReportConversionByImpression("0130", AdType.REWARDED, AdPlatform.ADMOB, "home4", seq, "center",dictionary);
 
         });
         buttons1[3].onClick.AddListener(delegate {
