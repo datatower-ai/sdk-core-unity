@@ -146,185 +146,222 @@ BOOL getBoolean(const char *key, BOOL default_value){
 }
 
 // ad
-void reportEntrance(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportEntrance(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportEntranceWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
-void reportToShow(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportToShow(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportToShowWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
-void reportShow(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportShow(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportShowWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
-void reportImpression(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportImpression(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportImpressionWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
-void reportClose(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportClose(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportCloseWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
 
-void reportClick(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportClick(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportClickWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
 
 
-void reportRewarded(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportRewarded(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportRewardedWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
 
-void reportLeftApp(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportLeftApp(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportLeftAppWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
 
-void reportConversionByClick(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportConversionByClick(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportConversionByClickWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
 
 
-void reportConversionByLeftApp(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportConversionByLeftApp(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportConversionByLeftAppWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
 
 
-void reportConversionByImpression(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportConversionByImpression(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportConversionByImpressionWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
 
-void reportConversionByRewarded(const char *ad_id, int type, int platform, const char *location, const char *seq, const char *entrance){
+void reportConversionByRewarded(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportConversionByRewardedWithId:ad_id_string
      type:type
      platform:platform
      location:ad_location_string
      seq:ad_seq_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
 
-void reportPaid(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *value,const char *currency,const char *precision, const char *entrance){
+void reportPaid(const char *ad_id, int type, int platform, const char *location, const char *seq,const char *value,const char *currency,const char *precision,
+                const char *properties,const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
@@ -332,6 +369,8 @@ void reportPaid(const char *ad_id, int type, int platform, const char *location,
     NSString *ad_currency_string = currency != NULL ? [NSString stringWithUTF8String:currency] : nil;
     NSString *ad_precision_string = precision != NULL ? [NSString stringWithUTF8String:precision] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
     [ROIQueryAdReport
      reportPaidWithId:ad_id_string
      type:type
@@ -341,12 +380,13 @@ void reportPaid(const char *ad_id, int type, int platform, const char *location,
      value:ad_value_string
      currency:ad_currency_string
      precision:ad_precision_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
 
 void reportPaidWithMediation(const char *ad_id, int type, const char *platform, const char *location, const char *seq, int mediation, const char *mediationId,
-                const char *value,const char *currency,const char *precision,const char *country, const char *entrance){
+                const char *value,const char *currency,const char *precision,const char *country,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_platform_string = platform != NULL ? [NSString stringWithUTF8String:platform] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
@@ -357,6 +397,10 @@ void reportPaidWithMediation(const char *ad_id, int type, const char *platform, 
     NSString *ad_precision_string = precision != NULL ? [NSString stringWithUTF8String:precision] : nil;
     NSString *ad_country_string = country != NULL ? [NSString stringWithUTF8String:country] : nil;
     NSString *ad_entrance_string = entrance != NULL ? [NSString stringWithUTF8String:entrance] : nil;
+    
+    NSDictionary *properties_dict = nil;
+    convertToDictionary(properties, &properties_dict);
+    
     [ROIQueryAdReport
      reportPaidWithId:ad_id_string
      type:type
@@ -369,6 +413,7 @@ void reportPaidWithMediation(const char *ad_id, int type, const char *platform, 
      currency:ad_currency_string
      precision:ad_precision_string
      country:ad_country_string
+     properties:properties_dict
      entrance:ad_entrance_string];
 }
 
