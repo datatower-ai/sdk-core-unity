@@ -12,10 +12,10 @@ namespace ROIQuery.Analytics.Wrapper
         private static extern void initSDK(string appId, bool isDebug, int logLevel, string properties);
 
         [DllImport("__Internal")]
-        private static extern void track(string eventName, string properties);
+        private static extern void roiTrack(string eventName, string properties);
 
         [DllImport("__Internal")]
-        private static extern void flush();
+        private static extern void roiFlush();
 
         [DllImport("__Internal")]
         private static extern void trackPageOpen(string properties);
@@ -64,13 +64,13 @@ namespace ROIQuery.Analytics.Wrapper
         private void _track(string eventName, Dictionary<string, object> properties = null)
         {
             string jsonStr = R_Utils.Parse2JsonStr(properties);
-            track(eventName, jsonStr);
+            roiTrack(eventName, jsonStr);
             R_Log.Debug("Editor Log: calling track.");
         }
 
         private void _flush()
         {
-            flush();
+            roiFlush();
             R_Log.Debug("Editor Log: calling flush.");
         }
 
