@@ -32,22 +32,9 @@ namespace ROIQuery.Analytics.Wrapper
             ROIQuerySDK.CallStatic("initSDK", currentContext, androidAppId, channel, isDebug, logLevel, jsonObject);
         }
 
-        private AndroidJavaObject ToJSONObject(Dictionary<string, object> dic)
-        {
-            if (dic == null)
-            {
-                dic = new Dictionary<string, object>();
-            }
-
-            string jsonStr = R_Utils.Parse2JsonStr(dic);
-            AndroidJavaObject jsonObject = R_Utils.Parse2JavaJSONObject(jsonStr);
-            return jsonObject;
-        }
-
-
         private void _track(string eventName, Dictionary<string, object> dic = null)
         {
-            ROIQueryAnalytics.CallStatic("track", eventName, ToJSONObject(dic));
+            ROIQueryAnalytics.CallStatic("track", eventName, R_Utils.DicToAndroidMap(dic));
         }
 
         private void _flush()
@@ -57,19 +44,19 @@ namespace ROIQuery.Analytics.Wrapper
 
         private void _trackPageOpen(Dictionary<string, object> properties = null)
         {
-            ROIQueryAnalytics.CallStatic("trackPageOpen", ToJSONObject(properties));
+            ROIQueryAnalytics.CallStatic("trackPageOpen", R_Utils.DicToAndroidMap(properties));
         }
 
 
         private void _trackPageClose(Dictionary<string, object> properties = null)
         {
-            ROIQueryAnalytics.CallStatic("trackPageClose", ToJSONObject(properties));
+            ROIQueryAnalytics.CallStatic("trackPageClose", R_Utils.DicToAndroidMap(properties));
         }
 
 
         private void _trackAppClose(Dictionary<string, object> properties = null)
         {
-            ROIQueryAnalytics.CallStatic("trackAppClose", ToJSONObject(properties));
+            ROIQueryAnalytics.CallStatic("trackAppClose", R_Utils.DicToAndroidMap(properties));
         }
 
         private void _setAccountId(string accountId)
@@ -96,7 +83,7 @@ namespace ROIQuery.Analytics.Wrapper
 
         private void _setUserProperties(Dictionary<string, object> properties = null)
         {
-            ROIQueryAnalytics.CallStatic("setUserProperties", ToJSONObject(properties));
+            ROIQueryAnalytics.CallStatic("setUserProperties", R_Utils.DicToAndroidMap(properties));
         }
 
 
