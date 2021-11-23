@@ -1,10 +1,9 @@
 ﻿
 
-using ROIQuery.Analytics;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using System.Collections.Generic;
+using ROIQuery;
 using UnityEngine.SceneManagement;
 
 public class Analytics_Sample : MonoBehaviour
@@ -23,22 +22,18 @@ public class Analytics_Sample : MonoBehaviour
 
         
         buttons2[0].onClick.AddListener(delegate {
-            DateTime dateTime = DateTime.Now;
+            // DateTime dateTime = DateTime.Now;
 
             Dictionary<string, object> dictionary = new Dictionary<string, object>();
 
             dictionary.Add("login_pro_1", "中国");
-            dictionary.Add("login_pro_2", dateTime);
+            // dictionary.Add("login_pro_2", dateTime);
 
             List<int> list = new List<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
             dictionary.Add("list", list);
-
-            //ROIQueryAnalytics.SetAccountId("1234567");
-            //ROIQueryAnalytics.SetFirebaseAppInstanceId("1234567abcdefg");
-
 
             print("Track an Event.");
             ROIQueryAnalytics.Track("test",dictionary);

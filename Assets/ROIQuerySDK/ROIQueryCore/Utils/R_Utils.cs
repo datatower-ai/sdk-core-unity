@@ -20,7 +20,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace ROIQuery.Utils
+namespace ROIQuery
 {
     public class R_Utils
     {
@@ -173,27 +173,6 @@ namespace ROIQuery.Utils
                 || obj is double
                 || obj is decimal
                 || obj is float;
-        }
-
-        /// <summary>
-        /// 将C# Dictionary 转换成 Android 可用的 Map
-        /// </summary>
-        /// <param name="dictionary"></param>
-        /// <returns></returns>
-        public static AndroidJavaObject DicToAndroidMap(Dictionary<string, object> dictionary)
-        {
-            if (dictionary == null)
-            {
-                return null;
-            }
-
-            var map = new AndroidJavaObject("java.util.HashMap");
-            foreach (KeyValuePair<string, object> pair in dictionary)
-            {
-                map.Call<string>("put", pair.Key, pair.Value);
-            }
-
-            return map;
         }
 
         

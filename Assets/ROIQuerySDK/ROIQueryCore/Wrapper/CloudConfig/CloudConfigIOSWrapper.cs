@@ -1,11 +1,10 @@
 ﻿
 using System.Collections.Generic;
-using ROIQuery.Utils;
 using UnityEngine;
 using System.Runtime.InteropServices;
 using AOT;
 
-namespace ROIQuery.CloudConfig.Wrapper
+namespace ROIQuery
 {
     public partial class ROIQueryCloudConfigWrapper
     {

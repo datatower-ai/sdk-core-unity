@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using ROIQuery.Utils;
 using UnityEngine;
 
-namespace ROIQuery.Analytics.Wrapper
+namespace ROIQuery
 {
     public partial class ROIQueryAnalyticsWrapper
     {
@@ -32,9 +31,38 @@ namespace ROIQuery.Analytics.Wrapper
             ROIQuerySDK.CallStatic("initSDK", currentContext, androidAppId, channel, isDebug, logLevel, jsonObject);
         }
 
+        private AndroidJavaObject ToJSONObject(Dictionary<string, object> dic)
+        {
+            if (dic == null)
+            {
+                dic = new Dictionary<string, object>();
+            }
+
+            string jsonStr = R_Utils.Parse2JsonStr(dic);
+            AndroidJavaObject jsonObject = R_Utils.Parse2JavaJSONObject(jsonStr);
+            return jsonObject;
+        }
+        
+        public static AndroidJavaObject dicToMap(Dictionary<string, object> dictionary)
+        {
+            if (dictionary == null)
+            {
+                return null;
+            }
+
+            AndroidJavaObject map = new AndroidJavaObject("java.util.HashMap");
+            foreach (KeyValuePair<string, object> pair in dictionary)
+            {
+                map.Call<AndroidJavaObject>("put", pair.Key, pair.Value);
+            }
+
+            return map;
+        }
+
+
         private void _track(string eventName, Dictionary<string, object> dic = null)
         {
-            ROIQueryAnalytics.CallStatic("track", eventName, R_Utils.DicToAndroidMap(dic));
+            ROIQueryAnalytics.CallStatic("track", eventName, ToJSONObject(dic));
         }
 
         private void _flush()
@@ -44,19 +72,19 @@ namespace ROIQuery.Analytics.Wrapper
 
         private void _trackPageOpen(Dictionary<string, object> properties = null)
         {
-            ROIQueryAnalytics.CallStatic("trackPageOpen", R_Utils.DicToAndroidMap(properties));
+            ROIQueryAnalytics.CallStatic("trackPageOpen", ToJSONObject(properties));
         }
 
 
         private void _trackPageClose(Dictionary<string, object> properties = null)
         {
-            ROIQueryAnalytics.CallStatic("trackPageClose", R_Utils.DicToAndroidMap(properties));
+            ROIQueryAnalytics.CallStatic("trackPageClose", ToJSONObject(properties));
         }
 
 
         private void _trackAppClose(Dictionary<string, object> properties = null)
         {
-            ROIQueryAnalytics.CallStatic("trackAppClose", R_Utils.DicToAndroidMap(properties));
+            ROIQueryAnalytics.CallStatic("trackAppClose", ToJSONObject(properties));
         }
 
         private void _setAccountId(string accountId)
@@ -83,7 +111,7 @@ namespace ROIQuery.Analytics.Wrapper
 
         private void _setUserProperties(Dictionary<string, object> properties = null)
         {
-            ROIQueryAnalytics.CallStatic("setUserProperties", R_Utils.DicToAndroidMap(properties));
+            ROIQueryAnalytics.CallStatic("setUserProperties", ToJSONObject(properties));
         }
 
 

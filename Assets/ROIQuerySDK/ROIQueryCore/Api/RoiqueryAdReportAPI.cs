@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ROIQuery.AdReport.Wrapper;
 
 
-namespace ROIQuery.AdReport
+namespace ROIQuery
 {
     /// <summary>
     /// 广告类型
@@ -268,6 +267,7 @@ namespace ROIQuery.AdReport
         /// <param name="id">广告最小单元id</param>
         /// <param name="type">广告类型</param>
         /// <param name="platform">广告平台</param>
+        /// <param name="adgroupType">广告组类别</param>
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="mediation">聚合平台</param>
@@ -277,11 +277,11 @@ namespace ROIQuery.AdReport
         /// <param name="precision">精确度</param>
         /// <param name="country">国家</param>
         /// <param name="entrance">广告入口</param>
-        public static void ReportPaid(string id, AdType type, string platform, string location, string seq,
+        public static void ReportPaid(string id, AdType type, string platform,string adgroupType, string location, string seq,
             AdMediation mediation, string mediationId, string value, string currency, string precision, string country,
             string entrance = "",Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReportWrapper.Instance.ReportPaid(id, type, platform, location, seq, mediation, mediationId,
+            ROIQueryAdReportWrapper.Instance.ReportPaid(id, type, platform, adgroupType, location, seq, mediation, mediationId,
                 value, currency, precision, country, entrance, properties);
         }
 
@@ -292,6 +292,16 @@ namespace ROIQuery.AdReport
         public static string GenerateUUID()
         {
             return ROIQueryAdReportWrapper.Instance.GenerateUUID();
+        }
+        
+        
+        /// <summary>
+        /// 获取聚合平台具体广告网络
+        /// </summary>
+        public static AdPlatform GetPlatform(AdMediation mediation, string networkName, string networkPlacementId,
+            string adgroupType)
+        {
+            return ROIQueryAdReportWrapper.Instance.GetPlatform(mediation, networkName, networkPlacementId, adgroupType);
         }
     }
 }

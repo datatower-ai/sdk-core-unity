@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace ROIQuery.CloudConfig.Wrapper
+namespace ROIQuery
 {
     public partial class ROIQueryCloudConfigWrapper
     {

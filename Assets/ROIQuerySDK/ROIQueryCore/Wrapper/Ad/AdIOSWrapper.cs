@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using ROIQuery.Utils;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
 
-namespace ROIQuery.AdReport.Wrapper
+namespace ROIQuery
 {
     public partial class ROIQueryAdReportWrapper
     {
@@ -61,11 +61,24 @@ namespace ROIQuery.AdReport.Wrapper
             string value, string currency, string precision, string properties, string entrance);
 
         [DllImport("__Internal")]
-        private static extern void reportPaidWithMediation(string id, int type, string platform, string location,
+        private static extern void reportPaidWithMediation(string id, int type, string platform,string adgroupType, string location,
             string seq,
             int mediation, string mediationId, string value, string currency, string precision, string country,
             string properties, string entrance);
 
+        [DllImport("__Internal")]
+        private static extern int getPlatform(int mediation, string networkName, string networkPlacementId,
+            string adgroupType);
+        
+        [DllImport("__Internal")]
+        private static extern string generateUUID();
+        
+        
+        
+        private AdPlatform ParseToAdPlatform(int platform)
+        {
+            return Enum.TryParse(platform.ToString(), out AdPlatform adPlatform) ? adPlatform : AdPlatform.IDLE;
+        }
         private void _init()
         {
             R_Log.Debug("Editor Log: calling init.");
@@ -164,11 +177,11 @@ namespace ROIQuery.AdReport.Wrapper
         }
 
 
-        private void _reportPaid(string id, AdType type, string platform, string location, string seq,
+        private void _reportPaid(string id, AdType type, string platform, string adgroupType, string location, string seq,
             AdMediation mediation, string mediationId, string value, string currency, string precision, string country,
             string entrance = "",Dictionary<string, object> properties = null)
         {
-            reportPaidWithMediation(id, (int) type, platform, location, seq, (int) mediation, mediationId, value,
+            reportPaidWithMediation(id, (int) type, platform, adgroupType, location, seq, (int) mediation, mediationId, value,
                 currency,
                 precision, country,  R_Utils.Parse2JsonStr(properties), entrance);
             R_Log.Debug("Editor Log: calling reportPaid.");
@@ -178,9 +191,13 @@ namespace ROIQuery.AdReport.Wrapper
         private string _generateUUID()
         {
             R_Log.Debug("Editor Log: calling onAppBackgrounded.");
-            return "";
+            return generateUUID();
         }
 
+         private AdPlatform _getPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupType)
+         {
+             return ParseToAdPlatform(getPlatform((int) mediation, networkName, networkPlacementId, adgroupType));
+         }
 #endif
     }
 }

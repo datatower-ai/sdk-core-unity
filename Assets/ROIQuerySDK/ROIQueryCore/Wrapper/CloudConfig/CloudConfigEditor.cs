@@ -1,8 +1,7 @@
 ﻿
 using System.Collections.Generic;
-using ROIQuery.Utils;
 
-namespace ROIQuery.CloudConfig.Wrapper
+namespace ROIQuery
 {
     public partial class ROIQueryCloudConfigWrapper
     {

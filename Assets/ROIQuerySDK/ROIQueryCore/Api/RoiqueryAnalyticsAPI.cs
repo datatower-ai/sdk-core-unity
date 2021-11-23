@@ -1,9 +1,8 @@
 ﻿
-using ROIQuery.Analytics.Wrapper;
 using System.Collections.Generic;
 
 
-namespace ROIQuery.Analytics
+namespace ROIQuery
 {
    
     public class ROIQueryAnalytics

@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace ROIQuery.Utils
+namespace ROIQuery
 {
     /// <summary>
     /// RoiqueryAnalytics Log Class

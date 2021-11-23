@@ -1,9 +1,8 @@
 ﻿
 
-using ROIQuery.IAPReport.Wrapper;
 
 
-namespace ROIQuery.IAPReport
+namespace ROIQuery
 {
     
 

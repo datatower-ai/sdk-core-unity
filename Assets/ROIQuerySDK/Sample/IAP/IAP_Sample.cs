@@ -1,21 +1,14 @@
-﻿
-
+﻿using ROIQuery;
 using UnityEngine;
 using UnityEngine.UI;
-
-using ROIQuery.IAPReport;
 using UnityEngine.SceneManagement;
 
 public class IAP_Sample : MonoBehaviour
 {
- 
-
     public Button[] buttons2;
-
     string order = "7345062sdf";
     private string seq = "123456";
- 
-
+    
     // Start is called before the first frame update
     void Awake()
     {

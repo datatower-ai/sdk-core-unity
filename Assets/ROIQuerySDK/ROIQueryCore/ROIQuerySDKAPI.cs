@@ -1,6 +1,6 @@
-using ROIQuery.Utils;
+using System;
 using UnityEngine;
-using ROIQuery.Analytics;
+using UnityEngine.Events;
 
 namespace ROIQuery
 {
@@ -21,11 +21,12 @@ namespace ROIQuery
         /// <summary>
         /// 当前 Unity SDK 版本
         /// </summary>
-        public readonly static string SDK_VERSION = "1.1.12";
+        public readonly static string SDK_VERSION = "1.1.15";
 
-        [Header("ROIQuerySDK-v1.1.12")] [Tooltip("由后台分配")]
-        public string androidAppId = "";
-
+        [Header("ROIQuerySDK-v1.1.15")]
+        
+        [Tooltip("由后台分配")] public string androidAppId = "";
+        
         [Tooltip("由后台分配")] public string iOSAppId = "";
 
         [Tooltip("渠道(只有Android平台生效)")] public string channel = "";
@@ -33,6 +34,7 @@ namespace ROIQuery
         [Tooltip("是否开启调试，开启将会打印log")] public bool isDebug = true;
 
         [Tooltip("设置log 级别")] public LogLevel logLevel = LogLevel.DEFAULT;
+        
 
         #region internal use
 
@@ -56,21 +58,9 @@ namespace ROIQuery
             }
 
             ROIQueryAnalytics.Init(androidAppId, iOSAppId, channel, SDK_VERSION, isDebug, (int) logLevel);
+           
         }
 
         #endregion
-
-
-        private void OnApplicationPause(bool pause)
-        {
-            if (pause)
-            {
-                ROIQueryAnalytics.OnAppBackground();
-            }
-            else
-            {
-                ROIQueryAnalytics.OnAppForeground();
-            }
-        }
     }
 }

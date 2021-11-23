@@ -385,10 +385,11 @@ void reportPaid(const char *ad_id, int type, int platform, const char *location,
 }
 
 
-void reportPaidWithMediation(const char *ad_id, int type, const char *platform, const char *location, const char *seq, int mediation, const char *mediationId,
+void reportPaidWithMediation(const char *ad_id, int type, const char *platform,const char *adgroupType, const char *location, const char *seq, int mediation, const char *mediationId,
                 const char *value,const char *currency,const char *precision,const char *country,const char *properties, const char *entrance){
     NSString *ad_id_string = ad_id != NULL ? [NSString stringWithUTF8String:ad_id] : nil;
     NSString *ad_platform_string = platform != NULL ? [NSString stringWithUTF8String:platform] : nil;
+    NSString *ad_adgroupType_string = platform != NULL ? [NSString stringWithUTF8String:adgroupType] : nil;
     NSString *ad_location_string = location != NULL ? [NSString stringWithUTF8String:location] : nil;
     NSString *ad_seq_string = seq != NULL ? [NSString stringWithUTF8String:seq] : nil;
     NSString *ad_mediationId_string = mediationId != NULL ? [NSString stringWithUTF8String:mediationId] : nil;
@@ -404,7 +405,8 @@ void reportPaidWithMediation(const char *ad_id, int type, const char *platform, 
     [ROIQueryAdReport
      reportPaidWithId:ad_id_string
      type:type
-     platform:(ad_platform_string)
+     platform:ad_platform_string
+     adgroupType:ad_adgroupType_string
      location:ad_location_string
      seq:ad_seq_string
      mediation:mediation
@@ -417,6 +419,21 @@ void reportPaidWithMediation(const char *ad_id, int type, const char *platform, 
      entrance:ad_entrance_string];
 }
 
+const char* generateUUID(){
+    return [ROIQueryAdReport generateUUID];
+}
+
+int getPlatform(int mediation,const char *networkName,const char *networkPlacementId,const char *adgroupType){
+    NSString *networkName_string = ad_id != NULL ? [NSString stringWithUTF8String:networkName] : nil;
+    NSString *networkPlacementId_string = ad_id != NULL ? [NSString stringWithUTF8String:networkPlacementId] : nil;
+    NSString *adgroupType_string = ad_id != NULL ? [NSString stringWithUTF8String:adgroupType] : nil;
+    
+    return [ROIQueryAdReport 
+    getPlatformWithMediation:mediation 
+    networkName:networkName_string 
+    networkPlacementId:networkPlacementId_string 
+    adgroupType:adgroupType_string];
+}
 
 // iap
 void reportIapEntrance(const char *order, const char *sku, double price, const char *currency, const char *seq,const char *entrance){

@@ -1,7 +1,6 @@
 ﻿
-using ROIQuery.Utils;
 
-namespace ROIQuery.IAPReport.Wrapper
+namespace ROIQuery
 {
     public partial class ROIQueryIAPReportWrapper
     {

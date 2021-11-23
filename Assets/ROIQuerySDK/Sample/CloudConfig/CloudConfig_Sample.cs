@@ -1,7 +1,6 @@
-﻿using ROIQuery.Utils;
+﻿using ROIQuery;
 using UnityEngine;
 using UnityEngine.UI;
-using ROIQuery.CloudConfig;
 using UnityEngine.SceneManagement;
 
 public class CloudConfig_Sample : MonoBehaviour

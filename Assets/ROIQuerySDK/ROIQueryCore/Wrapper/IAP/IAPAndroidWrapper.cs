@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace ROIQuery.IAPReport.Wrapper
+namespace ROIQuery
 {
     public partial class ROIQueryIAPReportWrapper
     {

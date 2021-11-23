@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using ROIQuery.Utils;
 using UnityEngine;
 using System.Runtime.InteropServices;
 
-namespace ROIQuery.Analytics.Wrapper
+namespace ROIQuery
 {
     public partial class ROIQueryAnalyticsWrapper
     {

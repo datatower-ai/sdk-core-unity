@@ -1,11 +1,7 @@
-﻿
-
-using System;
-using AOT;
-using ROIQuery.CloudConfig.Wrapper;
+﻿using AOT;
 using UnityEngine;
 
-namespace ROIQuery.CloudConfig
+namespace ROIQuery
 {
 
     public delegate void OnConfigFethedDelegate(bool Success, string errorMessage);

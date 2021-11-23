@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
-using ROIQuery.Utils;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace ROIQuery.AdReport.Wrapper
+namespace ROIQuery
 {
     public partial class ROIQueryAdReportWrapper
     {
 #if UNITY_ANDROID && !(UNITY_EDITOR)
 
         //获取类，通过包名+类名方式
-        private static readonly AndroidJavaClass ROIQueryAdReport =
-            new AndroidJavaClass("com.roiquery.ad.ROIQueryAdReport");
+        private static readonly AndroidJavaClass ROIQueryAdReport = new AndroidJavaClass("com.roiquery.ad.ROIQueryAdReport");
+            
 
         private void _init()
         {
@@ -26,6 +26,12 @@ namespace ROIQuery.AdReport.Wrapper
             }
 
             return jsonObject;
+        }
+
+        private AdPlatform ParseToAdPlatform(AndroidJavaObject platform)
+        {
+            var code = platform.Call<int>("getValue");
+            return Enum.TryParse(code.ToString(), out AdPlatform adPlatform) ? adPlatform : AdPlatform.IDLE;
         }
 
         public static AndroidJavaObject dicToMap(Dictionary<string, object> dictionary)
@@ -53,7 +59,6 @@ namespace ROIQuery.AdReport.Wrapper
         private AndroidJavaObject GetPlatform(AdPlatform platform)
         {
             return GetAndroidEnum("com.roiquery.ad.AdPlatform", platform.ToString());
-            ;
         }
 
 
@@ -160,11 +165,11 @@ namespace ROIQuery.AdReport.Wrapper
         }
 
 
-        private void _reportPaid(string id, AdType type, string platform, string location, string seq,
+        private void _reportPaid(string id, AdType type, string platform, string adgroupType, string location, string seq,
             AdMediation mediation, string mediationId, string value, string currency, string precision,
             string country, string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportPaid", id, GetType(type), platform, location, seq,
+            ROIQueryAdReport.CallStatic("reportPaid", id, GetType(type), platform, adgroupType, location, seq,
                 GetMediation(mediation), mediationId, value, currency, precision, country, dicToMap(properties),
                 entrance);
         }
@@ -175,6 +180,11 @@ namespace ROIQuery.AdReport.Wrapper
             return ROIQueryAdReport.CallStatic<string>("generateUUID");
         }
 
+        private AdPlatform _getPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupType)
+        {
+            AndroidJavaObject adPlatform =  ROIQueryAdReport.CallStatic<AndroidJavaObject>("getPlatform",(int)mediation, networkName, networkPlacementId, adgroupType);
+            return ParseToAdPlatform(adPlatform);
+        }
 #endif
     }
 }
