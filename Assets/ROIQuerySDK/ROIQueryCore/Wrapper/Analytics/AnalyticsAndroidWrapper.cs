@@ -43,22 +43,6 @@ namespace ROIQuery
             return jsonObject;
         }
         
-        public static AndroidJavaObject dicToMap(Dictionary<string, object> dictionary)
-        {
-            if (dictionary == null)
-            {
-                return null;
-            }
-
-            AndroidJavaObject map = new AndroidJavaObject("java.util.HashMap");
-            foreach (KeyValuePair<string, object> pair in dictionary)
-            {
-                map.Call<AndroidJavaObject>("put", pair.Key, pair.Value);
-            }
-
-            return map;
-        }
-
 
         private void _track(string eventName, Dictionary<string, object> dic = null)
         {
@@ -86,7 +70,12 @@ namespace ROIQuery
         {
             ROIQueryAnalytics.CallStatic("trackAppClose", ToJSONObject(properties));
         }
-
+        
+        private string _getROIQueryId()
+        {
+            return ROIQueryAnalytics.CallStatic<string>("getROIQueryId");
+        }
+        
         private void _setAccountId(string accountId)
         {
             ROIQueryAnalytics.CallStatic("setAccountId", accountId);
@@ -124,6 +113,19 @@ namespace ROIQuery
         private void _onAppBackground()
         {
             ROIQueryAnalytics.CallStatic("onAppBackground");
+        }
+        
+        private long _getRealTime()
+        {
+            return ROIQueryAnalytics.CallStatic<long>("getRealTime");
+        }
+        private void _getServerTimeAsync(ROIQueryAnalytics.AndroidServerTimeCallback callback)
+        {
+             ROIQueryAnalytics.CallStatic("getServerTimeAsync",callback);
+        }
+        private long _getServerTimeSync()
+        {
+            return ROIQueryAnalytics.CallStatic<long>("getServerTimeSync");
         }
 
 #endif

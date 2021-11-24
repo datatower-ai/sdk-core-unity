@@ -82,6 +82,12 @@ namespace ROIQuery
             _trackAppClose(properties);
         }
 
+        
+        public string GetROIQueryId()
+        { 
+            return _getROIQueryId();
+        }
+
 
         public void SetAccountId(string accountId)
         {
@@ -102,23 +108,25 @@ namespace ROIQuery
             _setKochavaId(id);
         }
 
+        public long GetRealTime()
+        {
+            return _getRealTime();
+        }
+        public void GetServerTimeAsync(ROIQueryAnalytics.AndroidServerTimeCallback callback)
+        {
+            _getServerTimeAsync(callback);
+        }
+        public long GetServerTimeSync()
+        {
+            return _getServerTimeSync();
+        }
+
         public void SetUserProperties(Dictionary<string, object> properties = null)
         {
 
             _setUserProperties(properties);
         }
 
-
-        public void OnAppForeground()
-        {
-            _onAppForeground();
-        }
-
-
-        public void OnAppBackground()
-        {
-            _onAppBackground();
-        }
 
 
     }

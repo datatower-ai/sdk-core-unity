@@ -1,14 +1,32 @@
 ﻿
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace ROIQuery
 {
+      
    
     public class ROIQueryAnalytics
     {
         
-    
+        public class AndroidServerTimeCallback : AndroidJavaProxy
+        {
+            public AndroidServerTimeCallback() : base("com.roiquery.analytics.api.ServerTimeListener")
+            {
+            }
+
+            void onFinished(long time, string msg)
+            {
+                var v = onFinishedAction;
+                v?.Invoke(time,msg);
+            }
+        }
+
+        private static Action<long, string> onFinishedAction;
+
+        private static AndroidServerTimeCallback _androidServerTimeCallback = new AndroidServerTimeCallback();
         public static void Init(string androidAppId, string iOSAppId, string channel, string sdkVersion, bool isDebug, int logLeve)
         {
             ROIQueryAnalyticsWrapper.Instance.Init(androidAppId,iOSAppId, channel, sdkVersion, isDebug, logLeve);
@@ -59,6 +77,14 @@ namespace ROIQuery
             ROIQueryAnalyticsWrapper.Instance.TrackAppClose(properties);
         }
 
+        
+        /// <summary>
+        /// 获取ROIQuery ID
+        /// </summary>
+        public static string GetROIQueryId()
+        {
+            return ROIQueryAnalyticsWrapper.Instance.GetROIQueryId();
+        }
 
         /// <summary>
         /// 设置自有用户id
@@ -103,22 +129,36 @@ namespace ROIQuery
         {
             ROIQueryAnalyticsWrapper.Instance.SetUserProperties(properties);
         }
-
+        
+        
         /// <summary>
-        /// app 进入后台
+        /// 获取当前时间，如果没有校准，则返回系统时间
         /// </summary>
-        internal static void OnAppBackground()
+        public static long GetRealTime()
         {
-            ROIQueryAnalyticsWrapper.Instance.OnAppBackground();
+           return ROIQueryAnalyticsWrapper.Instance.GetRealTime();
+        }
+        
+        
+        /// <summary>
+        /// 异步获取服务器时间
+        /// </summary>
+        public static void GetServerTimeAsync(Action<long, string> onFinished)
+        {
+            onFinishedAction = onFinished;
+            ROIQueryAnalyticsWrapper.Instance.GetServerTimeAsync(_androidServerTimeCallback);
         }
 
+        
+        
         /// <summary>
-        /// app 进入前台
+        /// 同步获取服务器时间
         /// </summary>
-        internal static void OnAppForeground()
+        public static long GetServerTimeSync()
         {
-            ROIQueryAnalyticsWrapper.Instance.OnAppForeground();
+            return ROIQueryAnalyticsWrapper.Instance.GetServerTimeSync();
         }
+
 
     }
 

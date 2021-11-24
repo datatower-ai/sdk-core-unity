@@ -1,8 +1,10 @@
 ﻿
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Net.Configuration;
 using ROIQuery;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +20,7 @@ public class Analytics_Sample : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        print("sample awake====");
+        print("sample awake====" );
 
         
         buttons2[0].onClick.AddListener(delegate {
@@ -27,7 +29,7 @@ public class Analytics_Sample : MonoBehaviour
             Dictionary<string, object> dictionary = new Dictionary<string, object>();
 
             dictionary.Add("login_pro_1", "中国");
-            // dictionary.Add("login_pro_2", dateTime);
+            dictionary.Add("roq_id", ROIQueryAnalytics.GetROIQueryId());
 
             List<int> list = new List<int>();
             list.Add(1);
@@ -36,6 +38,12 @@ public class Analytics_Sample : MonoBehaviour
             dictionary.Add("list", list);
 
             print("Track an Event.");
+            // R_Log.Error("realTime "+ ROIQueryAnalytics.GetRealTime());
+            // R_Log.Error("ServerTimeSync "+ ROIQueryAnalytics.GetServerTimeSync());
+            ROIQueryAnalytics.GetServerTimeAsync((time, msg) =>
+            {
+                R_Log.Error("GetServerTimeAsync "+ time);
+            });
             ROIQueryAnalytics.Track("test",dictionary);
 
         });

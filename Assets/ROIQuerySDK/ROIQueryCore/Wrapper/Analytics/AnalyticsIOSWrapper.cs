@@ -24,6 +24,9 @@ namespace ROIQuery
 
         [DllImport("__Internal")]
         private static extern void trackAppClose(string properties);
+        
+        [DllImport("__Internal")]
+        private static extern string getROIQueryId();
 
         [DllImport("__Internal")]
         private static extern void setAccountId(string id);
@@ -94,6 +97,13 @@ namespace ROIQuery
             R_Log.Debug("Editor Log: calling trackAppClose.");
         }
 
+        private string _getROIQueryId()
+        {
+            return getROIQueryId();
+            R_Log.Debug("Editor Log: calling _setAccountId.");
+        }
+        
+
         private void _setAccountId(string accountId)
         {
             setAccountId(accountId);
@@ -135,6 +145,19 @@ namespace ROIQuery
         {
             onAppBackground();
             R_Log.Debug("Editor Log: calling _onAppBackgrounded.");
+        }
+        
+        private long _getRealTime()
+        {
+            return 0L;
+        }
+        private void _getServerTimeAsync(ROIQueryAnalytics.AndroidServerTimeCallback callback)
+        {
+            
+        }
+        private long _getServerTimeSync()
+        {
+            return 0L;
         }
 
 #endif

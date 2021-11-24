@@ -45,6 +45,11 @@ namespace ROIQuery
 
             R_Log.Debug("Editor Log: calling trackAppClose.");
         }
+        
+        private string _getROIQueryId()
+        {
+            return "";
+        }
 
         private void _setAccountId(string accountId)
         {
@@ -83,7 +88,18 @@ namespace ROIQuery
             R_Log.Debug("Editor Log: calling _onAppBackgrounded.");
         }
 
-        
+        private long _getRealTime()
+        {
+            return 0L;
+        }
+        private void _getServerTimeAsync(ROIQueryAnalytics.AndroidServerTimeCallback callback)
+        {
+            
+        }
+        private long _getServerTimeSync()
+        {
+            return 0L;
+        }
 
 
 #endif
