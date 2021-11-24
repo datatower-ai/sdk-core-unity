@@ -25,7 +25,7 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
-    implementation 'com.roiquery.android:core:1.2.3.04' // Assets/ROIQuerySDK/Editor/ROIQueryDependencies.xml:14
+    implementation 'com.roiquery.android:core:1.2.4' // Assets/ROIQuerySDK/Editor/ROIQueryDependencies.xml:14
 // Android Resolver Dependencies End
 **DEPS**}
 
