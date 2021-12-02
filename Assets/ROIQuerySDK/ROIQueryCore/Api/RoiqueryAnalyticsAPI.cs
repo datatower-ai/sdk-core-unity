@@ -78,6 +78,50 @@ namespace ROIQuery
         }
 
         
+        public static void UserSet(Dictionary<string, object> properties)
+        {
+            ROIQueryAnalyticsWrapper.Instance.UserSet(properties);
+        }
+        public static void UserSetOnce(Dictionary<string, object> properties)
+        {
+            ROIQueryAnalyticsWrapper.Instance.UserSetOnce(properties);
+        }
+        
+        public static void UserAdd(Dictionary<string, object> properties)
+        {
+            ROIQueryAnalyticsWrapper.Instance.UserAdd(properties);
+        }
+        
+        /// <summary>
+        /// 重置一个用户属性.
+        /// </summary>
+        /// <param name="property">用户属性名称</param>
+        public  static void UserUnset(string property)
+        {
+            ROIQueryAnalyticsWrapper.Instance.UserUnset(property);
+        }
+
+
+        /// <summary>
+        /// 重置一组用户属性
+        /// </summary>
+        /// <param name="properties">用户属性列表</param>
+        public static void UserUnset(List<string> properties)
+        {
+            ROIQueryAnalyticsWrapper.Instance.UserUnset(properties);
+        }
+        
+        public static void UserDelete()
+        {
+            ROIQueryAnalyticsWrapper.Instance.UserDelete();
+        }
+        
+        public static void UserAppend(Dictionary<string, object> properties)
+        {
+            ROIQueryAnalyticsWrapper.Instance.UserAppend(properties);
+        }
+        
+        
         /// <summary>
         /// 获取ROIQuery ID
         /// </summary>
@@ -121,14 +165,7 @@ namespace ROIQuery
             ROIQueryAnalyticsWrapper.Instance.SetKochavaId(id);
         }
 
-        /// <summary>
-        /// 设置用户属性
-        /// </summary>
-        /// <param name="properties">用户属性</param>
-        public static void SetUserProperties(Dictionary<string, object> properties = null)
-        {
-            ROIQueryAnalyticsWrapper.Instance.SetUserProperties(properties);
-        }
+  
         
         
         /// <summary>

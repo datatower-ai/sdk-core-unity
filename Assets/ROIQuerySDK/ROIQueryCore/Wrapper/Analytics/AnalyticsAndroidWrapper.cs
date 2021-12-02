@@ -71,6 +71,39 @@ namespace ROIQuery
             ROIQueryAnalytics.CallStatic("trackAppClose", ToJSONObject(properties));
         }
         
+         
+        
+        private void _userSet(Dictionary<string, object> properties)
+        {
+            ROIQueryAnalytics.CallStatic("userSet", ToJSONObject(properties));
+        }
+        private void _userSetOnce(Dictionary<string, object> properties)
+        {
+            ROIQueryAnalytics.CallStatic("userSetOnce", ToJSONObject(properties));
+        }
+        
+        private void _userAdd(Dictionary<string, object> properties)
+        {
+            ROIQueryAnalytics.CallStatic("userAdd", ToJSONObject(properties));
+
+        }
+        
+        private static void _userUnset(List<string> properties)
+        {
+            ROIQueryAnalytics.CallStatic("userUnset", properties.ToArray());
+        }
+        
+        private void _userDelete()
+        {
+            ROIQueryAnalytics.CallStatic("userDelete");
+        }
+        
+        private void _userAppend(Dictionary<string, object> properties)
+        {
+            ROIQueryAnalytics.CallStatic("userAppend", ToJSONObject(properties));
+        }
+
+        
         private string _getROIQueryId()
         {
             return ROIQueryAnalytics.CallStatic<string>("getROIQueryId");

@@ -82,7 +82,52 @@ namespace ROIQuery
             _trackAppClose(properties);
         }
 
+
+        public void UserSet(Dictionary<string, object> properties)
+        {
+            _userSet(properties);
+        }
+        public void UserSetOnce(Dictionary<string, object> properties)
+        {
+            _userSetOnce(properties);
+        }
         
+        public void UserAdd(Dictionary<string, object> properties)
+        {
+            _userAdd(properties);
+        }
+        
+        /// <summary>
+        /// 重置一个用户属性.
+        /// </summary>
+        /// <param name="property">用户属性名称</param>
+        public  void UserUnset(string property)
+        {
+            List<string> properties = new List<string>();
+            properties.Add(property);
+            _userUnset(properties);
+        }
+
+
+        /// <summary>
+        /// 重置一组用户属性
+        /// </summary>
+        /// <param name="properties">用户属性列表</param>
+        public  void UserUnset(List<string> properties)
+        {
+            _userUnset(properties);
+        }
+        
+        public void UserDelete()
+        {
+            _userDelete();
+        }
+        
+        public void UserAppend(Dictionary<string, object> properties)
+        {
+            _userAppend(properties);
+        }
+
         public string GetROIQueryId()
         { 
             return _getROIQueryId();
@@ -121,11 +166,6 @@ namespace ROIQuery
             return _getServerTimeSync();
         }
 
-        public void SetUserProperties(Dictionary<string, object> properties = null)
-        {
-
-            _setUserProperties(properties);
-        }
 
 
 

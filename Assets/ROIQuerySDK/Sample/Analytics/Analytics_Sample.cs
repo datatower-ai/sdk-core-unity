@@ -54,7 +54,8 @@ public class Analytics_Sample : MonoBehaviour
             dictionary.Add("page_open_pro2", "2");
 
             print("Track TrackPageOpen Event.");
-            ROIQueryAnalytics.TrackPageOpen(dictionary);
+            // ROIQueryAnalytics.TrackPageOpen(dictionary);
+            ROIQueryAnalytics.UserSet(dictionary);
 
         });
         buttons2[2].onClick.AddListener(delegate {
@@ -65,7 +66,8 @@ public class Analytics_Sample : MonoBehaviour
 
             print("Track TrackPageClose Event.");
             ROIQueryAnalytics.SetAppsFlyerId("afid12344");
-            ROIQueryAnalytics.TrackPageClose(dictionary);
+            // ROIQueryAnalytics.TrackPageClose(dictionary);
+            ROIQueryAnalytics.UserSetOnce(dictionary);
 
         });
         buttons2[3].onClick.AddListener(delegate {
@@ -75,22 +77,36 @@ public class Analytics_Sample : MonoBehaviour
 
             print("Track TrackAppClose Event.");
             ROIQueryAnalytics.SetKochavaId("koid43543");
-            ROIQueryAnalytics.TrackAppClose(dictionary);
+            // ROIQueryAnalytics.TrackAppClose(dictionary);
+            ROIQueryAnalytics.UserAdd(dictionary);
 
         });
         buttons2[4].onClick.AddListener(delegate {
-
+            
             Dictionary<string, object> dictionary = new Dictionary<string, object>();
             dictionary.Add("user_name", "huazai");
             dictionary.Add("user_money", 3200.98);
-
+            
             print("set user properties Event.");
-            ROIQueryAnalytics.SetUserProperties(dictionary);
+            
+            List<string> stringList = new List<string>();
+            stringList.Add("apple");
+            stringList.Add("ball");
+            stringList.Add("cat");
+            // ROIQueryAnalytics.SetUserProperties(dictionary);
+            ROIQueryAnalytics.UserUnset(stringList);
 
         });
         buttons2[5].onClick.AddListener(delegate {
-            ROIQueryAnalytics.Flush();
+            // ROIQueryAnalytics.Flush();
+            Dictionary<string, object> dictionary = new Dictionary<string, object>();
+            dictionary.Add("app_close_pro1", "1");
+            dictionary.Add("app_close_pro2", "2");
 
+            print("Track TrackAppClose Event.");
+            ROIQueryAnalytics.SetKochavaId("koid43543");
+            // ROIQueryAnalytics.TrackAppClose(dictionary);
+            ROIQueryAnalytics.UserAppend(dictionary);
         });
 
         buttons2[6].onClick.AddListener(delegate {

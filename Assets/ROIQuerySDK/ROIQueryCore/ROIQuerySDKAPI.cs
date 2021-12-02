@@ -21,9 +21,9 @@ namespace ROIQuery
         /// <summary>
         /// 当前 Unity SDK 版本
         /// </summary>
-        public readonly static string SDK_VERSION = "1.1.15";
+        public readonly static string SDK_VERSION = "1.1.16";
 
-        [Header("ROIQuerySDK-v1.1.15")]
+        [Header("ROIQuerySDK-v1.1.16")]
         
         [Tooltip("由后台分配")] public string androidAppId = "";
         

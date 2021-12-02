@@ -1,6 +1,6 @@
 <dependencies>
   <packages>
-    <package>com.roiquery.android:core:1.2.4</package>
+    <package>com.roiquery.android:core:1.2.8</package>
   </packages>
   <files />
   <settings>

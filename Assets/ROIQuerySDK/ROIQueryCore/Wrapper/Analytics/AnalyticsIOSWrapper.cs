@@ -97,6 +97,38 @@ namespace ROIQuery
             R_Log.Debug("Editor Log: calling trackAppClose.");
         }
 
+ 
+        
+        private void _userSet(Dictionary<string, object> properties)
+        {
+            
+        }
+        private void _userSetOnce(Dictionary<string, object> properties)
+        {
+            
+        }
+        
+        private void _userAdd(Dictionary<string, object> properties)
+        {
+            
+        }
+        
+        private static void _userUnset(List<string> properties)
+        {
+           
+        }
+        
+        private void _userDelete()
+        {
+            
+        }
+        
+        private void _userAppend(Dictionary<string, object> properties)
+        {
+            
+        }
+
+
         private string _getROIQueryId()
         {
             return getROIQueryId();
