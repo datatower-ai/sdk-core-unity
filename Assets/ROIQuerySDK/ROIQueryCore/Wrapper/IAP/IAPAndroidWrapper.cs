@@ -17,9 +17,9 @@ namespace ROIQuery
             
         }
 
-        private void _reportEntrance(string order, string sku, double price, string currency,  string seq, string entrance = "")
+        private void _reportEntrance(string order, string sku, double price, string currency,  string seq, string placement = "")
         {
-            ROIQueryIAPReport.CallStatic("reportEntrance", order, sku, price,  currency,seq, entrance);
+            ROIQueryIAPReport.CallStatic("reportEntrance", order, sku, price,  currency,seq, placement);
         }
 
 

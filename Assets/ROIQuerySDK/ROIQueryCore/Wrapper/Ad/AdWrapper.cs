@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 
 namespace ROIQuery
@@ -53,6 +53,12 @@ namespace ROIQuery
             Dictionary<string, object> properties = null)
         {
             _reportShow(id, type, platform, location, seq, entrance, properties);
+        }
+
+        private void ReportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
+            int errorCode,string errorMessage, string entrance = "", Dictionary<string, object> properties = null)
+        {
+            _reportShowFailed(id,type,platform,location,seq,errorCode,errorMessage,entrance,properties);
         }
 
         public void ReportClose(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -118,13 +124,20 @@ namespace ROIQuery
             _reportPaid(id, type, platform, location, seq, value, currency, precision, entrance, properties);
         }
 
-        public void ReportPaid(string id, AdType type, string platform, string adgroupType, string location, string seq,
+        public void ReportPaid(string id, AdType type, string platform, string adgroupName,string adgroupType, string location, string seq,
             AdMediation mediation, string mediationId, string value, string currency, string precision, string country,
             string entrance = "",
             Dictionary<string, object> properties = null)
         {
-            _reportPaid(id, type, platform, adgroupType, location, seq, mediation, mediationId, value, currency,
+            _reportPaid(id, type, platform, adgroupName,adgroupType, location, seq, mediation, mediationId, value, currency,
                 precision, country, entrance, properties);
+        }
+        
+        public void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq,AdMediation mediation, string mediationId,  string value,
+            string precision, string country, Dictionary<string, object> properties = null)
+        {
+            _reportPaid(id, type, platform, location, seq, mediation, mediationId, value, precision, country, properties);
+                
         }
 
         public string GenerateUUID()
@@ -132,10 +145,10 @@ namespace ROIQuery
             return _generateUUID();
         }
 
-        public AdPlatform GetPlatform(AdMediation mediation, string networkName, string networkPlacementId,
+        public AdPlatform GetPlatform(AdMediation mediation, string networkName,string adgroupName,  string networkPlacementId,
             string adgroupType)
         {
-            return _getPlatform(mediation, networkName, networkPlacementId, adgroupType);
+            return _getPlatform(mediation, networkName, networkPlacementId,adgroupName, adgroupType);
         }
     }
 }

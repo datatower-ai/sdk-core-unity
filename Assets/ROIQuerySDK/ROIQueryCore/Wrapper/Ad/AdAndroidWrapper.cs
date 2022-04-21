@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,7 +38,7 @@ namespace ROIQuery
         {
             if (dictionary == null)
             {
-                return null;
+                return new AndroidJavaObject("java.util.HashMap");
             }
 
             AndroidJavaObject map = new AndroidJavaObject("java.util.HashMap");
@@ -99,6 +99,13 @@ namespace ROIQuery
         {
             ROIQueryAdReport.CallStatic("reportShow", id, GetType(type), GetPlatform(platform), location, seq,
                 dicToMap(properties), entrance);
+        }
+        
+        private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,int errorCode,
+            string errorMessage,string entrance = "", Dictionary<string, object> properties = null)
+        {
+            ROIQueryAdReport.CallStatic("reportShowFailed", id, GetType(type), GetPlatform(platform), location, seq,
+                errorCode,errorMessage,dicToMap(properties), entrance);
         }
 
         private void _reportClose(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -165,24 +172,30 @@ namespace ROIQuery
         }
 
 
-        private void _reportPaid(string id, AdType type, string platform, string adgroupType, string location, string seq,
+        private void _reportPaid(string id, AdType type, string platform, string adgroupName,string adgroupType, string location, string seq,
             AdMediation mediation, string mediationId, string value, string currency, string precision,
             string country, string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportPaid", id, GetType(type), platform, adgroupType, location, seq,
+            ROIQueryAdReport.CallStatic("reportPaid", id, GetType(type), platform,adgroupName, adgroupType, location, seq,
                 GetMediation(mediation), mediationId, value, currency, precision, country, dicToMap(properties),
                 entrance);
         }
 
-
+         private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq,AdMediation mediation, string mediationId,  string value,
+            string precision, string country, Dictionary<string, object> properties = null)
+        {
+            ROIQueryAdReport.CallStatic("reportPaid", id, GetType(type), GetPlatform(platform), location, seq,GetMediation(mediation), mediationId,value,
+                 precision,country);
+        }
+         
         private string _generateUUID()
         {
             return ROIQueryAdReport.CallStatic<string>("generateUUID");
         }
 
-        private AdPlatform _getPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupType)
+        private AdPlatform _getPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupName, string adgroupType)
         {
-            AndroidJavaObject adPlatform =  ROIQueryAdReport.CallStatic<AndroidJavaObject>("getPlatform",(int)mediation, networkName, networkPlacementId, adgroupType);
+            AndroidJavaObject adPlatform =  ROIQueryAdReport.CallStatic<AndroidJavaObject>("getPlatform",(int)mediation, networkName, networkPlacementId, adgroupName,adgroupType);
             return ParseToAdPlatform(adPlatform);
         }
 #endif

@@ -54,7 +54,7 @@ namespace ROIQuery
         {
             return _getLong(key,defaultValue);
         }
-
+        // TODO getJsonObject 
 
     }
 }
