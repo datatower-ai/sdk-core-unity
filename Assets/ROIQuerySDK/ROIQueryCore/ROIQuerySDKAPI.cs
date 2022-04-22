@@ -21,9 +21,9 @@ namespace ROIQuery
         /// <summary>
         /// 当前 Unity SDK 版本
         /// </summary>
-        public readonly static string SDK_VERSION = "1.1.16";
+        public readonly static string SDK_VERSION = "1.2.0";
 
-        [Header("ROIQuerySDK-v1.1.16")]
+        [Header("ROIQuerySDK-v1.2.0")]
         
         [Tooltip("由后台分配")] public string androidAppId = "";
         
@@ -31,7 +31,7 @@ namespace ROIQuery
 
         [Tooltip("渠道(只有Android平台生效)")] public string channel = "";
 
-        [Tooltip("是否开启调试，开启将会打印log")] public bool isDebug = true;
+        [Tooltip("是否开启调试，开启将会打印log")] public bool isDebug = false;
 
         [Tooltip("设置log 级别")] public LogLevel logLevel = LogLevel.DEFAULT;
         
@@ -58,7 +58,6 @@ namespace ROIQuery
             }
 
             ROIQueryAnalytics.Init(androidAppId, iOSAppId, channel, SDK_VERSION, isDebug, (int) logLevel);
-           
         }
 
         #endregion

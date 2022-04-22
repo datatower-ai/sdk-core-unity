@@ -1,10 +1,7 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ROIQuery
 {
-    
-
     public partial class ROIQueryAnalyticsWrapper
     {
         public string androidAppId = "";
@@ -17,10 +14,12 @@ namespace ROIQuery
 
         private ROIQueryAnalyticsWrapper()
         {
-           
         }
 
-        public static ROIQueryAnalyticsWrapper Instance { get { return Nested.instance; } }
+        public static ROIQueryAnalyticsWrapper Instance
+        {
+            get { return Nested.instance; }
+        }
 
         private class Nested
         {
@@ -28,14 +27,14 @@ namespace ROIQuery
             //not to mark type as beforefieldinit
             static Nested()
             {
-
             }
 
             internal static readonly ROIQueryAnalyticsWrapper instance = new ROIQueryAnalyticsWrapper();
         }
 
 
-        public void Init(string androidAppId, string iOSAppId, string channel, string sdkVersion, bool isDebug, int logLevel)
+        public void Init(string androidAppId, string iOSAppId, string channel, string sdkVersion, bool isDebug,
+            int logLevel)
         {
             if (!isInitialized)
             {
@@ -47,8 +46,10 @@ namespace ROIQuery
                 this.logLevel = logLevel;
                 R_Log.IsLogEnalbe(isDebug);
                 _init();
-                R_Log.Debug(" RoiqueryReport  init,  androidAppId:" + androidAppId + ",iOSAppId" + iOSAppId+",channel" +channel+ ",sdkVersion" + sdkVersion + ",isDebug" + isDebug + ",logLevel" + logLevel);
-              
+                R_Log.Debug(" RoiqueryReport  init,  androidAppId:" + androidAppId + ",iOSAppId" + iOSAppId +
+                            ",channel" + channel + ",sdkVersion" + sdkVersion + ",isDebug" + isDebug + ",logLevel" +
+                            logLevel);
+
                 isInitialized = true;
             }
         }
@@ -87,21 +88,22 @@ namespace ROIQuery
         {
             _userSet(properties);
         }
+
         public void UserSetOnce(Dictionary<string, object> properties)
         {
             _userSetOnce(properties);
         }
-        
+
         public void UserAdd(Dictionary<string, object> properties)
         {
             _userAdd(properties);
         }
-        
+
         /// <summary>
         /// 重置一个用户属性.
         /// </summary>
         /// <param name="property">用户属性名称</param>
-        public  void UserUnset(string property)
+        public void UserUnset(string property)
         {
             List<string> properties = new List<string>();
             properties.Add(property);
@@ -113,23 +115,23 @@ namespace ROIQuery
         /// 重置一组用户属性
         /// </summary>
         /// <param name="properties">用户属性列表</param>
-        public  void UserUnset(List<string> properties)
+        public void UserUnset(List<string> properties)
         {
             _userUnset(properties);
         }
-        
+
         public void UserDelete()
         {
             _userDelete();
         }
-        
+
         public void UserAppend(Dictionary<string, object> properties)
         {
             _userAppend(properties);
         }
 
         public string GetROIQueryId()
-        { 
+        {
             return _getROIQueryId();
         }
 
@@ -144,10 +146,19 @@ namespace ROIQuery
         {
             _setFirebaseAppInstanceId(id);
         }
+
+        public void SetFCMToken(string token)
+        {
+#if UNITY_ANDROID
+            _setFCMToken(token);
+#endif
+        }
+
         public void SetAppsFlyerId(string id)
         {
             _setAppsFlyerId(id);
         }
+
         public void SetKochavaId(string id)
         {
             _setKochavaId(id);
@@ -157,17 +168,15 @@ namespace ROIQuery
         {
             return _getRealTime();
         }
+
         public void GetServerTimeAsync(ROIQueryAnalytics.AndroidServerTimeCallback callback)
         {
             _getServerTimeAsync(callback);
         }
+
         public long GetServerTimeSync()
         {
             return _getServerTimeSync();
         }
-
-
-
-
     }
 }

@@ -91,6 +91,11 @@ namespace ROIQuery
         {
             R_Log.Debug("Editor Log: calling _setFirebaseAppInstanceId.");
         }
+
+        private void _setFCMToken(string token)
+        {
+            R_Log.Debug("Editor Log: calling _setFCMToken.");
+        }
         private void _setAppsFlyerId(string id)
         {
             R_Log.Debug("Editor Log: calling _setAppsFlyerId.");

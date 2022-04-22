@@ -177,7 +177,7 @@ namespace ROIQuery
         }
 
 
-        private void _reportPaid(string id, AdType type, string platform, string adgroupType, string location, string seq,
+        private void _reportPaid(string id, AdType type, string platform,string adgroupName, string adgroupType, string location, string seq,
             AdMediation mediation, string mediationId, string value, string currency, string precision, string country,
             string entrance = "",Dictionary<string, object> properties = null)
         {
@@ -187,6 +187,11 @@ namespace ROIQuery
             R_Log.Debug("Editor Log: calling reportPaid.");
         }
 
+        private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq,AdMediation mediation, string mediationId,  string value,
+            string precision, string country, Dictionary<string, object> properties = null)
+        {
+            R_Log.Debug("Editor Log: calling reportPaid.");
+        }
 
         private string _generateUUID()
         {
@@ -194,7 +199,7 @@ namespace ROIQuery
             return generateUUID();
         }
 
-         private AdPlatform _getPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupType)
+         private AdPlatform _getPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupName, string adgroupType)
          {
              return ParseToAdPlatform(getPlatform((int) mediation, networkName, networkPlacementId, adgroupType));
          }

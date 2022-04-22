@@ -156,6 +156,12 @@ namespace ROIQuery
         {
             ROIQueryAnalyticsWrapper.Instance.SetAppsFlyerId(id);
         }
+
+        public static void setFCMToken(string token)
+        {
+            ROIQueryAnalyticsWrapper.Instance.SetFCMToken(token);
+        }
+        
         /// <summary>
         /// 设置Kochava id
         /// </summary>

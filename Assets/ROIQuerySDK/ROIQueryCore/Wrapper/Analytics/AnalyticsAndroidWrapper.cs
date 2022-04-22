@@ -119,6 +119,11 @@ namespace ROIQuery
         {
             ROIQueryAnalytics.CallStatic("setFirebaseAppInstanceId", id);
         }
+
+        private void _setFCMToken(string token)
+        {
+            ROIQueryAnalytics.CallStatic("setFCMToken", token);
+        }
         
         private void _setAppsFlyerId(string id)
         {

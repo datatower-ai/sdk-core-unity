@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEngine;
+
 namespace ROIQuery
 {
 /////////////////////////////////////////////////////////////////////////////////
@@ -15,13 +20,9 @@ namespace ROIQuery
 
 //#define DEBUG	// uncomment to display timers in the Unity Editor Hierarchy
 
-using UnityEngine;
-using System;
-using System.Collections.Generic;
-
 
 #if (UNITY_EDITOR && DEBUG)
-using System.Diagnostics;
+
 #endif
 
 

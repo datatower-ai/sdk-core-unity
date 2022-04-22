@@ -28,9 +28,9 @@ namespace ROIQuery
 
     
 
-        public void ReportEntrance(string order, string sku, double price,  string currency, string seq, string entrance = "")
+        public void ReportEntrance(string order, string sku, double price,  string currency, string seq, string placement = "")
         { 
-            _reportEntrance(order, sku, price, currency,seq,entrance);
+            _reportEntrance(order, sku, price, currency,seq,placement);
         }
 
 

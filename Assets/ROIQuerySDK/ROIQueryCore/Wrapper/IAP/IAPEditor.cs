@@ -11,7 +11,7 @@ namespace ROIQuery
             R_Log.Debug("Editor Log: calling init.");
         }
 
-        private void _reportEntrance(string order, string sku, double price,  string currency,string seq, string entrance = "")
+        private void _reportEntrance(string order, string sku, double price,  string currency,string seq, string placement = "")
         {
             R_Log.Debug("Editor Log: calling reportEntrance.");
         }

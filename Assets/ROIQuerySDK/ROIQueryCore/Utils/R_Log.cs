@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace ROIQuery
 {
@@ -33,7 +32,5 @@ namespace ROIQuery
         {
             if (isLogEnable) UnityEngine.Debug.LogException(exception);
         }
-
     }
-
 }
