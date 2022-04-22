@@ -41,7 +41,9 @@ namespace ROIQuery
         VUNGLE = 13,
         ADX = 14,
         COMBO = 15,
-        BIGO = 16
+        BIGO = 16,
+        HISAVANA = 17,
+        APPLOVIN_EXCHANGE = 18
     }
 
     /// <summary>
@@ -52,6 +54,7 @@ namespace ROIQuery
         IDLE = -1,
         MOPUB = 0,
         MAX = 1,
+        HISAVANA = 2
     }
 
     public class ROIQueryAdReport
