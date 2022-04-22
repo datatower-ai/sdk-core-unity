@@ -29,12 +29,6 @@ namespace ROIQuery
         {
             R_Log.Debug("Editor Log: calling reportShow.");
         }
-        
-        private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
-            int errorCode,string errorMessage, string entrance = "", Dictionary<string, object> properties = null)
-        {
-            R_Log.Debug("Editor Log: calling reportShowFailed.");
-        }
 
         private void _reportImpression(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",Dictionary<string, object> properties = null)

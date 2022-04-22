@@ -100,13 +100,6 @@ namespace ROIQuery
             ROIQueryAdReport.CallStatic("reportShow", id, GetType(type), GetPlatform(platform), location, seq,
                 dicToMap(properties), entrance);
         }
-        
-        private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,int errorCode,
-            string errorMessage,string entrance = "", Dictionary<string, object> properties = null)
-        {
-            ROIQueryAdReport.CallStatic("reportShowFailed", id, GetType(type), GetPlatform(platform), location, seq,
-                errorCode,errorMessage,dicToMap(properties), entrance);
-        }
 
         private void _reportClose(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
@@ -187,13 +180,13 @@ namespace ROIQuery
             ROIQueryAdReport.CallStatic("reportPaid", id, GetType(type), GetPlatform(platform), location, seq,GetMediation(mediation), mediationId,value,
                  precision,country);
         }
-         
+
         private string _generateUUID()
         {
             return ROIQueryAdReport.CallStatic<string>("generateUUID");
         }
 
-        private AdPlatform _getPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupName, string adgroupType)
+        private AdPlatform _getPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupName, string  adgroupType)
         {
             AndroidJavaObject adPlatform =  ROIQueryAdReport.CallStatic<AndroidJavaObject>("getPlatform",(int)mediation, networkName, networkPlacementId, adgroupName,adgroupType);
             return ParseToAdPlatform(adPlatform);

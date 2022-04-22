@@ -55,12 +55,6 @@ namespace ROIQuery
             _reportShow(id, type, platform, location, seq, entrance, properties);
         }
 
-        private void ReportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
-            int errorCode,string errorMessage, string entrance = "", Dictionary<string, object> properties = null)
-        {
-            _reportShowFailed(id,type,platform,location,seq,errorCode,errorMessage,entrance,properties);
-        }
-
         public void ReportClose(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
             Dictionary<string, object> properties = null)
