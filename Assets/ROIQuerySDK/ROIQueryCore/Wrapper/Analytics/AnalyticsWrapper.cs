@@ -178,5 +178,23 @@ namespace ROIQuery
         {
             return _getServerTimeSync();
         }
+        
+        public void SetUserProperties(Dictionary<string, object> properties = null)
+        {
+
+            _setUserProperties(properties);
+        }
+
+
+        public void OnAppForeground()
+        {
+            _onAppForeground();
+        }
+
+
+        public void OnAppBackground()
+        {
+            _onAppBackground();
+        }
     }
 }

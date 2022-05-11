@@ -201,6 +201,31 @@ namespace ROIQuery
         {
             return ROIQueryAnalyticsWrapper.Instance.GetServerTimeSync();
         }
+        
+        /// <summary>
+        /// 设置用户属性
+        /// </summary>
+        /// <param name="properties">用户属性</param>
+        public static void SetUserProperties(Dictionary<string, object> properties = null)
+        {
+            ROIQueryAnalyticsWrapper.Instance.SetUserProperties(properties);
+        }
+
+        /// <summary>
+        /// app 进入后台
+        /// </summary>
+        internal static void OnAppBackground()
+        {
+            ROIQueryAnalyticsWrapper.Instance.OnAppBackground();
+        }
+
+        /// <summary>
+        /// app 进入前台
+        /// </summary>
+        internal static void OnAppForeground()
+        {
+            ROIQueryAnalyticsWrapper.Instance.OnAppForeground();
+        }
 
 
     }
