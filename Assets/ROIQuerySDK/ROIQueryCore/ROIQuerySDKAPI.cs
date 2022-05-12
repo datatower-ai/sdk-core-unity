@@ -62,16 +62,5 @@ namespace ROIQuery
 
         #endregion
         
-        private void OnApplicationPause(bool pause)
-        {
-            if (pause)
-            {
-                ROIQueryAnalytics.OnAppBackground();
-            }
-            else
-            {
-                ROIQueryAnalytics.OnAppForeground();
-            }
-        }
     }
 }
