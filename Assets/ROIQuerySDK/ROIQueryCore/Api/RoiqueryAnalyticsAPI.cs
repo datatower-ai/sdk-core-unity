@@ -208,7 +208,7 @@ namespace ROIQuery
         /// <param name="properties">用户属性</param>
         public static void SetUserProperties(Dictionary<string, object> properties = null)
         {
-            ROIQueryAnalyticsWrapper.Instance.SetUserProperties(properties);
+            UserSet(properties);
         }
 
         /// <summary>
