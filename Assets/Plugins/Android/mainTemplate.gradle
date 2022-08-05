@@ -10,9 +10,6 @@
         maven {
             url "https://www.jitpack.io" // Assets/ROIQuerySDK/Editor/ROIQueryCoreDependencies.xml:9
         }
-        maven {
-            url "https://repo-public.en2joy.com/repository/maven-releases/" // Assets/ROIQuerySDK/Editor/ROIQueryCoreDependencies.xml:13
-        }
         mavenLocal()
         jcenter()
         mavenCentral()
@@ -25,7 +22,7 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
-    implementation 'com.roiquery.android:core:1.2.22' // Assets/ROIQuerySDK/Editor/ROIQueryCoreDependencies.xml:14
+    implementation 'com.lovinjoy:datatowerai-core:1.2.38' // Assets/ROIQuerySDK/Editor/ROIQueryCoreDependencies.xml:16
 // Android Resolver Dependencies End
 **DEPS**}
 

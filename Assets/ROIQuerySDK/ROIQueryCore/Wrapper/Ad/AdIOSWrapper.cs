@@ -7,7 +7,20 @@ namespace ROIQuery
 {
     public partial class ROIQueryAdReportWrapper
     {
-#if UNITY_IOS && !(UNITY_EDITOR)
+        #if UNITY_IOS && !(UNITY_EDITOR)
+
+        [DllImport("__Internal")]
+        private static extern void reportLoadBegin(string id, int type, int platform, string seq, string properties);
+
+
+        [DllImport("__Internal")]
+        private static extern void reportLoadEnd(string id, int type, int platform, long duration, bool result, string seq, int errorCode, string errorMessage, string properties);
+
+
+        [DllImport("__Internal")]
+        private static extern void reportShowFailed(string id, int type, int platform, string location, string seq, int errorCode, string errorMessage, string entrance, string properties);
+
+
         [DllImport("__Internal")]
         private static extern void reportEntrance(string id, int type, int platform, string location, string seq,
                     string properties,string entrance);

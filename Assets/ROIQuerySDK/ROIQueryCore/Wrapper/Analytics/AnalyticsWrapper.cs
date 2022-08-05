@@ -186,15 +186,6 @@ namespace ROIQuery
         }
 
 
-        public void OnAppForeground()
-        {
-            _onAppForeground();
-        }
-
-
-        public void OnAppBackground()
-        {
-            _onAppBackground();
-        }
+       
     }
 }

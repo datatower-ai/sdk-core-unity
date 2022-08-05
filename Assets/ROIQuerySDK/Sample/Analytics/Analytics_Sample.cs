@@ -29,7 +29,7 @@ public class Analytics_Sample : MonoBehaviour
             Dictionary<string, object> dictionary = new Dictionary<string, object>();
 
             dictionary.Add("login_pro_1", "中国");
-            dictionary.Add("roq_id", ROIQueryAnalytics.GetROIQueryId());
+            dictionary.Add("roq_id", ROIQueryAnalytics.GetInstanceId());
 
             List<int> list = new List<int>();
             list.Add(1);
