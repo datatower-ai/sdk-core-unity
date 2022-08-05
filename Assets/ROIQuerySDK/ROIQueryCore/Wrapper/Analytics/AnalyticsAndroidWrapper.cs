@@ -21,8 +21,8 @@ namespace ROIQuery
 
             //替换sdk版本信息
             Dictionary<string, object> properties = new Dictionary<string, object>();
-            properties.Add("#sdk_type", "Unity");
-            properties.Add("#sdk_version", sdkVersion);
+            properties.Add("sdk_type", "Unity");
+            properties.Add("sdk_version", sdkVersion);
             string jsonStr = R_Utils.Parse2JsonStr(properties);
             AndroidJavaObject jsonObject = R_Utils.Parse2JavaJSONObject(jsonStr);
 
@@ -106,7 +106,7 @@ namespace ROIQuery
         
         private string _getROIQueryId()
         {
-            return ROIQueryAnalytics.CallStatic<string>("getROIQueryId");
+            return ROIQueryAnalytics.CallStatic<string>("getInstanceId");
         }
         
         private void _setAccountId(string accountId)
@@ -142,16 +142,7 @@ namespace ROIQuery
         }
 
 
-        private void _onAppForeground()
-        {
-            ROIQueryAnalytics.CallStatic("onAppForeground");
-        }
-
-
-        private void _onAppBackground()
-        {
-            ROIQueryAnalytics.CallStatic("onAppBackground");
-        }
+      
         
         private long _getRealTime()
         {

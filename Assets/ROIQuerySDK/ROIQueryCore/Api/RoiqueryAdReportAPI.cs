@@ -59,6 +59,40 @@ namespace ROIQuery
 
     public class ROIQueryAdReport
     {
+
+
+        /// <summary>
+        /// 上报 广告开始加载
+        /// </summary>
+        /// <param name="id">广告最小单元id</param>
+        /// <param name="type">广告类型</param>
+        /// <param name="platform">广告平台</param>
+        /// <param name="seq">系列行为标识</param>
+        /// <param name="properties">自定义属性</param>
+        public static void ReportLoadBegin(string id, AdType type, AdPlatform platform,  string seq, Dictionary<string, object> properties = null)
+        {
+            ROIQueryAdReportWrapper.Instance.ReportLoadBegin(id, type, platform,  seq, properties);
+        }
+
+
+        /// <summary>
+        /// 上报 广告结束加载
+        /// </summary>
+        /// <param name="id">广告最小单元id</param>
+        /// <param name="type">广告类型</param>
+        /// <param name="platform">广告平台</param>
+        /// <param name="duration">加载时长</param>
+        /// <param name="result">加载结果</param>
+        /// <param name="seq">系列行为标识</param>
+        /// <param name="errorCode">加载失败错误码</param>
+        /// <param name="errorMessage">加载失败错误信息</param>
+        /// <param name="properties">自定义属性</param>
+        public static void ReportLoadEnd(string id, AdType type, AdPlatform platform, long duration, bool result, string seq, int errorCode = 0, string errorMessage = "", Dictionary<string, object> properties = null)
+        {
+            ROIQueryAdReportWrapper.Instance.ReportLoadEnd(id, type, platform, duration, result, seq, errorCode, errorMessage, properties);
+        }
+        
+
         /// <summary>
         /// 上报 广告入口
         /// </summary>
@@ -68,6 +102,7 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportEntrance(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -84,15 +119,15 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
-        public static void ReportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
+        /// <param name="properties">自定义属性</param>
+        public static void ReportToShow(string id, AdType type, AdPlatform platform, string location, string seq,string entrance = "", Dictionary<string, object> properties = null)
         {
             ROIQueryAdReportWrapper.Instance.ReportToShow(id, type, platform, location, seq, entrance, properties);
         }
 
 
         /// <summary>
-        /// 上报 广告展示
+        /// 上报 广告展示成功
         /// </summary>
         /// <param name="id">广告最小单元id</param>
         /// <param name="type">广告类型</param>
@@ -100,11 +135,30 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
-        public static void ReportShow(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
+        /// <param name="properties">自定义属性</param>
+        public static void ReportShow(string id, AdType type, AdPlatform platform, string location, string seq,string entrance = "", Dictionary<string, object> properties = null)
         {
             ROIQueryAdReportWrapper.Instance.ReportShow(id, type, platform, location, seq, entrance, properties);
         }
+        
+        
+        /// <summary>
+        /// 上报 广告展示失败
+        /// </summary>
+        /// <param name="id">广告最小单元id</param>
+        /// <param name="type">广告类型</param>
+        /// <param name="platform">广告平台</param>
+        /// <param name="location">广告位</param>
+        /// <param name="seq">系列行为标识</param>
+        /// <param name="errorCode">加载失败错误码</param>
+        /// <param name="errorMessage">加载失败错误信息</param>
+        /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
+        public static void ReportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq, int errorCode = 0, string errorMessage = "",string entrance = "", Dictionary<string, object> properties = null)
+        {
+            ROIQueryAdReportWrapper.Instance.ReportShowFailed(id, type, platform, location,  seq, errorCode, errorMessage, entrance, properties);
+        }
+
 
         /// <summary>
         /// 上报 广告曝光
@@ -115,6 +169,7 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportImpression(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -131,6 +186,7 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportClose(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -147,6 +203,7 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportClick(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -163,6 +220,7 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -179,6 +237,7 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -195,6 +254,7 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportConversionByClick(string id, AdType type, AdPlatform platform, string location,
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -211,6 +271,7 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportConversionByLeftApp(string id, AdType type, AdPlatform platform, string location,
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -227,6 +288,7 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportConversionByImpression(string id, AdType type, AdPlatform platform, string location,
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -243,6 +305,7 @@ namespace ROIQuery
         /// <param name="location">广告位</param>
         /// <param name="seq">系列行为标识</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportConversionByRewarded(string id, AdType type, AdPlatform platform, string location,
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -263,6 +326,7 @@ namespace ROIQuery
         /// <param name="currency">货币</param>
         /// <param name="precision">精确度</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq,
             string value, string currency, string precision, string entrance = "",
             Dictionary<string, object> properties = null)
@@ -289,6 +353,7 @@ namespace ROIQuery
         /// <param name="precision">精确度</param>
         /// <param name="country">国家</param>
         /// <param name="entrance">广告入口</param>
+        /// <param name="properties">自定义属性</param>
         public static void ReportPaid(string id, AdType type, string platform, string adgroupName, string adgroupType,
             string location, string seq,
             AdMediation mediation, string mediationId, string value, string currency, string precision, string country,
@@ -312,17 +377,12 @@ namespace ROIQuery
         /// <param name="value">价值</param>
         /// <param name="precision">精确度</param>
         /// <param name="country">国家</param>
-        public static void ReportPaid(string id, AdType type, AdPlatform platform,
-            string location, string seq,
-            AdMediation mediation, string mediationId, string value, string precision, string country,
-             Dictionary<string, object> properties = null)
+        /// <param name="properties">自定义属性</param>
+        public static void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq,
+            AdMediation mediation, string mediationId, string value, string precision, string country,Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReportWrapper.Instance.ReportPaid(id, type, platform, location, seq,
-                mediation, mediationId, value,  precision, country, properties);
-                
+            ROIQueryAdReportWrapper.Instance.ReportPaid(id, type, platform, location, seq,mediation, mediationId, value,  precision, country, properties);
         }
-
-
 
         /// <summary>
         /// 生成uuid，用于生成 seq
@@ -336,8 +396,7 @@ namespace ROIQuery
         /// <summary>
         /// 获取聚合平台具体广告网络
         /// </summary>
-        public static AdPlatform GetPlatform(AdMediation mediation, string networkName, string networkPlacementId,
-            string adgroupName, string adgroupType)
+        public static AdPlatform GetPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupName, string adgroupType)
         {
             return ROIQueryAdReportWrapper.Instance.GetPlatform(mediation, networkName, networkPlacementId, adgroupName,
                 adgroupType);

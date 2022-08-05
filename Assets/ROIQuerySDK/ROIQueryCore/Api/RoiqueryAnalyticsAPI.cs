@@ -27,6 +27,7 @@ namespace ROIQuery
         private static Action<long, string> onFinishedAction;
 
         private static AndroidServerTimeCallback _androidServerTimeCallback = new AndroidServerTimeCallback();
+
         public static void Init(string androidAppId, string iOSAppId, string channel, string sdkVersion, bool isDebug, int logLeve)
         {
             ROIQueryAnalyticsWrapper.Instance.Init(androidAppId,iOSAppId, channel, sdkVersion, isDebug, logLeve);
@@ -77,16 +78,29 @@ namespace ROIQuery
             ROIQueryAnalyticsWrapper.Instance.TrackAppClose(properties);
         }
 
-        
+
+        /// <summary>
+        /// 设置一般的用户属性，多次调用属性值会覆盖
+        /// </summary>
+        /// <param name="properties">用户属性</param>
         public static void UserSet(Dictionary<string, object> properties)
         {
             ROIQueryAnalyticsWrapper.Instance.UserSet(properties);
         }
+
+        /// <summary>
+        /// 设置只要设置一次的用户属性，多次调用属性值不会覆盖
+        /// </summary>
+        /// <param name="properties">用户属性</param>
         public static void UserSetOnce(Dictionary<string, object> properties)
         {
             ROIQueryAnalyticsWrapper.Instance.UserSetOnce(properties);
         }
-        
+
+        /// <summary>
+        /// 设置可累加的用户属性，多次调用，属性值会在前一个值得基础上累加，如个人金币
+        /// </summary>
+        /// <param name="properties">用户属性</param>
         public static void UserAdd(Dictionary<string, object> properties)
         {
             ROIQueryAnalyticsWrapper.Instance.UserAdd(properties);
@@ -110,22 +124,29 @@ namespace ROIQuery
         {
             ROIQueryAnalyticsWrapper.Instance.UserUnset(properties);
         }
-        
+
+        /// <summary>
+        /// 删除用户
+        /// </summary>
         public static void UserDelete()
         {
             ROIQueryAnalyticsWrapper.Instance.UserDelete();
         }
-        
+
+        /// <summary>
+        /// 对 JSONArray 类型的用户属性进追加操作
+        /// </summary>
+        /// <param name="properties">用户属性</param>
         public static void UserAppend(Dictionary<string, object> properties)
         {
             ROIQueryAnalyticsWrapper.Instance.UserAppend(properties);
         }
-        
-        
+
+
         /// <summary>
-        /// 获取ROIQuery ID
+        /// 获取 DataTower instance id
         /// </summary>
-        public static string GetROIQueryId()
+        public static string GetInstanceId()
         {
             return ROIQueryAnalyticsWrapper.Instance.GetROIQueryId();
         }
@@ -148,32 +169,37 @@ namespace ROIQuery
         {
             ROIQueryAnalyticsWrapper.Instance.SetFirebaseAppInstanceId(id);
         }
+
+
         /// <summary>
         /// 设置AppsFlyer id
         /// </summary>
-        /// <param name="id">app_instance_id</param>
+        /// <param name="id">AppsFlyer id</param>
         public static void SetAppsFlyerId(string id)
         {
             ROIQueryAnalyticsWrapper.Instance.SetAppsFlyerId(id);
         }
 
+        /// <summary>
+        /// 设置 Firebase Cloud Message Token
+        /// </summary>
+        /// <param name="token">Firebase Cloud Message Token</param>
         public static void setFCMToken(string token)
         {
             ROIQueryAnalyticsWrapper.Instance.SetFCMToken(token);
         }
-        
+
         /// <summary>
         /// 设置Kochava id
         /// </summary>
-        /// <param name="id">app_instance_id</param>
+        /// <param name="id">Kochava id</param>
         public static void SetKochavaId(string id)
         {
             ROIQueryAnalyticsWrapper.Instance.SetKochavaId(id);
         }
 
-  
-        
-        
+
+
         /// <summary>
         /// 获取当前时间，如果没有校准，则返回系统时间
         /// </summary>
@@ -209,22 +235,6 @@ namespace ROIQuery
         public static void SetUserProperties(Dictionary<string, object> properties = null)
         {
             UserSet(properties);
-        }
-
-        /// <summary>
-        /// app 进入后台
-        /// </summary>
-        internal static void OnAppBackground()
-        {
-            ROIQueryAnalyticsWrapper.Instance.OnAppBackground();
-        }
-
-        /// <summary>
-        /// app 进入前台
-        /// </summary>
-        internal static void OnAppForeground()
-        {
-            ROIQueryAnalyticsWrapper.Instance.OnAppForeground();
         }
 
 

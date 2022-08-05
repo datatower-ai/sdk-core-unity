@@ -27,6 +27,18 @@ namespace ROIQuery
         }
 
 
+        public void ReportLoadBegin(string id, AdType type, AdPlatform platform, string seq, Dictionary<string, object> properties = null)
+        {
+            _reportLoadBegin(id, type, platform, seq, properties);
+        }
+
+
+        public void ReportLoadEnd(string id, AdType type, AdPlatform platform, long duration, bool result, string seq, int errorCode = 0, string errorMessage = "", 
+          Dictionary<string, object> properties = null)
+        {
+            _reportLoadEnd(id, type, platform, duration, result, seq, errorCode, errorMessage, properties);
+        }
+
         public void ReportEntrance(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -54,6 +66,16 @@ namespace ROIQuery
         {
             _reportShow(id, type, platform, location, seq, entrance, properties);
         }
+
+        public void ReportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
+            int errorCode,
+            string errorMessage,
+            string entrance = "",
+            Dictionary<string, object> properties = null)
+        {
+            _reportShowFailed(id, type, platform, location, seq, errorCode, errorMessage, entrance, properties);
+        }
+
 
         public void ReportClose(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",

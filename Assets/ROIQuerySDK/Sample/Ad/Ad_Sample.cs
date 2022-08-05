@@ -25,6 +25,10 @@ public class Ad_Sample : MonoBehaviour
     void Awake()
     {
         // ROIQueryRewarded.OnAdIsEnableEvent += OnAdIsEnable;
+        
+        ROIQueryAdReport.ReportLoadBegin("0130",AdType.INTERSTITIAL, AdPlatform.ADMOB, seq);
+        
+        ROIQueryAdReport.ReportLoadEnd("0130",AdType.INTERSTITIAL, AdPlatform.ADMOB,2000,false,seq,-1,"no ads");
        
 
         Dictionary<string, object> dictionary = new Dictionary<string, object>();
@@ -39,11 +43,11 @@ public class Ad_Sample : MonoBehaviour
         buttons1[1].onClick.AddListener(delegate {
             R_Log.Debug("report toShow");
             ROIQueryAdReport.ReportToShow("0130", AdType.NATIVE, AdPlatform.ADMOB, "home7", seq, "center",dictionary);
-
+            ROIQueryAdReport.ReportShowFailed("0130", AdType.NATIVE, AdPlatform.ADMOB, "home7", seq, -2,"no ads");
         });
         buttons1[9].onClick.AddListener(delegate {
             // R_Log.Debug("report show");
-            // ROIQueryAdReport.ReportShow("0130", AdType.REWARDED, AdPlatform.ADMOB, "user", seq, "center2",dictionary);
+            ROIQueryAdReport.ReportShow("0130", AdType.REWARDED, AdPlatform.ADMOB, "user", seq, "center2",dictionary);
            
         });
 

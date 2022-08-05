@@ -73,6 +73,26 @@ namespace ROIQuery
             return enumClass.GetStatic<AndroidJavaObject>(name);
         }
 
+
+        private void _reportLoadBegin(string id, AdType type, AdPlatform platform, string seq, Dictionary<string, object> properties = null)
+
+        {
+            ROIQueryAdReport.CallStatic("reportLoadBegin", id, GetType(type), GetPlatform(platform), seq, dicToMap(properties));
+        }
+
+
+        private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration, bool result, string seq, int errorCode = 0, string errorMessage = "",
+          Dictionary<string, object> properties = null)
+        {
+            ROIQueryAdReport.CallStatic("reportLoadEnd", id, GetType(type), GetPlatform(platform),duration,result, seq, errorCode, errorMessage, dicToMap(properties));
+        }
+
+        private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq, int errorCode, string errorMessage, string entrance = "", Dictionary<string, object> properties = null)
+
+        {
+            ROIQueryAdReport.CallStatic("reportShowFailed", id, GetType(type), GetPlatform(platform), location, seq, errorCode, errorMessage, dicToMap(properties), entrance);
+        }
+
         private void _reportEntrance(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
