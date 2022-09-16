@@ -50,34 +50,7 @@ namespace ROIQuery
         {
             ROIQueryAnalyticsWrapper.Instance.Flush();
         }
-
-        /// <summary>
-        /// 采集页面打开事件
-        /// </summary>
-        /// <param name="properties">事件属性</param>
-        public static void TrackPageOpen(Dictionary<string, object> properties = null)
-        {
-            ROIQueryAnalyticsWrapper.Instance.TrackPageOpen(properties);
-        }
-
-        /// <summary>
-        /// 采集页面关闭事件
-        /// </summary>
-        /// <param name="properties">事件属性</param>
-        public static void TrackPageClose(Dictionary<string, object> properties = null)
-        {
-            ROIQueryAnalyticsWrapper.Instance.TrackPageClose(properties);
-        }
-
-        /// <summary>
-        /// 采集应用关闭事件
-        /// </summary>
-        /// <param name="properties">事件属性</param>
-        public static void TrackAppClose(Dictionary<string, object> properties = null)
-        {
-            ROIQueryAnalyticsWrapper.Instance.TrackAppClose(properties);
-        }
-
+        
 
         /// <summary>
         /// 设置一般的用户属性，多次调用属性值会覆盖

@@ -1,6 +1,6 @@
 <dependencies>
   <packages>
-    <package>com.lovinjoy:datatowerai-core:1.2.38</package>
+    <package>com.roiquery.android:core:1.2.50</package>
   </packages>
   <files />
   <settings>

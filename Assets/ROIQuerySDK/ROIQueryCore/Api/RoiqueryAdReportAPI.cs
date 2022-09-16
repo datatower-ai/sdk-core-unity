@@ -94,23 +94,6 @@ namespace ROIQuery
         
 
         /// <summary>
-        /// 上报 广告入口
-        /// </summary>
-        /// <param name="id">广告最小单元id</param>
-        /// <param name="type">广告类型</param>
-        /// <param name="platform">广告平台</param>
-        /// <param name="location">广告位</param>
-        /// <param name="seq">系列行为标识</param>
-        /// <param name="entrance">广告入口</param>
-        /// <param name="properties">自定义属性</param>
-        public static void ReportEntrance(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
-        {
-            ROIQueryAdReportWrapper.Instance.ReportEntrance(id, type, platform, location, seq, entrance, properties);
-        }
-
-
-        /// <summary>
         /// 上报 广告展示请求
         /// </summary>
         /// <param name="id">广告最小单元id</param>
@@ -158,23 +141,7 @@ namespace ROIQuery
         {
             ROIQueryAdReportWrapper.Instance.ReportShowFailed(id, type, platform, location,  seq, errorCode, errorMessage, entrance, properties);
         }
-
-
-        /// <summary>
-        /// 上报 广告曝光
-        /// </summary>
-        /// <param name="id">广告最小单元id</param>
-        /// <param name="type">广告类型</param>
-        /// <param name="platform">广告平台</param>
-        /// <param name="location">广告位</param>
-        /// <param name="seq">系列行为标识</param>
-        /// <param name="entrance">广告入口</param>
-        /// <param name="properties">自定义属性</param>
-        public static void ReportImpression(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
-        {
-            ROIQueryAdReportWrapper.Instance.ReportImpression(id, type, platform, location, seq, entrance);
-        }
+        
 
 
         /// <summary>
@@ -280,23 +247,6 @@ namespace ROIQuery
         }
 
         /// <summary>
-        /// 上报 自定义转化，通过曝光
-        /// </summary>
-        /// <param name="id">广告最小单元id</param>
-        /// <param name="type">广告类型</param>
-        /// <param name="platform">广告平台</param>
-        /// <param name="location">广告位</param>
-        /// <param name="seq">系列行为标识</param>
-        /// <param name="entrance">广告入口</param>
-        /// <param name="properties">自定义属性</param>
-        public static void ReportConversionByImpression(string id, AdType type, AdPlatform platform, string location,
-            string seq, string entrance = "", Dictionary<string, object> properties = null)
-        {
-            ROIQueryAdReportWrapper.Instance.ReportConversionByImpression(id, type, platform, location, seq, entrance,
-                properties);
-        }
-
-        /// <summary>
         /// 上报 自定义转化，通过获得激励
         /// </summary>
         /// <param name="id">广告最小单元id</param>
@@ -392,14 +342,6 @@ namespace ROIQuery
             return ROIQueryAdReportWrapper.Instance.GenerateUUID();
         }
 
-
-        /// <summary>
-        /// 获取聚合平台具体广告网络
-        /// </summary>
-        public static AdPlatform GetPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupName, string adgroupType)
-        {
-            return ROIQueryAdReportWrapper.Instance.GetPlatform(mediation, networkName, networkPlacementId, adgroupName,
-                adgroupType);
-        }
+        
     }
 }

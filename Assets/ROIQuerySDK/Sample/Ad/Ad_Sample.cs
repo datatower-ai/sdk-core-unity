@@ -37,8 +37,6 @@ public class Ad_Sample : MonoBehaviour
 
         buttons1[0].onClick.AddListener(delegate {
             R_Log.Debug("report entrance----");
-            ROIQueryAdReport.ReportEntrance("0130", AdType.INTERSTITIAL, AdPlatform.ADMOB, "home", seq, "center",dictionary);
-
         });
         buttons1[1].onClick.AddListener(delegate {
             R_Log.Debug("report toShow");
@@ -53,8 +51,6 @@ public class Ad_Sample : MonoBehaviour
 
         buttons1[2].onClick.AddListener(delegate {
             R_Log.Debug("report impression");
-            ROIQueryAdReport.ReportImpression("0130", AdType.REWARDED, AdPlatform.ADMOB, "home4", seq, "center",dictionary);
-            ROIQueryAdReport.ReportConversionByImpression("0130", AdType.REWARDED, AdPlatform.ADMOB, "home4", seq, "center",dictionary);
 
         });
         buttons1[3].onClick.AddListener(delegate {

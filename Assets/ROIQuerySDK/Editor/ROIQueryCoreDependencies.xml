@@ -8,12 +8,12 @@
                 <repository>https://www.jitpack.io</repository>
             </repositories>
             
-         <!--   <repositories>
+           <repositories>
                 <repository>https://repo-public.en2joy.com/repository/maven-releases/</repository>
             </repositories>
-            <androidPackage spec="com.roiquery.android:core:1.2.38" />-->
+            <androidPackage spec="com.roiquery.android:core:1.2.50" />
 
-            <androidPackage spec="com.lovinjoy:datatowerai-core:1.2.38" />
+<!--            <androidPackage spec="com.lovinjoy:datatowerai-core:1.2.49" />-->
             
             <!-- The "spec" attribute is *required* and provides the Maven package
                  specification.
