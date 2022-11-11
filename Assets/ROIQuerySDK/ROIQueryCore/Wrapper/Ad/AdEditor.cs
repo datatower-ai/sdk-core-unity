@@ -9,35 +9,16 @@ namespace ROIQuery
         {
             R_Log.Debug("Editor Log: calling init.");
         }
-
-
-        private void _reportLoadBegin(string id, AdType type, AdPlatform platform, string seq, Dictionary<string, object> properties = null)
-
+        
+        private void _reportLoadBegin(string id, AdType type, AdPlatform platform, string seq,
+            Dictionary<string, object> properties = null)
         {
-            R_Log.Debug("Editor Log: calling _reportLoadBegin.");
-
+            R_Log.Debug("Editor Log: calling report load begin.");
         }
-
-
-        private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration, bool result, string seq, int errorCode = 0, string errorMessage = "",
-          Dictionary<string, object> properties = null)
+        private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration,  bool result, string seq,
+            short errorCode, string errorMessage,Dictionary<string, object> properties = null)
         {
-            R_Log.Debug("Editor Log: calling _reportLoadEnd.");
-        }
-
-        private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
-          int errorCode,
-          string errorMessage,
-          string entrance = "",
-          Dictionary<string, object> properties = null)
-        {
-            R_Log.Debug("Editor Log: calling _reportShowFailed.");
-        }
-
-        private void _reportEntrance(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "",Dictionary<string, object> properties = null)
-        {
-            R_Log.Debug("Editor Log: calling reportEntrance.");
+            R_Log.Debug("Editor Log: calling report load end.");
         }
 
         private void _reportToShow(string id, AdType type, AdPlatform platform, string location, string seq,

@@ -9,7 +9,7 @@ namespace ROIQuery
 #if UNITY_ANDROID && !(UNITY_EDITOR)
 
         //获取类，通过包名+类名方式
-        private static readonly AndroidJavaClass ROIQueryAdReport = new AndroidJavaClass("com.roiquery.ad.ROIQueryAdReport");
+        private static readonly AndroidJavaClass DTAdReport = new AndroidJavaClass("com.roiquery.ad.DTAdReport");
             
 
         private void _init()
@@ -74,113 +74,109 @@ namespace ROIQuery
         }
 
 
-        private void _reportLoadBegin(string id, AdType type, AdPlatform platform, string seq, Dictionary<string, object> properties = null)
-
+        private void _reportLoadBegin(string id, AdType type, AdPlatform platform, string seq,
+            Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportLoadBegin", id, GetType(type), GetPlatform(platform), seq, dicToMap(properties));
+            DTAdReport.CallStatic("reportLoadBegin", id, GetType(type), GetPlatform(platform), seq,
+                dicToMap(properties));
         }
 
-
-        private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration, bool result, string seq, int errorCode = 0, string errorMessage = "",
-          Dictionary<string, object> properties = null)
+        private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration,  bool result, string seq,
+            short errorCode, string errorMessage,Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportLoadEnd", id, GetType(type), GetPlatform(platform),duration,result, seq, errorCode, errorMessage, dicToMap(properties));
+            DTAdReport.CallStatic("reportLoadEnd", id, GetType(type), GetPlatform(platform),duration,
+                result, seq,errorCode,errorMessage,dicToMap(properties));
         }
 
-        private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq, int errorCode, string errorMessage, string entrance = "", Dictionary<string, object> properties = null)
-
-        {
-            ROIQueryAdReport.CallStatic("reportShowFailed", id, GetType(type), GetPlatform(platform), location, seq, errorCode, errorMessage, dicToMap(properties), entrance);
-        }
-
-        private void _reportEntrance(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
-        {
-            ROIQueryAdReport.CallStatic("reportEntrance", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
-        }
 
         private void _reportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportToShow", id, GetType(type), GetPlatform(platform), location, seq,
+            DTAdReport.CallStatic("reportToShow", id, GetType(type), GetPlatform(platform), location, seq,
                 dicToMap(properties), entrance);
         }
 
         private void _reportImpression(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportImpression", id, GetType(type), GetPlatform(platform), location, seq,
+            DTAdReport.CallStatic("reportImpression", id, GetType(type), GetPlatform(platform), location, seq,
                 dicToMap(properties), entrance);
         }
 
         private void _reportShow(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportShow", id, GetType(type), GetPlatform(platform), location, seq,
+            DTAdReport.CallStatic("reportShow", id, GetType(type), GetPlatform(platform), location, seq,
                 dicToMap(properties), entrance);
+        }
+
+        private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
+            short errorCode, string errorMessage, string entrance, Dictionary<string, object> properties)
+        {
+            DTAdReport.CallStatic("reportShowFailed", id, GetType(type), platform, location, seq,
+                errorCode, errorMessage, dicToMap(properties), entrance);
         }
 
         private void _reportClose(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportClose", id, GetType(type), GetPlatform(platform), location, seq,
+            DTAdReport.CallStatic("reportClose", id, GetType(type), GetPlatform(platform), location, seq,
                 dicToMap(properties), entrance);
         }
 
         private void _reportClick(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportClick", id, GetType(type), GetPlatform(platform), location, seq,
+            DTAdReport.CallStatic("reportClick", id, GetType(type), GetPlatform(platform), location, seq,
                 dicToMap(properties), entrance);
         }
 
         private void _reportRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportRewarded", id, GetType(type), GetPlatform(platform), location, seq,
+            DTAdReport.CallStatic("reportRewarded", id, GetType(type), GetPlatform(platform), location, seq,
                 dicToMap(properties), entrance);
         }
 
         private void _reportLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportLeftApp", id, GetType(type), GetPlatform(platform), location, seq,
+            DTAdReport.CallStatic("reportLeftApp", id, GetType(type), GetPlatform(platform), location, seq,
                 dicToMap(properties), entrance);
         }
 
         private void _reportConversionByClick(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportConversionByClick", id, GetType(type), GetPlatform(platform), location,
+            DTAdReport.CallStatic("reportConversionByClick", id, GetType(type), GetPlatform(platform), location,
                 seq, dicToMap(properties), entrance);
         }
 
         private void _reportConversionByLeftApp(string id, AdType type, AdPlatform platform, string location,
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportConversionByLeftApp", id, GetType(type), GetPlatform(platform), location,
+            DTAdReport.CallStatic("reportConversionByLeftApp", id, GetType(type), GetPlatform(platform), location,
                 seq, dicToMap(properties), entrance);
         }
 
         private void _reportConversionByImpression(string id, AdType type, AdPlatform platform, string location,
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportConversionByImpression", id, GetType(type), GetPlatform(platform),
+            DTAdReport.CallStatic("reportConversionByImpression", id, GetType(type), GetPlatform(platform),
                 location, seq, dicToMap(properties), entrance);
         }
 
         private void _reportConversionByRewarded(string id, AdType type, AdPlatform platform, string location,
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportConversionByRewarded", id, GetType(type), GetPlatform(platform),
+            DTAdReport.CallStatic("reportConversionByRewarded", id, GetType(type), GetPlatform(platform),
                 location, seq, dicToMap(properties), entrance);
         }
 
         private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq, string value,
             string currency, string precision, string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportPaid", id, GetType(type), GetPlatform(platform), location, seq, value,
+            DTAdReport.CallStatic("reportPaid", id, GetType(type), GetPlatform(platform), location, seq, value,
                 currency, precision, dicToMap(properties), entrance);
         }
 
@@ -189,7 +185,7 @@ namespace ROIQuery
             AdMediation mediation, string mediationId, string value, string currency, string precision,
             string country, string entrance = "", Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportPaid", id, GetType(type), platform,adgroupName, adgroupType, location, seq,
+            DTAdReport.CallStatic("reportPaid", id, GetType(type), platform,adgroupName, adgroupType, location, seq,
                 GetMediation(mediation), mediationId, value, currency, precision, country, dicToMap(properties),
                 entrance);
         }
@@ -197,18 +193,18 @@ namespace ROIQuery
          private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq,AdMediation mediation, string mediationId,  string value,
             string precision, string country, Dictionary<string, object> properties = null)
         {
-            ROIQueryAdReport.CallStatic("reportPaid", id, GetType(type), GetPlatform(platform), location, seq,GetMediation(mediation), mediationId,value,
+            DTAdReport.CallStatic("reportPaid", id, GetType(type), GetPlatform(platform), location, seq,GetMediation(mediation), mediationId,value,
                  precision,country);
         }
 
         private string _generateUUID()
         {
-            return ROIQueryAdReport.CallStatic<string>("generateUUID");
+            return DTAdReport.CallStatic<string>("generateUUID");
         }
 
         private AdPlatform _getPlatform(AdMediation mediation, string networkName, string networkPlacementId, string adgroupName, string  adgroupType)
         {
-            AndroidJavaObject adPlatform =  ROIQueryAdReport.CallStatic<AndroidJavaObject>("getPlatform",(int)mediation, networkName, networkPlacementId, adgroupName,adgroupType);
+            AndroidJavaObject adPlatform =  DTAdReport.CallStatic<AndroidJavaObject>("getPlatform",(int)mediation, networkName, networkPlacementId, adgroupName,adgroupType);
             return ParseToAdPlatform(adPlatform);
         }
 #endif

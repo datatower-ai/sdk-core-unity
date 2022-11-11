@@ -38,13 +38,7 @@ namespace ROIQuery
         {
             _reportLoadEnd(id, type, platform, duration, result, seq, errorCode, errorMessage, properties);
         }
-
-        public void ReportEntrance(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
-        {
-            _reportEntrance(id, type, platform, location, seq, entrance, properties);
-        }
-
+        
         public void ReportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
             Dictionary<string, object> properties = null)

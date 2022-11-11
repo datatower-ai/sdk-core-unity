@@ -21,9 +21,10 @@ namespace ROIQuery
         private static extern void reportShowFailed(string id, int type, int platform, string location, string seq, int errorCode, string errorMessage, string entrance, string properties);
 
 
+        
         [DllImport("__Internal")]
-        private static extern void reportEntrance(string id, int type, int platform, string location, string seq,
-                    string properties,string entrance);
+        private static extern void reportLoadEnd(string id, int type, int platform, long duration,  bool result, string seq,
+            short errorCode, string errorMessage,Dictionary<string, object> properties = null);
 
         [DllImport("__Internal")]
         private static extern void reportToShow(string id, int type, int platform, string location, string seq,
@@ -32,6 +33,10 @@ namespace ROIQuery
         [DllImport("__Internal")]
         private static extern void reportShow(string id, int type, int platform, string location, string seq,
             string properties,string entrance);
+        
+        [DllImport("__Internal")]
+        private static extern void reportAdShowFail(string id, int type, int platform, string location, string seq,
+            short errorCode, string errorMessage,string properties,string entrance);
 
         [DllImport("__Internal")]
         private static extern void reportImpression(string id, int type, int platform, string location, string seq,
@@ -96,15 +101,19 @@ namespace ROIQuery
         {
             R_Log.Debug("Editor Log: calling init.");
         }
-
-
-        private void _reportEntrance(string id, AdType type, AdPlatform platform, string location, string seq,
+        
+        private void _reportLoadBegin(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",Dictionary<string, object> properties = null)
         {
-            reportEntrance(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties), entrance);
+            reportLoadBegin(id, (int) type, (int) platform,  seq, R_Utils.Parse2JsonStr(properties));
             R_Log.Debug("Editor Log: calling reportEntrance.seq:" + seq);
         }
-
+        private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration,  bool result, string seq,
+            short errorCode, string errorMessage,Dictionary<string, object> properties = null)
+        {
+            reportLoadEnd(id,(int) type, (int) platform,  duration, result,seq, errorCode, errorMessage,
+                R_Utils.Parse2JsonStr(properties));
+        }
         private void _reportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",Dictionary<string, object> properties = null)
         {
@@ -117,6 +126,13 @@ namespace ROIQuery
         {
             reportShow(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportShow.");
+        }
+        
+        private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq, 
+            short errorCode, string errorMessage, string entrance, Dictionary<string, object> properties)
+        {
+            reportAdShowFail(id,(int) type, (int) platform, location, seq, errorCode,errorMessage,R_Utils.Parse2JsonStr(properties),entrance);
+            R_Log.Debug("Editor Log: calling reportShow Fail.");
         }
 
         private void _reportImpression(string id, AdType type, AdPlatform platform, string location, string seq,
