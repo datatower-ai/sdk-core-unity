@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace ROIQuery
 {
-    public enum LogLevel : int
+    public enum LogLevel
     {
         DEFAULT = 2,
         VERBOSE = 2,
@@ -19,22 +17,21 @@ namespace ROIQuery
     public class ROIQuerySDKAPI : MonoBehaviour
     {
         /// <summary>
-        /// 当前 Unity SDK 版本
+        ///     当前 Unity SDK 版本
         /// </summary>
-        public readonly static string SDK_VERSION = "1.3.0";
+        public static readonly string SDK_VERSION = "1.3.0";
 
-        [Header("ROIQuerySDK-v1.3.0")]
-        
-        [Tooltip("由后台分配")] public string androidAppId = "";
-        
+        [Header("ROIQuerySDK-v1.3.0")] [Tooltip("由后台分配")]
+        public string androidAppId = "";
+
         [Tooltip("由后台分配")] public string iOSAppId = "";
 
         [Tooltip("渠道(只有Android平台生效)")] public string channel = "";
 
-        [Tooltip("是否开启调试，开启将会打印log")] public bool isDebug = false;
+        [Tooltip("是否开启调试，开启将会打印log")] public bool isDebug = true;
 
         [Tooltip("设置log 级别")] public LogLevel logLevel = LogLevel.DEFAULT;
-        
+
 
         #region internal use
 
@@ -43,7 +40,7 @@ namespace ROIQuery
         //private static RoiqueryReportWrapper reportWrapper;
 
 
-        void Awake()
+        private void Awake()
         {
             R_Log.Debug("RoiqueryReportAPI awake.");
             if (raInstance == null)
@@ -61,6 +58,5 @@ namespace ROIQuery
         }
 
         #endregion
-        
     }
 }

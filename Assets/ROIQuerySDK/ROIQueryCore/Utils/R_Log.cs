@@ -3,11 +3,12 @@
 namespace ROIQuery
 {
     /// <summary>
-    /// RoiqueryAnalytics Log Class
+    ///     RoiqueryAnalytics Log Class
     /// </summary>
     public class R_Log
     {
-        private static bool isLogEnable = false;
+        private static bool isLogEnable;
+
         public static void IsLogEnalbe(bool isEnable)
         {
             isLogEnable = isEnable;

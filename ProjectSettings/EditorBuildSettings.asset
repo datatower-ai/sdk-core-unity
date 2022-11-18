@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/ROIQuerySDK/Sample/IAP/IAP_Sample.unity
     guid: bc9fa6df78249489893699c947362138
   - enabled: 1
-    path: Assets/ROIQuerySDK/Sample/CloudConfig/CloudConfig_Sample.unity
+    path: Assets/ROIQuerySDK/Sample/IAS/IAS_Sample.unity
     guid: 780fa661d564e49d2a9214de1c0b81a2
   - enabled: 1
     path: Assets/ROIQuerySDK/Sample/Analytics/Analytics_Sample.unity
@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ROIQuerySDK/Sample/Ad/Ad_Sample.unity
     guid: 977cf54e9b4e54aeebaadd88565d0ff7
+  - enabled: 1
+    path: Assets/ROIQuerySDK/Sample/USER_SET/User_Set_Sample.unity
+    guid: 182e11d4959454deeb45ecf187333411
+  - enabled: 1
+    path: Assets/ROIQuerySDK/Sample/Utils/Utils_Sample.unity
+    guid: c2c3d506077a44d0ba6b7385acce6436
   m_configObjects: {}
