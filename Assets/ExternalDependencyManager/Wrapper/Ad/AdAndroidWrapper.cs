@@ -112,7 +112,7 @@ namespace ROIQuery
         private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
             int errorCode, string errorMessage, string entrance, Dictionary<string, object> properties)
         {
-            DTAdReport.CallStatic("reportShowFailed", id, GetType(type), platform, location, seq,
+            DTAdReport.CallStatic("reportShowFailed", id, GetType(type), GetPlatform(platform), location, seq,
                 errorCode, errorMessage, dicToMap(properties), entrance);
         }
 
