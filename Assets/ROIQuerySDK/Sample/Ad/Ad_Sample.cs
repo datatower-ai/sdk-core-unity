@@ -104,10 +104,19 @@ public class Ad_Sample : MonoBehaviour
 
     public void OpenBrowser(string url)
     {
-        AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
-        var tips = jo.Call<string>("OpenBrowser", url);
-        Debug.Log(tips);
-        Debug.Log("打开浏览器：" + url);
+        if (Application.platform == RuntimePlatform.Android)
+        {
+ 
+            Debug.Log(GetType() + "/OpenBrowserWithNoAAR()/");
+ 
+            AndroidJavaObject uri = new AndroidJavaObject("android.net.Uri").CallStatic<AndroidJavaObject>("parse", url);
+            AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent", "android.intent.action.VIEW", uri);
+            
+            AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
+           jo.Call("startActivity", intent);
+
+        }
+
     }
 }
