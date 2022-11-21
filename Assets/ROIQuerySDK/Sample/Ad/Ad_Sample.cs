@@ -80,7 +80,7 @@ public class Ad_Sample : MonoBehaviour
         buttons1[7].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Sample"); });
         buttons1[10].onClick.AddListener(delegate
         {
-            ROIQueryAdReport.ReportShowFailed("0120",AdType.BANNER,AdPlatform.BIGO,"user",seq,-20,
+            ROIQueryAdReport.ReportShowFailed("0120",AdType.BANNER,AdPlatform.IDLE,"user",seq,-20,
                 "test for reportShowFailed error","reportShowFailed entrance");
             
             
