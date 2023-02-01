@@ -1,7 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using JetBrains.Annotations;
+using UnityEngine;
 
 namespace DataTower
 {
+    class DTIdCallback : AndroidJavaProxy
+    {
+        [CanBeNull] private readonly Action<string> _action;
+        public DTIdCallback(Action<string> action) : base("com.roiquery.analytics.OnDataTowerIdListener")
+        {
+            _action = action;
+        }
+        public void onDataTowerIdCompleted(string dataTowerId) {
+            _action?.Invoke(dataTowerId);
+        }
+    }
+    
     public partial class ROIQueryAnalyticsWrapper
     {
         public string androidAppId = "";
@@ -20,12 +35,13 @@ namespace DataTower
         public static ROIQueryAnalyticsWrapper Instance => Nested.instance;
 
 
-        public void Init(string androidAppId, string iOSAppId, string channel, string sdkVersion, bool isDebug, int logLevel)
+        public void Init(string androidAppId, string iOSAppId,string serverUrl, string channel, string sdkVersion, bool isDebug, int logLevel)
         {
             if (!isInitialized)
             {
                 this.androidAppId = androidAppId;
                 this.iOSAppId = iOSAppId;
+                this.serverUrl = serverUrl;
                 this.channel = channel;
                 this.sdkVersion = sdkVersion;
                 this.isDebug = isDebug;
@@ -33,8 +49,8 @@ namespace DataTower
                 R_Log.IsLogEnalbe(isDebug);
                 _init();
                 R_Log.Debug(" RoiqueryReport  init,  androidAppId:" + androidAppId + ",iOSAppId" + iOSAppId +
-                            ",channel" + channel + ",sdkVersion" + sdkVersion + ",isDebug" + isDebug + ",logLevel" +
-                            logLevel);
+                            ",serverUrl" + serverUrl + ",channel" + channel + ",sdkVersion" + sdkVersion + ",isDebug" + isDebug + ",logLevel" +
+                                                    logLevel);
 
                 isInitialized = true;
             }
@@ -92,9 +108,9 @@ namespace DataTower
             _userAppend(properties);
         }
 
-        public string GetDataTowerQueryId()
+        public void GetDataTowerQueryId(Action<string> callback)
         {
-            return _getDataTowerId();
+            _getDataTowerId(new DTIdCallback(callback));
         }
 
 

@@ -19,9 +19,9 @@ namespace DataTower
         /// <summary>
         ///     当前 Unity SDK 版本
         /// </summary>
-        public static readonly string SDK_VERSION = "1.3.2-beta2";
+        public static readonly string SDK_VERSION = "1.3.3";
 
-        [Header("DTSDK-v1.3.2-beta2")] 
+        [Header("DTSDK-v1.3.3")] 
         [Tooltip("应用id, 由后台分配")]
         public string androidAppId = ""; 
        
@@ -57,7 +57,7 @@ namespace DataTower
                 return;
             }
 
-            DTAnalytics.Init(androidAppId, iOSAppId, channel, SDK_VERSION, isDebug, (int) logLevel);
+            DTAnalytics.Init(androidAppId, iOSAppId, serverUrl, channel, SDK_VERSION, isDebug, (int) logLevel);
         }
 
         #endregion

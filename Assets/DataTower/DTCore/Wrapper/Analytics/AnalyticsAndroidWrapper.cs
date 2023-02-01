@@ -24,10 +24,10 @@ namespace DataTower
             properties.Add("#sdk_version_name", sdkVersion);
             string jsonStr = R_Utils.Parse2JsonStr(properties);
             AndroidJavaObject jsonObject = R_Utils.Parse2JavaJSONObject(jsonStr);
-
+            R_Log.Debug(serverUrl);
 
             //调用静态初始化方法 init
-            DT.CallStatic("initSDK", currentContext, androidAppId, serverUrl, channel, isDebug, logLevel, null, jsonObject);
+            DT.CallStatic("initSDK", currentContext, androidAppId, serverUrl, channel, isDebug, logLevel, jsonObject);
         }
 
         private AndroidJavaObject ToJSONObject(Dictionary<string, object> dic)
@@ -79,9 +79,9 @@ namespace DataTower
         }
 
         
-        private string _getDataTowerId()
+        private void _getDataTowerId(AndroidJavaProxy callbackJavaProxy)
         {
-            return DTAnalytics.CallStatic<string>("getDataTowerId");
+             DTAnalytics.CallStatic("getDataTowerId",callbackJavaProxy);
         }
         
         private void _setAccountId(string accountId)

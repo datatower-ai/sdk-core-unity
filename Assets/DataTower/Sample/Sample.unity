@@ -2022,7 +2022,7 @@ PrefabInstance:
     - target: {fileID: 7087947596658616696, guid: b0fbfe0f1b33544668c71d1037007f96,
         type: 3}
       propertyPath: isDebug
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7087947596658616696, guid: b0fbfe0f1b33544668c71d1037007f96,
         type: 3}
@@ -2032,7 +2032,7 @@ PrefabInstance:
     - target: {fileID: 7087947596658616696, guid: b0fbfe0f1b33544668c71d1037007f96,
         type: 3}
       propertyPath: serverUrl
-      value: https://test.roiquery.com
+      value: https://report.roiquery.com
       objectReference: {fileID: 0}
     - target: {fileID: 7087947596658616696, guid: b0fbfe0f1b33544668c71d1037007f96,
         type: 3}

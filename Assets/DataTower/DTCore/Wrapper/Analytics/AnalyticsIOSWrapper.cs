@@ -122,9 +122,9 @@
         }
 
 
-        private string _getDataTowerId()
+        private void _getDataTowerId()
         {
-            return getDataTowerId();
+            // return getDataTowerId();
             R_Log.Debug("Editor Log: calling _setAccountId.");
         }
         

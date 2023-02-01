@@ -20,7 +20,7 @@ public class Analytics_Sample : MonoBehaviour
             var dictionary = new Dictionary<string, object>();
 
             dictionary.Add("login_pro_1", "中国");
-            dictionary.Add("roq_id", DTAnalytics.GetDataTowerId());
+            // dictionary.Add("roq_id", DTAnalytics.GetDataTowerId());
 
             var list = new List<int>();
             list.Add(1);

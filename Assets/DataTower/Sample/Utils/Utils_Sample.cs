@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DataTower;
 using UnityEngine;
@@ -19,8 +20,11 @@ public class Utils_Sample : MonoBehaviour
         var dictionary = new Dictionary<string, object>();
 
         dictionary.Add("country", "中国");
-        dictionary.Add("roq_id", DTAnalytics.GetDataTowerId());
-
+        
+        DTAnalytics.GetDataTowerId(id =>
+        {
+            dictionary.Add("roq_id", id);
+        });
         buttons1[0].onClick.AddListener(delegate
         {
             print("trackTimerStart====");

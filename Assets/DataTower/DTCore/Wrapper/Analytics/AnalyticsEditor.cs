@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace DataTower
 {
@@ -47,9 +48,8 @@ namespace DataTower
             R_Log.Debug("Editor Log: calling _userAppend.");
         }
 
-        private string _getDataTowerId()
+        private void _getDataTowerId(AndroidJavaProxy callbackJavaProxy)
         {
-            return "";
         }
 
         private void _setAccountId(string accountId)

@@ -7,10 +7,10 @@ namespace DataTower
     {
         private static Action<long, string> onFinishedAction;
 
-        public static void Init(string androidAppId, string iOSAppId, string channel, string sdkVersion, bool isDebug,
+        public static void Init(string androidAppId, string iOSAppId, string serverUrl, string channel, string sdkVersion, bool isDebug,
             int logLeve)
         {
-            ROIQueryAnalyticsWrapper.Instance.Init(androidAppId, iOSAppId, channel, sdkVersion, isDebug, logLeve);
+            ROIQueryAnalyticsWrapper.Instance.Init(androidAppId, iOSAppId, serverUrl, channel, sdkVersion, isDebug, logLeve);
         }
 
         /// <summary>
@@ -91,9 +91,9 @@ namespace DataTower
         /// <summary>
         ///     获取 DataTower instance id
         /// </summary>
-        public static string GetDataTowerId()
+        public static void GetDataTowerId(Action<string> dataTowerIDCallback)
         {
-            return ROIQueryAnalyticsWrapper.Instance.GetDataTowerQueryId();
+            ROIQueryAnalyticsWrapper.Instance.GetDataTowerQueryId(dataTowerIDCallback);
         }
 
         /// <summary>
