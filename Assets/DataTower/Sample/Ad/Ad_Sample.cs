@@ -50,12 +50,10 @@ public class Ad_Sample : MonoBehaviour
         });
         buttons1[5].onClick.AddListener(delegate
         {
-            DTAnalytics.SetFirebaseAppInstanceId("sdfsjdiofjaoisjdi");
+            // DTAnalytics.SetFirebaseAppInstanceId("sdfsjdiofjaoisjdi");
             R_Log.Debug("report Paid");
             //ROIQueryAdReport.ReportLeftApp("0130", AdType.BANNER, AdPlatform.ADMOB, "home2", seq, "center3");
-            //ROIQueryAdReport.ReportPaid("0130", AdType.BANNER, AdPlatform.MOPUB, "home2", "2000", "01", "1", seq, "center3");
-            DTAdReport.ReportPaid("ad_id_0130", AdType.REWARDED, "unity", "marketplace", "home2", "", seq,
-                AdMediation.MOPUB, "mediatione_id_212324", "5000", "usd", "1", "US", "center4");
+            DTAdReport.ReportPaid("0130", AdType.BANNER, AdPlatform.MOPUB, "home2", "2000", "01", "1", seq, "center3");
         });
         buttons1[6].onClick.AddListener(delegate
         {

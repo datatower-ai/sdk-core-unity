@@ -2022,7 +2022,7 @@ PrefabInstance:
     - target: {fileID: 7087947596658616696, guid: b0fbfe0f1b33544668c71d1037007f96,
         type: 3}
       propertyPath: isDebug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7087947596658616696, guid: b0fbfe0f1b33544668c71d1037007f96,
         type: 3}
@@ -2032,12 +2032,12 @@ PrefabInstance:
     - target: {fileID: 7087947596658616696, guid: b0fbfe0f1b33544668c71d1037007f96,
         type: 3}
       propertyPath: serverUrl
-      value: https://report.roiquery.com
+      value: https://test.roiquery.com
       objectReference: {fileID: 0}
     - target: {fileID: 7087947596658616696, guid: b0fbfe0f1b33544668c71d1037007f96,
         type: 3}
       propertyPath: androidAppId
-      value: dt_7f4687c7da9a6c50
+      value: dt_23091582206e7eee
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0fbfe0f1b33544668c71d1037007f96, type: 3}
