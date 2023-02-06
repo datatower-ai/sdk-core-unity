@@ -25,25 +25,25 @@ public class IAS_Sample : MonoBehaviour
         var originalOrderId = "original_orderId_12";
 
 
-        buttons1[0].onClick.AddListener(delegate { DTIASAPI.ReportToShow(seq, placement, entrance); });
-        buttons1[1].onClick.AddListener(delegate { DTIASAPI.ReportShowSuccess(seq, placement, entrance); });
+        buttons1[0].onClick.AddListener(delegate { DTIASReport.ReportToShow(seq, placement, entrance); });
+        buttons1[1].onClick.AddListener(delegate { DTIASReport.ReportShowSuccess(seq, placement, entrance); });
         buttons1[2].onClick.AddListener(delegate
         {
-            DTIASAPI.ReportShowFail(seq, placement, errorCode, errorMsg, entrance);
+            DTIASReport.ReportShowFail(seq, placement, errorCode, errorMsg, entrance);
         });
         buttons1[3].onClick.AddListener(delegate
         {
-            DTIASAPI.ReportSubscribe(seq, placement, sku, orderId, price, currency, entrance);
+            DTIASReport.ReportSubscribe(seq, placement, sku, orderId, price, currency, entrance);
             //用法相同
         });
         buttons1[4].onClick.AddListener(delegate
         {
-            DTIASAPI.ReportSusbscribeSuccess(seq, placement, sku, orderId, originalOrderId, price, currency,
+            DTIASReport.ReportSusbscribeSuccess(seq, placement, sku, orderId, originalOrderId, price, currency,
                 entrance);
         });
         buttons1[5].onClick.AddListener(delegate
         {
-            DTIASAPI.ReportSubscribeFail(seq, placement, sku, orderId, originalOrderId, price, currency,
+            DTIASReport.ReportSubscribeFail(seq, placement, sku, orderId, originalOrderId, price, currency,
                 errorCode, entrance, errorMsg);
         });
 

@@ -5,7 +5,7 @@ namespace DataTower
     /**
      * 订阅上报
      */
-    public class DTIASAPI
+    public class DTIASReport
     {
         public static void ReportToShow(string iasSeq, string iasPlacement, string iasEntrance = "")
         {
