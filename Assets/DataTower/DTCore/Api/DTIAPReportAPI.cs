@@ -1,7 +1,11 @@
-﻿namespace DataTower
+﻿using System.Collections.Generic;
+
+namespace DataTower
 {
     public class DTIAPReport
     {
+        /* 对齐 Android SDK 2.0.0
+         
         /// <summary>
         ///     展示购买入口的时候上报
         /// </summary>
@@ -63,6 +67,21 @@
         {
             ROIQueryIAPReportWrapper.Instance.ReportNotToPurchased(order, sku, price, currency, seq, code, entrance,
                 msg);
+        }
+        */
+        
+        /// <summary>
+        ///     购买成功上报
+        /// </summary>
+        /// <param name="order">订单id</param>
+        /// <param name="sku">商品id</param>
+        /// <param name="price">价格， 如 9.99</param>
+        /// <param name="currency">货币，如usd</param>
+        /// <param name="properties">自定义属性</param>
+        public static void ReportPurchaseSuccess(string order, string sku, double price, string currency, 
+            Dictionary<string, object> properties = null)
+        {
+            ROIQueryIAPReportWrapper.Instance.ReportPurchaseSuccess(order, sku, price, currency, properties);
         }
 
         //todo 下个版本再带上此功能

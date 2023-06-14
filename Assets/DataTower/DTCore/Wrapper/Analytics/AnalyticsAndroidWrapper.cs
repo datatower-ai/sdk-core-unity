@@ -78,6 +78,10 @@ namespace DataTower
             DTAnalytics.CallStatic("userAppend", ToJSONObject(properties));
         }
 
+        private void _userUniqAppend(Dictionary<string, object> properties)
+        {
+            DTAnalytics.CallStatic("userUniqAppend", ToJSONObject(properties));
+        }
         
         private void _getDataTowerId(AndroidJavaProxy callbackJavaProxy)
         {

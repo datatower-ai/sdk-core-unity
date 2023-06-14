@@ -32,15 +32,7 @@ namespace DataTower
         {
             _reportToShow(id, type, platform, location, seq, entrance, properties);
         }
-
-        public void ReportImpression(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "",
-            Dictionary<string, object> properties = null)
-        {
-            _reportImpression(id, type, platform, location, seq, entrance, properties);
-        }
-
-
+        
         public void ReportShow(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
             Dictionary<string, object> properties = null)
@@ -132,6 +124,11 @@ namespace DataTower
         {
             _reportPaid(id, type, platform, location, seq, mediation, mediationId, value, precision, country,
                 properties);
+        }
+
+        public void ReportReturnApp()
+        {
+            _reportReturnApp();
         }
 
         private class Nested

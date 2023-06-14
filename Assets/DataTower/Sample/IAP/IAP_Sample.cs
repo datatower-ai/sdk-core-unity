@@ -17,22 +17,22 @@ public class IAP_Sample : MonoBehaviour
         buttons2[0].onClick.AddListener(delegate
         {
             print("Track ReportEntrance.");
-            DTIAPReport.ReportEntrance(order, "sku123", 3.32, "usd", seq, "home");
+            //DTIAPReport.ReportEntrance(order, "sku123", 3.32, "usd", seq, "home");
         });
         buttons2[1].onClick.AddListener(delegate
         {
             print("Track ReportToPurchase.");
-            DTIAPReport.ReportToPurchase(order, "sku123", 3.32, "rmb", seq, "user");
+            //DTIAPReport.ReportToPurchase(order, "sku123", 3.32, "rmb", seq, "user");
         });
         buttons2[2].onClick.AddListener(delegate
         {
             print("Track ReportPurchased.");
-            DTIAPReport.ReportPurchased(order, "sku123", 3.32, "rmb", seq, "user");
+            //DTIAPReport.ReportPurchased(order, "sku123", 3.32, "rmb", seq, "user");
         });
         buttons2[3].onClick.AddListener(delegate
         {
             print("Track ReportNotToPurchased.");
-            DTIAPReport.ReportNotToPurchased(order, "sku123", 3.32, "eup", seq, "200", "home", "not ok");
+            //DTIAPReport.ReportNotToPurchased(order, "sku123", 3.32, "eup", seq, "200", "home", "not ok");
         });
 
         buttons2[4].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Sample"); });

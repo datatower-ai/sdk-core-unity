@@ -6,24 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ROIQuerySDK/Sample/Sample.unity
-    guid: b7518a797cdbf4204891439e1da82d3a
+    path: Assets/DataTower/Sample/Ad/Ad_Sample.unity
+    guid: e1fe112193eb142118b7c66dfb30607f
   - enabled: 1
-    path: Assets/ROIQuerySDK/Sample/IAP/IAP_Sample.unity
-    guid: bc9fa6df78249489893699c947362138
+    path: Assets/DataTower/Sample/Analytics/Analytics_Sample.unity
+    guid: 4729523328c1344d78d0920950373f0e
   - enabled: 1
-    path: Assets/ROIQuerySDK/Sample/IAS/IAS_Sample.unity
-    guid: 780fa661d564e49d2a9214de1c0b81a2
+    path: Assets/DataTower/Sample/IAP/IAP_Sample.unity
+    guid: 4940f16dc8b174a53944c4f7b9a70adc
   - enabled: 1
-    path: Assets/ROIQuerySDK/Sample/Analytics/Analytics_Sample.unity
-    guid: 89755629ca0494986935c5104a03e2ea
+    path: Assets/DataTower/Sample/IAS/IAS_Sample.unity
+    guid: 980c7cf5204e540689f2c2e858864b91
   - enabled: 1
-    path: Assets/ROIQuerySDK/Sample/Ad/Ad_Sample.unity
-    guid: 977cf54e9b4e54aeebaadd88565d0ff7
+    path: Assets/DataTower/Sample/USER_SET/User_Set_Sample.unity
+    guid: 99d8bd4846d5a415d9fcc60c9eee0b47
   - enabled: 1
-    path: Assets/ROIQuerySDK/Sample/USER_SET/User_Set_Sample.unity
-    guid: 182e11d4959454deeb45ecf187333411
+    path: Assets/DataTower/Sample/Utils/Utils_Sample.unity
+    guid: 4dc6e505f8a7b46158f8773c67dd86a2
   - enabled: 1
-    path: Assets/ROIQuerySDK/Sample/Utils/Utils_Sample.unity
-    guid: c2c3d506077a44d0ba6b7385acce6436
+    path: Assets/DataTower/Sample/Sample.unity
+    guid: 3f3e66aece8754cefba5c2395ca4c800
   m_configObjects: {}

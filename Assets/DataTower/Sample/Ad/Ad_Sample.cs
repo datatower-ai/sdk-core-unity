@@ -83,10 +83,6 @@ public class Ad_Sample : MonoBehaviour
             
             
         });
-        
-        buttons1[11].onClick.AddListener(delegate
-        {
-        });
     }
 
 

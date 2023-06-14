@@ -1,6 +1,7 @@
 ﻿
 
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace DataTower
 {
@@ -41,6 +42,12 @@ namespace DataTower
  = "", string msg = "")
         {
             DTIAPReport.CallStatic("reportNotToPurchased", order, sku, price, currency, seq, code, entrance,msg);
+        }
+
+        private void _reportPurchaseSuccess(string order, string sku, double price, string currency,
+            Dictionary<string, object> properties = null)
+        {
+            DTIAPReport.CallStatic("reportPurchaseSuccess", order, sku, price, currency, properties);
         }
 
      private string _generateUUID()
