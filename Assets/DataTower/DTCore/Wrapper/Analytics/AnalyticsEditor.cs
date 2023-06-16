@@ -47,6 +47,11 @@ namespace DataTower
         {
             R_Log.Debug("Editor Log: calling _userAppend.");
         }
+        
+        private void _userUniqAppend(Dictionary<string, object> properties)
+        {
+            R_Log.Debug("Editor Log: calling _userUniqAppend.");
+        }
 
         private void _getDataTowerId(AndroidJavaProxy callbackJavaProxy)
         {

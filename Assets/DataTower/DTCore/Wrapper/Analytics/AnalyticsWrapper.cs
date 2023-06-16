@@ -108,6 +108,11 @@ namespace DataTower
             _userAppend(properties);
         }
 
+        public void UserUniqAppend(Dictionary<string, object> properties)
+        {
+            _userUniqAppend(properties);
+        }
+
         public void GetDataTowerQueryId(Action<string> callback)
         {
             _getDataTowerId(new DTIdCallback(callback));

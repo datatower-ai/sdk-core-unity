@@ -95,13 +95,6 @@ namespace DataTower
                 dicToMap(properties), entrance);
         }
 
-        private void _reportImpression(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
-        {
-            DTAdReport.CallStatic("reportImpression", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
-        }
-
         private void _reportShow(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -201,6 +194,11 @@ namespace DataTower
             AndroidJavaObject adPlatform =
  DTAdReport.CallStatic<AndroidJavaObject>("getPlatform",(int)mediation, networkName, networkPlacementId, adgroupName,adgroupType);
             return ParseToAdPlatform(adPlatform);
+        }
+        
+        private void _reportReturnApp()
+        {
+            DTAdReport.CallStatic("reportReturnApp");
         }
 #endif
     }

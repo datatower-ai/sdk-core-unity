@@ -1,4 +1,6 @@
-﻿namespace DataTower
+﻿using System.Collections.Generic;
+
+namespace DataTower
 {
     public partial class ROIQueryIAPReportWrapper
     {
@@ -33,6 +35,12 @@
             string code, string entrance = "", string msg = "")
         {
             R_Log.Debug("Editor Log: calling reportNotToPurchased.");
+        }
+
+        private void _reportPurchaseSuccess(string order, string sku, double price, string currency,
+            Dictionary<string, object> properties = null)
+        {
+            R_Log.Debug("Editor Log: calling reportPurchaseSuccess.");
         }
 
 

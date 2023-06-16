@@ -35,12 +35,6 @@ namespace DataTower
             R_Log.Debug("Editor Log: calling reportShow.");
         }
 
-        private void _reportImpression(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
-        {
-            R_Log.Debug("Editor Log: calling reportShow.");
-        }
-
         private void _reportClose(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
@@ -122,6 +116,11 @@ namespace DataTower
             int errorCode, string errorMessage, string entrance, Dictionary<string, object> properties)
         {
             R_Log.Debug("Editor Log: calling reportShowFailed.");
+        }
+
+        private void _reportReturnApp()
+        {
+            R_Log.Debug("Editor Log: calling reportReturnApp.");
         }
 #endif
     }

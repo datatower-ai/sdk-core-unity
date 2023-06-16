@@ -346,5 +346,15 @@ namespace DataTower
         {
             return DTAdReportWrapper.Instance.GenerateUUID();
         }*/
+        
+        /* 对齐 Android SDK 2.0.0
+        /// <summary>
+        ///     /上报 返回app事件，在访问广告链接，回到当前app(页面)时调用
+        /// </summary>
+        public static void ReportReturnApp()
+        {
+            DTAdReportWrapper.Instance.ReportReturnApp();
+        }
+        */
     }
 }

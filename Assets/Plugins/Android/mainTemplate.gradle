@@ -19,15 +19,15 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
-    implementation 'com.lovinjoy:datatowerai-core:1.3.3' // Assets/DataTower/Editor/ROIQueryCoreDependencies.xml:8
+    implementation 'com.lovinjoy:datatowerai-core:2.0.0' // Assets/DataTower/Editor/ROIQueryCoreDependencies.xml:8
 // Android Resolver Dependencies End
 **DEPS**}
 
 // Android Resolver Exclusions Start
 android {
   packagingOptions {
-      exclude ('/lib/arm64-v8a/*' + '*')
       exclude ('/lib/armeabi/*' + '*')
+      exclude ('/lib/armeabi-v7a/*' + '*')
       exclude ('/lib/mips/*' + '*')
       exclude ('/lib/mips64/*' + '*')
       exclude ('/lib/x86/*' + '*')

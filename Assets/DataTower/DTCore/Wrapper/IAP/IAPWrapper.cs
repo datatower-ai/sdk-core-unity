@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.Generic;
+
 namespace DataTower
 {
     
@@ -39,6 +41,12 @@ namespace DataTower
             string code, string entrance = "", string msg = "")
         {
             _reportNotToPurchased(order, sku, price, currency, seq, code, entrance, msg);
+        }
+
+        public void ReportPurchaseSuccess(string order, string sku, double price, string currency,
+            Dictionary<string, object> properties = null)
+        {
+            _reportPurchaseSuccess(order, sku, price, currency, properties);
         }
 
         private class Nested

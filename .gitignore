@@ -159,7 +159,11 @@ iOSInjectionProject/
 Output/
 mzdsandbox/
 /UnityMahjong/Assets/.idea
-/UnityMahjong/Assets/.idea
 .idea
 .objs/
 Publish.json
+
+# Unity auto-generated
+*.meta
+
+.vsconfig

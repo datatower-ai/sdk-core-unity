@@ -25,26 +25,38 @@ public class IAS_Sample : MonoBehaviour
         var originalOrderId = "original_orderId_12";
 
 
-        buttons1[0].onClick.AddListener(delegate { DTIASReport.ReportToShow(seq, placement, entrance); });
-        buttons1[1].onClick.AddListener(delegate { DTIASReport.ReportShowSuccess(seq, placement, entrance); });
+        buttons1[0].onClick.AddListener(delegate
+        {
+            print("Track ReportToShow.");
+             /*DTIASReport.ReportToShow(seq, placement, entrance);*/
+        });
+        buttons1[1].onClick.AddListener(delegate
+        {
+            print("Track ReportShowSuccess.");
+             /*DTIASReport.ReportShowSuccess(seq, placement, entrance);*/
+        });
         buttons1[2].onClick.AddListener(delegate
         {
-            DTIASReport.ReportShowFail(seq, placement, errorCode, errorMsg, entrance);
+            print("Track ReportShowFail.");
+            //DTIASReport.ReportShowFail(seq, placement, errorCode, errorMsg, entrance);
         });
         buttons1[3].onClick.AddListener(delegate
         {
-            DTIASReport.ReportSubscribe(seq, placement, sku, orderId, price, currency, entrance);
+            print("Track ReportSubscribe.");
+            //DTIASReport.ReportSubscribe(seq, placement, sku, orderId, price, currency, entrance);
             //用法相同
         });
         buttons1[4].onClick.AddListener(delegate
         {
-            DTIASReport.ReportSusbscribeSuccess(seq, placement, sku, orderId, originalOrderId, price, currency,
-                entrance);
+            print("Track ReportSusbscribeSuccess.");
+            /*DTIASReport.ReportSusbscribeSuccess(seq, placement, sku, orderId, originalOrderId, price, currency,
+                entrance);*/
         });
         buttons1[5].onClick.AddListener(delegate
         {
-            DTIASReport.ReportSubscribeFail(seq, placement, sku, orderId, originalOrderId, price, currency,
-                errorCode, entrance, errorMsg);
+            print("Track ReportSubscribeFail.");
+            /*DTIASReport.ReportSubscribeFail(seq, placement, sku, orderId, originalOrderId, price, currency,
+                errorCode, entrance, errorMsg);*/
         });
 
 

@@ -86,7 +86,15 @@ namespace DataTower
         {
             ROIQueryAnalyticsWrapper.Instance.UserAppend(properties);
         }
-
+        
+        /// <summary>
+        ///     对 JSONArray 类型的用户属性进追加操作（会去重）
+        /// </summary>
+        /// <param name="properties">用户属性</param>
+        public static void UserUniqAppend(Dictionary<string, object> properties)
+        {
+            ROIQueryAnalyticsWrapper.Instance.UserUniqAppend(properties);
+        }
 
         /// <summary>
         ///     获取 DataTower instance id

@@ -17,7 +17,9 @@ public class Sample : MonoBehaviour
         buttons1[2].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Ad_Sample"); });
         buttons1[3].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("IAP_Sample"); });
 
-        buttons1[4].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Utils_Sample"); });
+        buttons1[4].onClick.AddListener(delegate {
+            SceneManager.LoadSceneAsync("Utils_Sample");
+        });
         buttons1[5].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("User_Set_Sample"); });
     }
 

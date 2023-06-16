@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace DataTower.Wrapper.IAS
 {
@@ -57,6 +58,14 @@ namespace DataTower.Wrapper.IAS
                     $"entrance: @{entrance} , code:@{code}, msg:@{msg}");
                 DTIASReport.CallStatic("reportSubscribeFail",seq,entrance,placement,sku,orderId,originalorderId,price,currency,code,msg);
             }
+        
+        private void _reportSubscribeSuccess(string originalOrderId, string orderId, string sku, double price,
+            string currency, Dictionary<string, object> properties)
+        {
+            R_Log.Debug(
+                $"_reportSubscribeSuccess originalOrderId:@{originalOrderId}, orderId:@{orderId}, sku:@{sku}, price:@{price}, currency:@{currency}, properties:@{properties}");
+            DTIASReport.CallStatic("reportSubscribeSuccess", originalOrderId, orderId, sku, price, currency, properties);
+        }
 #endif
     }
 }

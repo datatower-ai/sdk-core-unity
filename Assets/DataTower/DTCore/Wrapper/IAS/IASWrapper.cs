@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace DataTower.Wrapper.IAS
 {
     public partial class ROIQueryIASReportWrapper
@@ -44,6 +46,12 @@ namespace DataTower.Wrapper.IAS
         {
             _reportSubscribeFail(iasSeq, iasPlacement, iasSku, iasOrderId, iasOriginalOrderId, iasPrice, iasCurrency,
                 iasCode, iasEntrance, iasMsg);
+        }
+
+        public void ReportSubscribeSuccess(string originalOrderId, string orderId, string sku, double price,
+            string currency, Dictionary<string, object> properties)
+        {
+            _reportSubscribeSuccess(originalOrderId, orderId, sku, price, currency, properties);
         }
 
         private class Nested
