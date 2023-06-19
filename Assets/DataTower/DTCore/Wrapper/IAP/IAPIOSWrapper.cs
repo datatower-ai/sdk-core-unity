@@ -61,6 +61,12 @@ namespace DataTower
             // R_Log.Debug("Editor Log: calling reportNotToPurchased.");
         }
 
+     
+        private void _reportPurchaseSuccess(string order, string sku, double price, string currency,
+            Dictionary<string, object> properties = null)
+        {
+        }
+
 #endif
     }
 }

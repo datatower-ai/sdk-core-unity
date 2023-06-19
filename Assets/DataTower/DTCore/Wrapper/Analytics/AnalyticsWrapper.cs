@@ -12,11 +12,12 @@ namespace DataTower
         {
             _action = action;
         }
-        public void onDataTowerIdCompleted(string dataTowerId) {
+        public void onDataTowerIdCompleted(string dataTowerId)
+        {
             _action?.Invoke(dataTowerId);
         }
     }
-    
+
     public partial class ROIQueryAnalyticsWrapper
     {
         public string androidAppId = "";
@@ -35,7 +36,7 @@ namespace DataTower
         public static ROIQueryAnalyticsWrapper Instance => Nested.instance;
 
 
-        public void Init(string androidAppId, string iOSAppId,string serverUrl, string channel, string sdkVersion, bool isDebug, int logLevel)
+        public void Init(string androidAppId, string iOSAppId, string serverUrl, string channel, string sdkVersion, bool isDebug, int logLevel)
         {
             if (!isInitialized)
             {
@@ -115,9 +116,10 @@ namespace DataTower
 
         public void GetDataTowerQueryId(Action<string> callback)
         {
+#if UNITY_ANDROID && !(UNITY_EDITOR)
             _getDataTowerId(new DTIdCallback(callback));
+#endif
         }
-
 
         public void SetAccountId(string accountId)
         {

@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace DataTower
 {
     public partial class ROIQueryAnalyticsWrapper
     {
 #if UNITY_IOS && !(UNITY_EDITOR)
-        // [DllImport("__Internal")]
-        // private static extern void initSDK(string appId, bool isDebug, int logLevel, string properties);
-        //
+        [DllImport("__Internal")]
+        private static extern void initSDK(string appId, bool isDebug, int logLevel, string properties);
+        
         // [DllImport("__Internal")]
         // private static extern void roiTrack(string eventName, string properties);
         //
@@ -81,7 +82,7 @@ namespace DataTower
             properties.Add("#sdk_version_name", sdkVersion);
             string jsonStr = R_Utils.Parse2JsonStr(properties);
 
-            // initSDK(iOSAppId, isDebug, logLevel, jsonStr);
+            initSDK(iOSAppId, isDebug, logLevel, jsonStr);
             // ROIQuerySDK.CallStatic("initSDK", currentContext,appId,channel,isDebug,logLevel,jsonObject);
             R_Log.Debug("Editor Log: calling init.");
         }
@@ -123,6 +124,9 @@ namespace DataTower
             // userAppend(properties);
         }
 
+        private void _userUniqAppend(Dictionary<string, object> properties)
+        {
+        }
 
         private void _getDataTowerId()
         {
@@ -130,7 +134,6 @@ namespace DataTower
             R_Log.Debug("Editor Log: calling _setAccountId.");
         }
         
-
         private void _setAccountId(string accountId)
         {
             // setAccountId(accountId);

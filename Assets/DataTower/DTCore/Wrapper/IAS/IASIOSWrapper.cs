@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace DataTower.Wrapper.IAS
 {
     public partial class ROIQueryIASReportWrapper
@@ -70,6 +72,12 @@ namespace DataTower.Wrapper.IAS
             //     $"_reportSubscribeFail seq:@{seq},placement :@{placement} , sku:@{sku}, orderId:@{orderId} ,originalorderId:@{originalorderId},price:@{price},currency:@{currency}," +
             //     $"entrance: @{entrance} , code:@{code}, msg:@{msg}");
             // reportSubscribeFail(seq,entrance,placement,sku,orderId,originalorderId,price,currency,code,msg);
+        }
+
+        private void _reportSubscribeSuccess(string originalOrderId, string orderId, string sku, double price,
+            string currency, Dictionary<string, object> properties)
+        {
+ 
         }
 #endif
     }

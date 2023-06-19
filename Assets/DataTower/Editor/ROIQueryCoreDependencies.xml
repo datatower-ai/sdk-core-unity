@@ -18,9 +18,8 @@
                  Additional repositories can be added using the "repositories" element.
             -->
         </androidPackages>
-    <iosPods >
-<!--        <iosPod name="ROIQueryCore" minTargetSdk="11.0" addToAllTargets="true" version = "1.3.2" >-->
-<!--            &lt;!&ndash; Set of source URIs to search for this Cocoapod spec.-->
+       <iosPod name="DataTowerAICore" minTargetSdk="11.0" addToAllTargets="true" version = "1.3.3.2" >
+           <!-- &lt;!&ndash; Set of source URIs to search for this Cocoapod spec. -->
 <!--                 By default Cocoapods will attempt to fetch the pod specs from:-->
 <!--                 * $HOME/.cocoapods/repos-->
 <!--                 * https://github.com/CocoaPods/Specs-->
@@ -28,6 +27,5 @@
 <!--            &lt;!&ndash;            <sources>&ndash;&gt;-->
 <!--            &lt;!&ndash;                <source>https://github.com/CocoaPods/Specs</source>&ndash;&gt;-->
 <!--            &lt;!&ndash;            </sources>&ndash;&gt;-->
-<!--        </iosPod>-->
-    </iosPods>
+    </iosPod>
 </dependencies>

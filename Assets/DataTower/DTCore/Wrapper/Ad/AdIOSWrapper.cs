@@ -200,6 +200,10 @@ namespace DataTower
             // R_Log.Debug("Editor Log: calling reportPaid.");
         }
 
+        private void _reportReturnApp()
+        {
+        }
+
 #endif
     }
 }
