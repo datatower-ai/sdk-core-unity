@@ -119,6 +119,9 @@ namespace DataTower
 #if UNITY_ANDROID && !(UNITY_EDITOR)
             _getDataTowerId(new DTIdCallback(callback));
 #endif
+#if UNITY_IOS && !(UNITY_EDITOR)
+            _getDataTowerId(callback);
+#endif
         }
 
         public void SetAccountId(string accountId)

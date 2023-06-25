@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System;
 
 namespace DataTower
 {
@@ -7,7 +8,22 @@ namespace DataTower
     {
 #if UNITY_IOS && !(UNITY_EDITOR)
         [DllImport("__Internal")]
-        private static extern void initSDK(string appId, bool isDebug, int logLevel, string properties);
+        private static extern void initSDK(string appId, string serverUrl, bool isDebug, int logLevel, string properties);
+
+        [DllImport("__Internal")]
+        private static extern string reflectionInvokeWithReturn(string clsName, string methodName);
+
+        [DllImport("__Internal")]
+        private static extern void reflectionInvoke(string clsName, string methodName);
+        
+        [DllImport("__Internal")]
+        private static extern void reflectionInvokeWithJsonStr(string clsName, string methodName, string jsonStr);
+
+        [DllImport("__Internal")]
+        private static extern void reflectionInvokeWithPlainStr(string clsName, string methodName, string plainStr);
+
+        [DllImport("__Internal")]
+        private static extern void reflectionInvokeWith2Param(string clsName, string methodName, string plainStr, string jsonStr);
         
         // [DllImport("__Internal")]
         // private static extern void roiTrack(string eventName, string properties);
@@ -82,17 +98,17 @@ namespace DataTower
             properties.Add("#sdk_version_name", sdkVersion);
             string jsonStr = R_Utils.Parse2JsonStr(properties);
 
-            initSDK(iOSAppId, isDebug, logLevel, jsonStr);
+            initSDK(iOSAppId, serverUrl, isDebug, logLevel, jsonStr);
             // ROIQuerySDK.CallStatic("initSDK", currentContext,appId,channel,isDebug,logLevel,jsonObject);
+
             R_Log.Debug("Editor Log: calling init.");
         }
 
 
         private void _track(string eventName, Dictionary<string, object> properties = null)
         {
-            // string jsonStr = R_Utils.Parse2JsonStr(properties);
-            // roiTrack(eventName, jsonStr);
-            R_Log.Debug("Editor Log: calling track.");
+            string jsonStr = R_Utils.Parse2JsonStr(properties);
+            reflectionInvokeWith2Param("DTAnalytics", "trackEventName:properties:", eventName, jsonStr);
         }
 
         private void _userSet(Dictionary<string, object> properties)
@@ -128,10 +144,13 @@ namespace DataTower
         {
         }
 
-        private void _getDataTowerId()
+        private void _getDataTowerId(Action<string> callback)
         {
-            // return getDataTowerId();
-            R_Log.Debug("Editor Log: calling _setAccountId.");
+            string ret = reflectionInvokeWithReturn("DTAnalytics", "getDataTowerId");
+            if (callback != null) 
+            {
+                callback(ret);
+            }
         }
         
         private void _setAccountId(string accountId)

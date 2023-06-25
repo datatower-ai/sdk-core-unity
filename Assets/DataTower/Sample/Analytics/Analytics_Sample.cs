@@ -17,19 +17,25 @@ public class Analytics_Sample : MonoBehaviour
 
         buttons2[0].onClick.AddListener(delegate
         {
-            var dictionary = new Dictionary<string, object>();
+            DTAnalytics.GetDataTowerId(
+                id =>
+                {
+                    var dictionary = new Dictionary<string, object>();
 
-            dictionary.Add("login_pro_1", "中国");
-            // dictionary.Add("roq_id", DTAnalytics.GetDataTowerId());
+                    dictionary.Add("login_pro_1", "中国");
+                    dictionary.Add("roq_id", id);
 
-            var list = new List<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            dictionary.Add("list", list);
+                    var list = new List<int>();
+                    list.Add(1);
+                    list.Add(2);
+                    list.Add(3);
+                    dictionary.Add("list", list);
 
-            print("Track an Event.");
-            DTAnalytics.Track("test", dictionary);
+                    print("Track an Event.");
+                    DTAnalytics.Track("test", dictionary);
+                }
+                );
+
         });
         buttons2[1].onClick.AddListener(delegate { DTAnalytics.SetAccountId("user_account_id_2200"); });
         buttons2[2].onClick.AddListener(delegate { DTAnalytics.SetFirebaseAppInstanceId("fire_base_id_2200"); });
