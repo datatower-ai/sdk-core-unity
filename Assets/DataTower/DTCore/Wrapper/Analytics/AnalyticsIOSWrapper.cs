@@ -24,72 +24,7 @@ namespace DataTower
 
         [DllImport("__Internal")]
         private static extern void reflectionInvokeWith2Param(string clsName, string methodName, string plainStr, string jsonStr);
-        
-        // [DllImport("__Internal")]
-        // private static extern void roiTrack(string eventName, string properties);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void roiFlush();
-        //
-        // [DllImport("__Internal")]
-        // private static extern void trackPageOpen(string properties);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void trackPageClose(string properties);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void trackAppClose(string properties);
-        //
-        // [DllImport("__Internal")]
-        // private static extern string getDataTowerId();
-        //
-        // [DllImport("__Internal")]
-        // private static extern void setAccountId(string id);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void setFirebaseAppInstanceId(string id);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void setKochavaId(string id);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void setAppsFlyerId(string id);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void setUserProperties(string properties);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void userSet(Dictionary<string, object> properties = null);
-        //
-        //
-        // [DllImport("__Internal")]
-        // private static extern void userSetOnce(Dictionary<string, object> properties = null);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void userUnset(string[] properties);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void userAppend(Dictionary<string, object> properties = null);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void userAdd(Dictionary<string, object> properties = null);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void userDelete();
-        //
-        //
-        // [DllImport("__Internal")]
-        // private static extern void setIasOriginalOrderID(string id);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void setAdjustId(string id);
-        //
-        // [DllImport("__Internal")]
-        // private static extern void onAppForeground();
-        //
-        // [DllImport("__Internal")]
-        // private static extern void onAppBackground();
-
+   
         private void _init()
         {
             //替换sdk版本信息
@@ -99,8 +34,7 @@ namespace DataTower
             string jsonStr = R_Utils.Parse2JsonStr(properties);
 
             initSDK(iOSAppId, serverUrl, isDebug, logLevel, jsonStr);
-            // ROIQuerySDK.CallStatic("initSDK", currentContext,appId,channel,isDebug,logLevel,jsonObject);
-
+     
             R_Log.Debug("Editor Log: calling init.");
         }
 
@@ -113,16 +47,20 @@ namespace DataTower
 
         private void _userSet(Dictionary<string, object> properties)
         {
-            // userSet(properties);
+            string jsonStr = R_Utils.Parse2JsonStr(properties);
+            reflectionInvokeWithJsonStr("DTAnalytics", "userSet:", jsonStr);
         }
+
         private void _userSetOnce(Dictionary<string, object> properties)
         {
-            // userSetOnce(properties);
+            string jsonStr = R_Utils.Parse2JsonStr(properties);
+            reflectionInvokeWithJsonStr("DTAnalytics", "userSetOnce:", jsonStr);
         }
         
         private void _userAdd(Dictionary<string, object> properties)
         {
-            // userAdd(properties);
+            string jsonStr = R_Utils.Parse2JsonStr(properties);
+            reflectionInvokeWithJsonStr("DTAnalytics", "userAdd:", jsonStr);
         }
         
         private static void _userUnset(List<string> properties)
@@ -132,16 +70,19 @@ namespace DataTower
         
         private void _userDelete()
         {
-            // userDelete();
+            reflectionInvoke("DTAnalytics", "userDelete:");
         }
         
         private void _userAppend(Dictionary<string, object> properties)
         {
-            // userAppend(properties);
+            string jsonStr = R_Utils.Parse2JsonStr(properties);
+            reflectionInvokeWithJsonStr("DTAnalytics", "userAppend:", jsonStr);
         }
 
         private void _userUniqAppend(Dictionary<string, object> properties)
         {
+            string jsonStr = R_Utils.Parse2JsonStr(properties);
+            reflectionInvokeWithJsonStr("DTAnalytics", "userUniqAppend:", jsonStr);
         }
 
         private void _getDataTowerId(Action<string> callback)
@@ -155,33 +96,31 @@ namespace DataTower
         
         private void _setAccountId(string accountId)
         {
-            // setAccountId(accountId);
+            reflectionInvokeWithPlainStr("DTAnalytics", "setAccountId:", accountId);
             R_Log.Debug("Editor Log: calling _setAccountId.");
         }
 
         private void _setFirebaseAppInstanceId(string id)
         {
-            // setFirebaseAppInstanceId(id);
-            R_Log.Debug("Editor Log: calling _setFirebaseAppInstanceId.");
+            reflectionInvokeWithPlainStr("DTAnalytics", "setFirebaseAppInstanceId:", id);
+            R_Log.Debug("Editor Log: calling setFirebaseAppInstanceId.");
         }
 
         private void _setAppsFlyerId(string id)
         {
-            // setAppsFlyerId(id);
+            reflectionInvokeWithPlainStr("DTAnalytics", "setAppsFlyerId:", id);
             R_Log.Debug("Editor Log: calling _setApps  FlyerId.");
         }
         private void _setKochavaId(string id)
         {
-            // setKochavaId(id);
+            reflectionInvokeWithPlainStr("DTAnalytics", "setKochavaId:", id);
             R_Log.Debug("Editor Log: calling _setKochavaId.");
         }
           private void _setAdjustId(string id)
         {
-            // setAdjustId(id);
+            reflectionInvokeWithPlainStr("DTAnalytics", "setAdjustId:", id);
             R_Log.Debug("Editor Log: calling _setKochavaId.");
         }
-
-
 #endif
     }
 }
