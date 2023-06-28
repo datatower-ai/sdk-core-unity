@@ -69,6 +69,21 @@ namespace DataTower
             return null;
         }
 
+        public static string ParseList2JsonStr(List<string> listStr)
+        {
+            if (listStr == null) return null;
+            try
+            {
+                return Json.Serialize(listStr);
+            }
+            catch (Exception e)
+            {
+                R_Log.Error(e.Message);
+            }
+
+            return null;
+        }
+
         /// <summary>
         ///     将 json 字符串转换成字典
         /// </summary>

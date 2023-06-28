@@ -65,7 +65,9 @@ namespace DataTower
         
         private static void _userUnset(List<string> properties)
         {
-         // userUnset(properties.ToArray());  
+            string jsonStr = R_Utils.ParseList2JsonStr(properties);
+            reflectionInvokeWithJsonStr("DTAnalytics", "userUnset:", jsonStr);
+        //  userUnset(properties.ToArray());  
         }
         
         private void _userDelete()
