@@ -179,23 +179,22 @@ namespace DataTower
             AdMediation mediation, string mediationId, string value, string currency, string precision, string country,
             string entrance = "",Dictionary<string, object> properties = null)
         {
-            // int intPlatform = platformFromString(platform)
+            // int intPlatform = platformFromString(platform);
             // reportPaidWithMediation(id, (int) type, intPlatform, adgroupType, location, seq, (int) mediation, mediationId, value,
             //     currency,
             //     precision, country,  R_Utils.Parse2JsonStr(properties), entrance);
-            R_Log.Debug("Editor Log: calling reportPaid.");
+            // R_Log.Debug("Editor Log: calling reportPaid.");
         }
 
         private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq,AdMediation mediation, string mediationId,  string value,
             string precision, string country, Dictionary<string, object> properties = null)
         {
-            R_Log.Debug("Editor Log: calling reportPaid.");
+            // R_Log.Debug("Editor Log: calling reportPaid.");
         }
 
         private void _reportReturnApp()
         {
         }
-
 #endif
     }
 }
