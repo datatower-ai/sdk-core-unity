@@ -30,7 +30,7 @@ namespace DataTower
         {
             string jsonStr = R_Utils.Parse2JsonStr(properties);
             AndroidJavaObject jsonObject = R_Utils.Parse2JavaJSONObject(jsonStr);
-            DTAnalyticsUtils.CallStatic("trackTimerEnd", eventName, jsonObject);
+            DTAnalyticsUtils.CallStatic("trackTimerEnd:properties:", eventName, jsonObject);
         }
 
 #endif
