@@ -33,7 +33,7 @@ namespace DataTower
         private void _trackTimerEnd(string eventName, Dictionary<string, object> properties)
         {
             string jsonStr = R_Utils.Parse2JsonStr(properties);
-            reflectionInvokeWith2Param("DTAnalyticsUtils", "trackTimerResume:", eventName, jsonStr);
+            reflectionInvokeWith2Param("DTAnalyticsUtils", "trackTimerEnd:properties:", eventName, jsonStr);
             R_Log.Debug("Editor Log: calling trackTimerEnd.");
         }
 #endif
