@@ -62,7 +62,7 @@ namespace DataTower
         /// <param name="price">价格， 如 9.99</param>
         /// <param name="currency">货币，如usd</param>
         /// <param name="properties">自定义属性</param>
-        public void ReportSubscribeSuccess(string originalOrderId, string orderId, string sku, double price,
+        public static void ReportSubscribeSuccess(string originalOrderId, string orderId, string sku, double price,
             string currency, Dictionary<string, object> properties)
         {
             ROIQueryIASReportWrapper.Instace()
