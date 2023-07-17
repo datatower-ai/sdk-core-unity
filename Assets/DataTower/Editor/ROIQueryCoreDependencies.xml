@@ -5,7 +5,7 @@
                  These repos will be searched for all packages specified by
                  androidPackage. -->
            
-            <androidPackage spec="com.lovinjoy:datatowerai-core:2.0.0" />
+            <androidPackage spec="com.lovinjoy:datatowerai-core:2.0.1" />
             
             <!-- The "spec" attribute is *required* and provides the Maven package
                  specification.
@@ -19,7 +19,7 @@
             -->
         </androidPackages>
         <iosPods>
-            <iosPod name="DataTowerAICore" minTargetSdk="11.0" addToAllTargets="true" version = "2.0.0-beta1" >
+            <iosPod name="DataTowerAICore" minTargetSdk="11.0" addToAllTargets="true" version = "2.0.2" >
            <!-- &lt;!&ndash; Set of source URIs to search for this Cocoapod spec. -->
 <!--                 By default Cocoapods will attempt to fetch the pod specs from:-->
 <!--                 * $HOME/.cocoapods/repos-->
