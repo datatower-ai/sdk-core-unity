@@ -66,6 +66,15 @@ namespace ROIQuerySDK.Sample.USER_SET
 
             buttons1[6].onClick.AddListener(delegate
             {
+                print("UserUniqAppend---");
+                var dictionary = new Dictionary<string, object>();
+                dictionary.Add("course", "english");
+                dictionary.Add("course", "math");
+                DTAnalytics.UserUniqAppend(dictionary);
+            });
+
+            buttons1[7].onClick.AddListener(delegate
+            {
                 print("Sample---");
                 SceneManager.LoadSceneAsync("Sample");
             });
