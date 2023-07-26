@@ -19,14 +19,14 @@ namespace DataTower
         /// <summary>
         ///     当前 Unity SDK 版本
         /// </summary>
-        public static readonly string SDK_VERSION = "2.0.2";
+        public static readonly string SDK_VERSION = "2.0.4";
 
-        [Header("DTSDK-v2.0.2")] 
+        [Header("DTSDK-v2.0.4")]
         [Tooltip("应用id, 由后台分配")]
-        public string androidAppId = ""; 
-       
+        public string androidAppId = "";
+
         [Tooltip("由后台分配")] public string iOSAppId = "";
-        
+
         [Tooltip("服务器地址, 由后台分配")]
         public string serverUrl = "";
 
@@ -35,7 +35,7 @@ namespace DataTower
         [Tooltip("是否开启调试，开启将会打印log")] public bool isDebug = true;
 
         [Tooltip("log 级别，默认为 VERBOSE，仅在 isDebug = true 有效")] public LogLevel logLevel = LogLevel.DEFAULT;
-        
+
         #region internal use
 
         private static DTSDKApi raInstance;
@@ -57,7 +57,7 @@ namespace DataTower
                 return;
             }
 
-            DTAnalytics.Init(androidAppId, iOSAppId, serverUrl, channel, SDK_VERSION, isDebug, (int) logLevel);
+            DTAnalytics.Init(androidAppId, iOSAppId, serverUrl, channel, SDK_VERSION, isDebug, (int)logLevel);
         }
 
         #endregion
