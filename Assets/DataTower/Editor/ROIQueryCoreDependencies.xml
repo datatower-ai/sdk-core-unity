@@ -5,7 +5,7 @@
                  These repos will be searched for all packages specified by
                  androidPackage. -->
            
-            <androidPackage spec="com.lovinjoy:datatowerai-core:2.0.2" />
+            <androidPackage spec="com.lovinjoy:datatowerai-core:2.0.3" />
             
             <!-- The "spec" attribute is *required* and provides the Maven package
                  specification.
