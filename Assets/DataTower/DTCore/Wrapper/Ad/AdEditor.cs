@@ -137,7 +137,9 @@ namespace DataTower
         }
 
         private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
-            int errorCode, string errorMessage, string entrance, Dictionary<string, object> properties)
+            int errorCode, string errorMessage, string entrance, Dictionary<string, object> properties, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             R_Log.Debug("Editor Log: calling reportShowFailed.");
         }

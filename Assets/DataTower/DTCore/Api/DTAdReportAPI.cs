@@ -93,7 +93,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            DTAdReportWrapper.Instance.ReportLoadBegin(id, type, platform, seq, properties);
+            DTAdReportWrapper.Instance.ReportLoadBegin(id, type, platform, seq, properties, mediation, mediationId);
         }
 
 
@@ -117,7 +117,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportLoadEnd(id, type, platform, duration, result, seq, errorCode, errorMessage,
-                properties);
+                properties, mediation, mediationId);
         }
 
 
@@ -138,7 +138,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            DTAdReportWrapper.Instance.ReportToShow(id, type, platform, location, seq, entrance, properties);
+            DTAdReportWrapper.Instance.ReportToShow(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
 
@@ -159,7 +159,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            DTAdReportWrapper.Instance.ReportShow(id, type, platform, location, seq, entrance, properties);
+            DTAdReportWrapper.Instance.ReportShow(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
 
@@ -184,7 +184,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportShowFailed(id, type, platform, location, seq, errorCode, errorMessage,
-                entrance, properties);
+                entrance, properties, mediation, mediationId);
         }
 
 
@@ -205,7 +205,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            DTAdReportWrapper.Instance.ReportClose(id, type, platform, location, seq, entrance, properties);
+            DTAdReportWrapper.Instance.ReportClose(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
 
@@ -226,7 +226,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            DTAdReportWrapper.Instance.ReportClick(id, type, platform, location, seq, entrance, properties);
+            DTAdReportWrapper.Instance.ReportClick(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
 
@@ -247,7 +247,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            DTAdReportWrapper.Instance.ReportRewarded(id, type, platform, location, seq, entrance, properties);
+            DTAdReportWrapper.Instance.ReportRewarded(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
 
@@ -268,7 +268,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            DTAdReportWrapper.Instance.ReportLeftApp(id, type, platform, location, seq, entrance, properties);
+            DTAdReportWrapper.Instance.ReportLeftApp(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
 
@@ -290,7 +290,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportConversionByClick(id, type, platform, location, seq, entrance,
-                properties);
+                properties, mediation, mediationId);
         }
 
         /// <summary>
@@ -311,7 +311,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportConversionByLeftApp(id, type, platform, location, seq, entrance,
-                properties);
+                properties, mediation, mediationId);
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportConversionByRewarded(id, type, platform, location, seq, entrance,
-                properties);
+                properties, mediation, mediationId);
         }
 
 
@@ -358,7 +358,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportPaid(id, type, platform, location, seq, value, currency, precision,
-                entrance, properties);
+                entrance, properties, mediation, mediationId);
         }
 
 
