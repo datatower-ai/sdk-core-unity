@@ -74,97 +74,123 @@ namespace DataTower
 
 
         private void _reportLoadBegin(string id, AdType type, AdPlatform platform, string seq,
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportLoadBegin", id, GetType(type), GetPlatform(platform), seq,
-                dicToMap(properties));
+                dicToMap(properties), GetMediation(mediation), mediationId);
         }
 
         private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration,  bool result, string seq,
-            int errorCode, string errorMessage,Dictionary<string, object> properties = null)
+            int errorCode, string errorMessage,Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportLoadEnd", id, GetType(type), GetPlatform(platform),duration,
-                result, seq,errorCode,errorMessage,dicToMap(properties));
+                result, seq,errorCode,errorMessage,dicToMap(properties), GetMediation(mediation), mediationId);
         }
 
 
         private void _reportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
+            string entrance = "", Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportToShow", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportShow(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
+            string entrance = "", Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportShow", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
-            int errorCode, string errorMessage, string entrance, Dictionary<string, object> properties)
+            int errorCode, string errorMessage, string entrance, Dictionary<string, object> properties, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportShowFailed", id, GetType(type), GetPlatform(platform), location, seq,
-                errorCode, errorMessage, dicToMap(properties), entrance);
+                errorCode, errorMessage, dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportClose(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
+            string entrance = "", Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportClose", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportClick(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
+            string entrance = "", Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportClick", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
+            string entrance = "", Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportRewarded", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
+            string entrance = "", Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportLeftApp", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportConversionByClick(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null)
+            string entrance = "", Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportConversionByClick", id, GetType(type), GetPlatform(platform), location,
-                seq, dicToMap(properties), entrance);
+                seq, dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportConversionByLeftApp(string id, AdType type, AdPlatform platform, string location,
-            string seq, string entrance = "", Dictionary<string, object> properties = null)
+            string seq, string entrance = "", Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportConversionByLeftApp", id, GetType(type), GetPlatform(platform), location,
-                seq, dicToMap(properties), entrance);
+                seq, dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
     
 
         private void _reportConversionByRewarded(string id, AdType type, AdPlatform platform, string location,
-            string seq, string entrance = "", Dictionary<string, object> properties = null)
+            string seq, string entrance = "", Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportConversionByRewarded", id, GetType(type), GetPlatform(platform),
-                location, seq, dicToMap(properties), entrance);
+                location, seq, dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq, string value,
-            string currency, string precision, string entrance = "", Dictionary<string, object> properties = null)
+            string currency, string precision, string entrance = "", Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             DTAdReport.CallStatic("reportPaid", id, GetType(type), GetPlatform(platform), location, seq, value,
-                currency, precision, dicToMap(properties), entrance);
+                currency, precision, dicToMap(properties), entrance, GetMediation(mediation), mediationId);
         }
 
 

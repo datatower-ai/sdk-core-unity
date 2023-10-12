@@ -77,83 +77,107 @@ namespace DataTower
         }
         
         private void _reportLoadBegin(string id, AdType type, AdPlatform platform,string seq,Dictionary<string, object> properties
- = null)
+ = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportLoadBegin(id, (int) type, (int) platform,  seq, R_Utils.Parse2JsonStr(properties));
             R_Log.Debug("Editor Log: calling reportEntrance.seq:" + seq);
         }
 
         private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration,  bool result, string seq,
-            int errorCode, string errorMessage,Dictionary<string, object> properties = null)
+            int errorCode, string errorMessage,Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportLoadEnd(id,(int) type, (int) platform,  duration, result,seq, errorCode, errorMessage,
                 R_Utils.Parse2JsonStr(properties));
         }
         private void _reportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "",Dictionary<string, object> properties = null)
+            string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportToShow(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportToShow.");
         }
 
         private void _reportShow(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "",Dictionary<string, object> properties = null)
+            string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportShow(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportShow.");
         }
         
         private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq, 
-            int errorCode, string errorMessage, string entrance, Dictionary<string, object> properties)
+            int errorCode, string errorMessage, string entrance, Dictionary<string, object> properties, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportAdShowFail(id,(int) type, (int) platform, location, seq, errorCode,errorMessage,R_Utils.Parse2JsonStr(properties),entrance);
             R_Log.Debug("Editor Log: calling reportShow Fail.");
         }
 
         private void _reportImpression(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "",Dictionary<string, object> properties = null)
+            string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportImpression(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportImpression.");
         }
 
         private void _reportClose(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "",Dictionary<string, object> properties = null)
+            string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportClose(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportClose.");
         }
 
         private void _reportClick(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "",Dictionary<string, object> properties = null)
+            string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportClick(id, (int) type, (int) platform, location, seq,  R_Utils.Parse2JsonStr(properties), entrance);
             R_Log.Debug("Editor Log: calling reportClick.");
         }
 
         private void _reportRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "",Dictionary<string, object> properties = null)
+            string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportRewarded(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportRewarded.");
         }
 
         private void _reportLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "",Dictionary<string, object> properties = null)
+            string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportLeftApp(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportLeftApp.");
         }
 
         private void _reportConversionByClick(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "",Dictionary<string, object> properties = null)
+            string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportConversionByClick(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportConversionByClick.");
         }
 
         private void _reportConversionByLeftApp(string id, AdType type, AdPlatform platform, string location,
-            string seq, string entrance = "",Dictionary<string, object> properties = null)
+            string seq, string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportConversionByLeftApp(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportConversionByLeftApp.");
@@ -161,14 +185,18 @@ namespace DataTower
 
 
         private void _reportConversionByRewarded(string id, AdType type, AdPlatform platform, string location,
-            string seq, string entrance = "",Dictionary<string, object> properties = null)
+            string seq, string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportConversionByRewarded(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportConversionByRewarded.");
         }
 
         private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq, string value,
-            string currency, string precision, string entrance = "",Dictionary<string, object> properties = null)
+            string currency, string precision, string entrance = "",Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
             reportPaid(id, (int) type, (int) platform, location, seq, value, currency, precision, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportPaid.");
