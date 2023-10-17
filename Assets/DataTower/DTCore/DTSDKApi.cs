@@ -19,9 +19,9 @@ namespace DataTower
         /// <summary>
         ///     当前 Unity SDK 版本
         /// </summary>
-        public static readonly string SDK_VERSION = "2.0.5";
+        public static readonly string SDK_VERSION = "2.0.6";
 
-        [Header("DTSDK-v2.0.5")]
+        [Header("DTSDK-v2.0.6")]
         [Tooltip("应用id, 由后台分配")]
         public string androidAppId = "";
 
