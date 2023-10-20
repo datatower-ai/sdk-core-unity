@@ -13,98 +13,124 @@ namespace DataTower
 
 
         public void ReportLoadBegin(string id, AdType type, AdPlatform platform, string seq,
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportLoadBegin(id, type, platform, seq, properties);
+            _reportLoadBegin(id, type, platform, seq, properties, mediation, mediationId);
         }
 
 
         public void ReportLoadEnd(string id, AdType type, AdPlatform platform, long duration, bool result, string seq,
             int errorCode = 0, string errorMessage = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportLoadEnd(id, type, platform, duration, result, seq, errorCode, errorMessage, properties);
+            _reportLoadEnd(id, type, platform, duration, result, seq, errorCode, errorMessage, properties, mediation, mediationId);
         }
 
         public void ReportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportToShow(id, type, platform, location, seq, entrance, properties);
+            _reportToShow(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
         
         public void ReportShow(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportShow(id, type, platform, location, seq, entrance, properties);
+            _reportShow(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
         public void ReportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
             int errorCode,
             string errorMessage,
             string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportShowFailed(id, type, platform, location, seq, errorCode, errorMessage, entrance, properties);
+            _reportShowFailed(id, type, platform, location, seq, errorCode, errorMessage, entrance, properties, mediation, mediationId);
         }
 
 
         public void ReportClose(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportClose(id, type, platform, location, seq, entrance, properties);
+            _reportClose(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
         public void ReportClick(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportClick(id, type, platform, location, seq, entrance, properties);
+            _reportClick(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
         public void ReportRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportRewarded(id, type, platform, location, seq, entrance, properties);
+            _reportRewarded(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
         public void ReportLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportLeftApp(id, type, platform, location, seq, entrance, properties);
+            _reportLeftApp(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
         public void ReportConversionByClick(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportConversionByClick(id, type, platform, location, seq, entrance, properties);
+            _reportConversionByClick(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
         public void ReportConversionByLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportConversionByLeftApp(id, type, platform, location, seq, entrance, properties);
+            _reportConversionByLeftApp(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
 
         public void ReportConversionByRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportConversionByRewarded(id, type, platform, location, seq, entrance, properties);
+            _reportConversionByRewarded(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
         public void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq, string value,
             string currency, string precision, string entrance = "",
-            Dictionary<string, object> properties = null)
+            Dictionary<string, object> properties = null, 
+            AdMediation mediation = AdMediation.IDLE, 
+            string mediationId = "")
         {
-            _reportPaid(id, type, platform, location, seq, value, currency, precision, entrance, properties);
+            _reportPaid(id, type, platform, location, seq, value, currency, precision, entrance, properties, mediation, mediationId);
         }
 
         public void ReportPaid(string id, AdType type, string platform, string adgroupName, string adgroupType,

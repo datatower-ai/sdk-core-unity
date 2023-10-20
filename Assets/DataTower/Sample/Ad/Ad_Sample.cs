@@ -20,7 +20,8 @@ public class Ad_Sample : MonoBehaviour
         
         buttons1[0].onClick.AddListener(delegate { 
             R_Log.Debug("ReportLoadBegin");
-            DTAdReport.ReportLoadBegin("0130", AdType.INTERSTITIAL, AdPlatform.ADMOB, seq);
+            DTAdReport.ReportLoadBegin("0130", AdType.INTERSTITIAL, AdPlatform.ADMOB, seq, 
+                mediation: AdMediation.MAX, mediationId: "mediation_id_max_123");
         });
 
         buttons1[1].onClick.AddListener(delegate { 
