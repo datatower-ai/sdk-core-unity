@@ -16,6 +16,7 @@
  */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -174,6 +175,95 @@ namespace DataTower
                    || obj is double
                    || obj is decimal
                    || obj is float;
+        }
+
+        public static AndroidJavaObject ParseDic2Map(Dictionary<string, object> dictionary)
+        {
+            if (dictionary == null)
+            {
+                return new AndroidJavaObject("java.util.HashMap");
+            }
+
+            AndroidJavaObject map = new AndroidJavaObject("java.util.HashMap");
+            foreach (KeyValuePair<string, object> pair in dictionary)
+            {
+                map.Call<string>("put", pair.Key, pair.Value);
+            }
+
+            return map;
+        }
+
+        private static Regex keyRegex = new Regex("^[a-zA-Z][a-zA-Z\\d_#]{0,49}", RegexOptions.IgnoreCase);
+        public static void ValidateJsonDictionary(Dictionary<string, object> dictionary)
+        {
+            if (dictionary == null) return;
+            
+            // json string check
+            if (Parse2JsonStr(dictionary) == null)
+            {
+                throw new ArgumentException($"Json check (iOS) failed (cannot convert to json string) for @{dictionary}");
+            }
+            
+            // key & value check
+            foreach (KeyValuePair<string, object> entry in dictionary)
+            {
+                // check for key
+                ValidateJsonKey(entry.Key);
+                
+                // check for value
+                ValidateJsonValue(entry.Value, entry.Key);
+            }
+        }
+
+        private static void ValidateJsonKey(string key)
+        {
+            if (key.Length == 0)
+            {
+                throw new ArgumentException($"Json check failed (key is empty)");
+            }
+
+            if (key.StartsWith("#") || key.StartsWith("$"))
+            {
+                throw new ArgumentException($"Json check failed (key cannot starts with '#' or '$') for @{key}");
+            }
+
+            if (!keyRegex.IsMatch(key))
+            {
+                throw new ArgumentException(
+                    $"Json check failed (key must starts with english letter, and only contains letter, number, and '_', with maximum length 50) for @{key}");
+            }
+        }
+        
+        private static void ValidateJsonValue(object value, string key)
+        {
+            if (!(value is string || IsNumeric(value) || value is bool || value is DateTime || value is ICollection ||
+                  value is IDictionary || value == null))
+            {
+                throw new ArgumentException(
+                    $"Property value must be type String, Number, Boolean, Date, List, Dictionary or null. Invalid pair: \"@{key}\" = @{value}");
+            }
+
+            if (IsNumeric(value) && value != null)
+            {
+                var d = double.Parse(value.ToString());
+                if (d > 9999999999999.999 || d < -9999999999999.999)
+                {
+                    throw new ArgumentException($"The number value (@{value}) is invalid for key (@{key}).");
+                }
+            }
+        }
+        
+        public static void ValidateListOnlyProp(Dictionary<string, object> properties)
+        {
+            foreach (KeyValuePair<string, object> entry in properties)
+            {
+                ValidateJsonKey(entry.Key);
+
+                if (!(entry.Value is ICollection))
+                {
+                    throw new ArgumentException($"Given properties is not valid, only subtype of ICollection is acceptable. Given: \"@{entry.Key}\" = @{entry.Value}");
+                }
+            }
         }
     }
 }

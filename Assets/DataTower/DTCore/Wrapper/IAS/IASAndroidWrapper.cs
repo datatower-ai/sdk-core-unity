@@ -64,7 +64,7 @@ namespace DataTower.Wrapper.IAS
         {
             R_Log.Debug(
                 $"_reportSubscribeSuccess originalOrderId:@{originalOrderId}, orderId:@{orderId}, sku:@{sku}, price:@{price}, currency:@{currency}, properties:@{properties}");
-            DTIASReport.CallStatic("reportSubscribeSuccess", originalOrderId, orderId, sku, price, currency, properties);
+            DTIASReport.CallStatic("reportSubscribeSuccess", originalOrderId, orderId, sku, price, currency, R_Utils.ParseDic2Map(properties));
         }
 #endif
     }

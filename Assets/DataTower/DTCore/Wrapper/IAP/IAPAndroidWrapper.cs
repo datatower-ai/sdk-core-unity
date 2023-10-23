@@ -47,7 +47,7 @@ namespace DataTower
         private void _reportPurchaseSuccess(string order, string sku, double price, string currency,
             Dictionary<string, object> properties = null)
         {
-            DTIAPReport.CallStatic("reportPurchaseSuccess", order, sku, price, currency, properties);
+            DTIAPReport.CallStatic("reportPurchaseSuccess", order, sku, price, currency, R_Utils.ParseDic2Map(properties));
         }
 
      private string _generateUUID()

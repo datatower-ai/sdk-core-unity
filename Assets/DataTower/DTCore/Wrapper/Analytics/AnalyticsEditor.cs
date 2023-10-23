@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DataTower
@@ -15,22 +16,26 @@ namespace DataTower
         private void _track(string eventName, Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling track.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
 
         private void _userSet(Dictionary<string, object> properties)
         {
             R_Log.Debug("Editor Log: calling _userSet.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _userSetOnce(Dictionary<string, object> properties)
         {
             R_Log.Debug("Editor Log: calling _userSetOnce.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _userAdd(Dictionary<string, object> properties)
         {
             R_Log.Debug("Editor Log: calling _userAdd.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private static void _userUnset(List<string> properties)
@@ -46,15 +51,18 @@ namespace DataTower
         private void _userAppend(Dictionary<string, object> properties)
         {
             R_Log.Debug("Editor Log: calling _userAppend.");
+            R_Utils.ValidateListOnlyProp(properties);
         }
         
         private void _userUniqAppend(Dictionary<string, object> properties)
         {
             R_Log.Debug("Editor Log: calling _userUniqAppend.");
+            R_Utils.ValidateListOnlyProp(properties);
         }
 
-        private void _getDataTowerId(AndroidJavaProxy callbackJavaProxy)
+        private void _getDataTowerId(Action<string> callback)
         {
+            callback("testDtId");
         }
 
         private void _setAccountId(string accountId)

@@ -24,6 +24,7 @@ namespace DataTower
         private void _trackTimerEnd(string eventName, Dictionary<string, object> properties)
         {
             R_Log.Debug("Editor Log: calling trackTimerEnd.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
 #endif

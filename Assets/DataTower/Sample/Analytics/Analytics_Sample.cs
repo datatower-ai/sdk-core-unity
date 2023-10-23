@@ -31,11 +31,20 @@ public class Analytics_Sample : MonoBehaviour
                     list.Add(3);
                     dictionary.Add("list", list);
 
-                    print("Track an Event.");
+                    print("Track an Event. (after GetDataTowerId)");
                     DTAnalytics.Track("test", dictionary);
                 }
                 );
-
+                
+            var dictionary = new Dictionary<string, object>();
+            dictionary.Add("login_pro_1", "中国");
+            var list = new List<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            dictionary.Add("list", list);
+            print("Track an Event.");
+            DTAnalytics.Track("test2", dictionary);
         });
         buttons2[1].onClick.AddListener(delegate { DTAnalytics.SetAccountId("user_account_id_2200"); });
         buttons2[2].onClick.AddListener(delegate { DTAnalytics.SetFirebaseAppInstanceId("fire_base_id_2200"); });
