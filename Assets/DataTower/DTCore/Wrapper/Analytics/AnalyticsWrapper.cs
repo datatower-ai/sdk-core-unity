@@ -116,6 +116,9 @@ namespace DataTower
 
         public void GetDataTowerQueryId(Action<string> callback)
         {
+#if UNITY_STANDALONE || UNITY_EDITOR
+            _getDataTowerId(callback);
+#endif
 #if UNITY_ANDROID && !(UNITY_EDITOR)
             _getDataTowerId(new DTIdCallback(callback));
 #endif

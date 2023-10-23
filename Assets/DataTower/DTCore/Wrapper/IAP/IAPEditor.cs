@@ -41,6 +41,7 @@ namespace DataTower
             Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportPurchaseSuccess.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
 

@@ -17,22 +17,6 @@ namespace DataTower
             
         }
 
-    public static AndroidJavaObject dicToMap(Dictionary<string, object> dictionary)
-    {
-        if (dictionary == null)
-        {
-            return new AndroidJavaObject("java.util.HashMap");
-        }
-
-        AndroidJavaObject map = new AndroidJavaObject("java.util.HashMap");
-        foreach (KeyValuePair<string, object> pair in dictionary)
-        {
-            map.Call<string>("put", pair.Key, pair.Value);
-        }
-
-        return map;
-    }
-
         private void _reportEntrance(string order, string sku, double price, string currency,  string seq, string placement
  = "")
         {
@@ -63,7 +47,7 @@ namespace DataTower
         private void _reportPurchaseSuccess(string order, string sku, double price, string currency,
             Dictionary<string, object> properties = null)
         {
-            DTIAPReport.CallStatic("reportPurchaseSuccess", order, sku, price, currency, dicToMap(properties));
+            DTIAPReport.CallStatic("reportPurchaseSuccess", order, sku, price, currency, R_Utils.ParseDic2Map(properties));
         }
 
      private string _generateUUID()

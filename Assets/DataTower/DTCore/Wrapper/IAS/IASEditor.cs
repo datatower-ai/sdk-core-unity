@@ -50,6 +50,7 @@ namespace DataTower.Wrapper.IAS
         {
             R_Log.Debug(
                 $"_reportSubscribeSuccess originalOrderId:@{originalOrderId}, orderId:@{orderId}, sku:@{sku}, price:@{price}, currency:@{currency}, properties:@{properties}");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 #endif
     }

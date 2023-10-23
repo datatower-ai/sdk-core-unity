@@ -77,14 +77,14 @@ namespace DataTower
             Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportLoadBegin", id, GetType(type), GetPlatform(platform), seq,
-                dicToMap(properties));
+                R_Utils.ParseDic2Map(properties));
         }
 
         private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration,  bool result, string seq,
             int errorCode, string errorMessage,Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportLoadEnd", id, GetType(type), GetPlatform(platform),duration,
-                result, seq,errorCode,errorMessage,dicToMap(properties));
+                result, seq,errorCode,errorMessage,R_Utils.ParseDic2Map(properties));
         }
 
 
@@ -92,63 +92,63 @@ namespace DataTower
             string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportToShow", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance);
         }
 
         private void _reportShow(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportShow", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance);
         }
 
         private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
             int errorCode, string errorMessage, string entrance, Dictionary<string, object> properties)
         {
             DTAdReport.CallStatic("reportShowFailed", id, GetType(type), GetPlatform(platform), location, seq,
-                errorCode, errorMessage, dicToMap(properties), entrance);
+                errorCode, errorMessage, R_Utils.ParseDic2Map(properties), entrance);
         }
 
         private void _reportClose(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportClose", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance);
         }
 
         private void _reportClick(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportClick", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance);
         }
 
         private void _reportRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportRewarded", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance);
         }
 
         private void _reportLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportLeftApp", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance);
         }
 
         private void _reportConversionByClick(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportConversionByClick", id, GetType(type), GetPlatform(platform), location,
-                seq, dicToMap(properties), entrance);
+                seq, R_Utils.ParseDic2Map(properties), entrance);
         }
 
         private void _reportConversionByLeftApp(string id, AdType type, AdPlatform platform, string location,
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportConversionByLeftApp", id, GetType(type), GetPlatform(platform), location,
-                seq, dicToMap(properties), entrance);
+                seq, R_Utils.ParseDic2Map(properties), entrance);
         }
 
     
@@ -157,14 +157,14 @@ namespace DataTower
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportConversionByRewarded", id, GetType(type), GetPlatform(platform),
-                location, seq, dicToMap(properties), entrance);
+                location, seq, R_Utils.ParseDic2Map(properties), entrance);
         }
 
         private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq, string value,
             string currency, string precision, string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportPaid", id, GetType(type), GetPlatform(platform), location, seq, value,
-                currency, precision, dicToMap(properties), entrance);
+                currency, precision, R_Utils.ParseDic2Map(properties), entrance);
         }
 
 
@@ -173,7 +173,7 @@ namespace DataTower
             string country, string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReport.CallStatic("reportPaid", id, GetType(type), platform,adgroupName, adgroupType, location, seq,
-                GetMediation(mediation), mediationId, value, currency, precision, country, dicToMap(properties),
+                GetMediation(mediation), mediationId, value, currency, precision, country, R_Utils.ParseDic2Map(properties),
                 entrance);
         }
 

@@ -24,6 +24,7 @@ namespace ROIQuerySDK.Sample.USER_SET
                 dictionary.Add("country", "中国");
                 dictionary.Add("course", "history");
                 dictionary.Add("user_password", "12138");
+                dictionary.Add("user_null", null);
                 DTAnalytics.UserSet(dictionary);
             });
             buttons1[1].onClick.AddListener(delegate
@@ -59,8 +60,9 @@ namespace ROIQuerySDK.Sample.USER_SET
             {
                 print("UserAppend---");
                 var dictionary = new Dictionary<string, object>();
-
-                dictionary.Add("course", "english");
+                var lst = new List<string>(1);
+                lst.Add("english");
+                dictionary.Add("course", lst);
                 DTAnalytics.UserAppend(dictionary);
             });
 
@@ -68,8 +70,10 @@ namespace ROIQuerySDK.Sample.USER_SET
             {
                 print("UserUniqAppend---");
                 var dictionary = new Dictionary<string, object>();
-                dictionary.Add("course", "english");
-                dictionary.Add("course", "math");
+                var lst = new List<string>(2);
+                lst.Add("math");
+                lst.Add("english");
+                dictionary.Add("course", lst);
                 DTAnalytics.UserUniqAppend(dictionary);
             });
 

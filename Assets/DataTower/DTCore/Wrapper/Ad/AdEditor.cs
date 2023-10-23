@@ -14,18 +14,21 @@ namespace DataTower
             Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling report load begin.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration, bool result, string seq,
             int errorCode, string errorMessage, Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling report load end.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportToShow.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
 
@@ -33,42 +36,49 @@ namespace DataTower
             string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportShow.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportClose(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportClose.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportClick(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportClick.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportRewarded.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportLeftApp.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportConversionByClick(string id, AdType type, AdPlatform platform, string location, string seq,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportConversionByClick.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportConversionByLeftApp(string id, AdType type, AdPlatform platform, string location,
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportConversionByLeftApp.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
 
@@ -76,12 +86,14 @@ namespace DataTower
             string seq, string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportConversionByRewarded.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq, string value,
             string currency, string precision, string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportPaid.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
 
@@ -91,6 +103,7 @@ namespace DataTower
             string entrance = "", Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportPaid.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -98,6 +111,7 @@ namespace DataTower
             string precision, string country, Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling reportPaid.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private string _generateUUID()
@@ -116,6 +130,7 @@ namespace DataTower
             int errorCode, string errorMessage, string entrance, Dictionary<string, object> properties)
         {
             R_Log.Debug("Editor Log: calling reportShowFailed.");
+            R_Utils.ValidateJsonDictionary(properties);
         }
 
         private void _reportReturnApp()
