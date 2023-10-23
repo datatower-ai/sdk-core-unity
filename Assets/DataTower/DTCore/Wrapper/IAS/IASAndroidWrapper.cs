@@ -14,6 +14,22 @@ namespace DataTower.Wrapper.IAS
                     
                 }
 
+    public static AndroidJavaObject dicToMap(Dictionary<string, object> dictionary)
+    {
+        if (dictionary == null)
+        {
+            return new AndroidJavaObject("java.util.HashMap");
+        }
+
+        AndroidJavaObject map = new AndroidJavaObject("java.util.HashMap");
+        foreach (KeyValuePair<string, object> pair in dictionary)
+        {
+            map.Call<string>("put", pair.Key, pair.Value);
+        }
+
+        return map;
+    }
+
             private void _reportToShow(string seq, string placement, string entrance)
             {
                 R_Log.Debug($"_reportToShow seq:@{seq},placement :@{placement} , entrance: @{entrance}");
@@ -64,7 +80,7 @@ namespace DataTower.Wrapper.IAS
         {
             R_Log.Debug(
                 $"_reportSubscribeSuccess originalOrderId:@{originalOrderId}, orderId:@{orderId}, sku:@{sku}, price:@{price}, currency:@{currency}, properties:@{properties}");
-            DTIASReport.CallStatic("reportSubscribeSuccess", originalOrderId, orderId, sku, price, currency, properties);
+            DTIASReport.CallStatic("reportSubscribeSuccess", originalOrderId, orderId, sku, price, currency, dicToMap(properties));
         }
 #endif
     }
