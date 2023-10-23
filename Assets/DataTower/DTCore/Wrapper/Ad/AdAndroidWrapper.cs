@@ -79,7 +79,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportLoadBegin", id, GetType(type), GetPlatform(platform), seq,
-                dicToMap(properties));
+                R_Utils.ParseDic2Map(properties), GetMediation(mediation), mediationId);
         }
 
         private void _reportLoadEnd(string id, AdType type, AdPlatform platform, long duration,  bool result, string seq,
@@ -88,7 +88,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportLoadEnd", id, GetType(type), GetPlatform(platform),duration,
-                result, seq,errorCode,errorMessage,dicToMap(properties));
+                result, seq,errorCode,errorMessage,R_Utils.ParseDic2Map(properties), GetMediation(mediation), mediationId);
         }
 
 
@@ -98,7 +98,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportToShow", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportShow(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -107,7 +107,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportShow", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -116,7 +116,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportShowFailed", id, GetType(type), GetPlatform(platform), location, seq,
-                errorCode, errorMessage, dicToMap(properties), entrance);
+                errorCode, errorMessage, R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportClose(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -125,7 +125,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportClose", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportClick(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -134,7 +134,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportClick", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -143,7 +143,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportRewarded", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -152,7 +152,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportLeftApp", id, GetType(type), GetPlatform(platform), location, seq,
-                dicToMap(properties), entrance);
+                R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportConversionByClick(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -161,7 +161,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportConversionByClick", id, GetType(type), GetPlatform(platform), location,
-                seq, dicToMap(properties), entrance);
+                seq, R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportConversionByLeftApp(string id, AdType type, AdPlatform platform, string location,
@@ -170,7 +170,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportConversionByLeftApp", id, GetType(type), GetPlatform(platform), location,
-                seq, dicToMap(properties), entrance);
+                seq, R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
     
@@ -181,7 +181,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportConversionByRewarded", id, GetType(type), GetPlatform(platform),
-                location, seq, dicToMap(properties), entrance);
+                location, seq, R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
         private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq, string value,
@@ -190,7 +190,7 @@ namespace DataTower
             string mediationId = "")
         {
             DTAdReport.CallStatic("reportPaid", id, GetType(type), GetPlatform(platform), location, seq, value,
-                currency, precision, dicToMap(properties), entrance);
+                currency, precision, R_Utils.ParseDic2Map(properties), entrance, GetMediation(mediation), mediationId);
         }
 
 
@@ -200,7 +200,7 @@ namespace DataTower
         {
             DTAdReport.CallStatic("reportPaid", id, GetType(type), platform,adgroupName, adgroupType, location, seq,
                 GetMediation(mediation), mediationId, value, currency, precision, country, R_Utils.ParseDic2Map(properties),
-                entrance);
+                entrance, GetMediation(mediation), mediationId);
         }
 
          private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq,AdMediation mediation, string mediationId,  string value,
