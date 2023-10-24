@@ -4,8 +4,6 @@ namespace DataTower
 {
     public enum LogLevel
     {
-        DEFAULT = 2,
-        VERBOSE = 2,
         DEBUG = 3,
         INFO = 4,
         WARN = 5,

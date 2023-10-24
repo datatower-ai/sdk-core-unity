@@ -79,7 +79,7 @@ namespace DataTower.Wrapper.IAS
         private void _reportSubscribeSuccess(string originalOrderId, string orderId, string sku, double price,
             string currency, Dictionary<string, object> properties)
         {
- 
+             R_Log.Debug("not implemented");
         }
 #endif
     }
