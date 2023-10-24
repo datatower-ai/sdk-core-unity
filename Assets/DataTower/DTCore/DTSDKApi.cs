@@ -32,9 +32,9 @@ namespace DataTower
 
         [Tooltip("渠道(只有Android平台生效)")] public string channel = "";
 
-        [Tooltip("是否开启调试，开启将会打印log")] public bool isDebug = true;
+        [Tooltip("是否开启调试，开启将会打印log")] public bool isDebug = false;
 
-        [Tooltip("log 级别，默认为 VERBOSE，仅在 isDebug = true 有效")] public LogLevel logLevel = LogLevel.DEFAULT;
+        [Tooltip("log 级别，默认为 VERBOSE，仅在 isDebug = true 有效")] public LogLevel logLevel = LogLevel.ERROR;
 
         #region internal use
 

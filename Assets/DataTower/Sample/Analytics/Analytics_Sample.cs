@@ -30,12 +30,13 @@ public class Analytics_Sample : MonoBehaviour
                     list.Add(2);
                     list.Add(3);
                     dictionary.Add("list", list);
+                    dictionary.Add("number", 1);
 
                     print("Track an Event. (after GetDataTowerId)");
                     DTAnalytics.Track("test", dictionary);
                 }
                 );
-                
+
             var dictionary = new Dictionary<string, object>();
             dictionary.Add("login_pro_1", "中国");
             var list = new List<int>();

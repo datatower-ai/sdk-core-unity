@@ -7,63 +7,63 @@ namespace DataTower
     {
 #if UNITY_IOS && !(UNITY_EDITOR)
         [DllImport("__Internal")]
-        private static extern void reportLoadBegin(string id, int type, int platform, string seq, string properties);
+        private static extern void reportLoadBegin(string id, int type, int platform, string seq, int mediation, string mediationId, string properties);
         
         
         [DllImport("__Internal")]
-        private static extern void reportLoadEnd(string id, int type, int platform, long duration, bool result, string seq, int errorCode, string errorMessage, string properties);
+        private static extern void reportLoadEnd(string id, int type, int platform, long duration, bool result, string seq, int mediation, string mediationId, int errorCode, string errorMessage, string properties);
         
         
         [DllImport("__Internal")]
-        private static extern void reportShowFailed(string id, int type, int platform, string location, string seq, int errorCode, string errorMessage, string entrance, string properties);
+        private static extern void reportShowFailed(string id, int type, int platform, string location, string seq, int mediation, string mediationId, int errorCode, string errorMessage, string entrance, string properties);
         
         [DllImport("__Internal")]
-        private static extern void reportToShow(string id, int type, int platform, string location, string seq,
+        private static extern void reportToShow(string id, int type, int platform, string location, string seq,int mediation, string mediationId, 
             string properties,string entrance);
         
         [DllImport("__Internal")]
         private static extern void reportShow(string id, int type, int platform, string location, string seq,
-            string properties,string entrance);
+            int mediation, string mediationId, string properties,string entrance);
         
         [DllImport("__Internal")]
-        private static extern void reportAdShowFail(string id, int type, int platform, string location, string seq,
+        private static extern void reportAdShowFail(string id, int type, int platform, string location, string seq,int mediation, string mediationId, 
             int errorCode, string errorMessage,string properties,string entrance);
         
         [DllImport("__Internal")]
-        private static extern void reportImpression(string id, int type, int platform, string location, string seq,
+        private static extern void reportImpression(string id, int type, int platform, string location, string seq,int mediation, string mediationId, 
             string properties,string entrance);
         
         [DllImport("__Internal")]
         private static extern void reportClose(string id, int type, int platform, string location, string seq,
-            string properties,string entrance);
+            int mediation, string mediationId, string properties,string entrance);
         
         [DllImport("__Internal")]
         private static extern void reportClick(string id, int type, int platform, string location, string seq,
+            int mediation, string mediationId, string properties,string entrance);
+        
+        [DllImport("__Internal")]
+        private static extern void reportRewarded(string id, int type, int platform, string location, string seq,int mediation, string mediationId, 
             string properties,string entrance);
         
         [DllImport("__Internal")]
-        private static extern void reportRewarded(string id, int type, int platform, string location, string seq,
-            string properties,string entrance);
-        
-        [DllImport("__Internal")]
-        private static extern void reportLeftApp(string id, int type, int platform, string location, string seq,
+        private static extern void reportLeftApp(string id, int type, int platform, string location, string seq,int mediation, string mediationId, 
             string properties,string entrance);
         
         [DllImport("__Internal")]
         private static extern void reportConversionByClick(string id, int type, int platform, string location,
-            string seq, string properties,string entrance);
+            string seq, int mediation, string mediationId, string properties,string entrance);
         
         [DllImport("__Internal")]
         private static extern void reportConversionByLeftApp(string id, int type, int platform, string location,
-            string seq, string properties,string entrance);
+            string seq, int mediation, string mediationId, string properties,string entrance);
         
         [DllImport("__Internal")]
         private static extern void reportConversionByRewarded(string id, int type, int platform, string location,
-            string seq, string properties, string entrance);
+            string seq, int mediation, string mediationId, string properties, string entrance);
         
         [DllImport("__Internal")]
         private static extern void reportPaid(string id, int type, int platform, string location, string seq,
-            string value, string currency, string precision, string properties, string entrance);
+            int mediation, string mediationId, string value, string currency, string precision, string properties, string entrance);
         
         [DllImport("__Internal")]
         private static extern void reportPaidWithMediation(string id, int type, int platform,string adgroupType, string location,
@@ -81,7 +81,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportLoadBegin(id, (int) type, (int) platform,  seq, R_Utils.Parse2JsonStr(properties));
+            reportLoadBegin(id, (int) type, (int) platform,  seq, (int)mediation, mediationId, R_Utils.Parse2JsonStr(properties));
             R_Log.Debug("Editor Log: calling reportEntrance.seq:" + seq);
         }
 
@@ -90,7 +90,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportLoadEnd(id,(int) type, (int) platform,  duration, result,seq, errorCode, errorMessage,
+            reportLoadEnd(id,(int) type, (int) platform,  duration, result,seq, (int)mediation, mediationId,errorCode, errorMessage,
                 R_Utils.Parse2JsonStr(properties));
         }
         private void _reportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -98,7 +98,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportToShow(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
+            reportToShow(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportToShow.");
         }
 
@@ -107,7 +107,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportShow(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
+            reportShow(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportShow.");
         }
         
@@ -116,7 +116,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportAdShowFail(id,(int) type, (int) platform, location, seq, errorCode,errorMessage,R_Utils.Parse2JsonStr(properties),entrance);
+            reportAdShowFail(id,(int) type, (int) platform, location, seq, (int)mediation, mediationId, errorCode,errorMessage,R_Utils.Parse2JsonStr(properties),entrance);
             R_Log.Debug("Editor Log: calling reportShow Fail.");
         }
 
@@ -125,7 +125,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportImpression(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
+            reportImpression(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportImpression.");
         }
 
@@ -134,7 +134,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportClose(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
+            reportClose(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportClose.");
         }
 
@@ -143,7 +143,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportClick(id, (int) type, (int) platform, location, seq,  R_Utils.Parse2JsonStr(properties), entrance);
+            reportClick(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId,  R_Utils.Parse2JsonStr(properties), entrance);
             R_Log.Debug("Editor Log: calling reportClick.");
         }
 
@@ -152,7 +152,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportRewarded(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
+            reportRewarded(id, (int) type, (int) platform, location, seq,(int)mediation, mediationId,  R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportRewarded.");
         }
 
@@ -161,7 +161,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportLeftApp(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
+            reportLeftApp(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportLeftApp.");
         }
 
@@ -170,7 +170,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportConversionByClick(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
+            reportConversionByClick(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportConversionByClick.");
         }
 
@@ -179,7 +179,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportConversionByLeftApp(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
+            reportConversionByLeftApp(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportConversionByLeftApp.");
         }
 
@@ -189,7 +189,7 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportConversionByRewarded(id, (int) type, (int) platform, location, seq, R_Utils.Parse2JsonStr(properties),  entrance);
+            reportConversionByRewarded(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportConversionByRewarded.");
         }
 
@@ -198,12 +198,12 @@ namespace DataTower
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            reportPaid(id, (int) type, (int) platform, location, seq, value, currency, precision, R_Utils.Parse2JsonStr(properties),  entrance);
+            reportPaid(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId, value, currency, precision, R_Utils.Parse2JsonStr(properties),  entrance);
             R_Log.Debug("Editor Log: calling reportPaid.");
         }
 
 
-        private void _reportPaid(string id, AdType type, string platform,string adgroupName, string adgroupType, string location, string seq,
+        private void _reportPaid(string id, AdType type, string platform, string adgroupName, string adgroupType, string location, string seq,
             AdMediation mediation, string mediationId, string value, string currency, string precision, string country,
             string entrance = "",Dictionary<string, object> properties = null)
         {
