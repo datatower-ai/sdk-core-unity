@@ -63,13 +63,13 @@ namespace DataTower
         
         [DllImport("__Internal")]
         private static extern void reportPaid(string id, int type, int platform, string location, string seq,
-            int mediation, string mediationId, string value, string currency, string precision, string properties, string entrance);
+            int mediation, string mediationId, double value, string currency, string precision, string properties, string entrance);
         
-        [DllImport("__Internal")]
-        private static extern void reportPaidWithMediation(string id, int type, int platform,string adgroupType, string location,
-            string seq,
-            int mediation, string mediationId, string value, string currency, string precision, string country,
-            string properties, string entrance);
+        // [DllImport("__Internal")]
+        // private static extern void reportPaidWithMediation(string id, int type, int platform,string adgroupType, string location,
+        //     string seq,
+        //     int mediation, string mediationId, string value, string currency, string precision, string country,
+        //     string properties, string entrance);
         
         private void _init()
         {

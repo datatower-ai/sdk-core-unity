@@ -150,24 +150,24 @@ void reportConversionByRewarded(const char * adId, int type, int platform, const
 }
 
 void reportPaid(const char * adId, int type, int platform, const char * location, const char * seq,
-                int mediation, const char * mediationId, const char * value, const char * currency, const char * precision, const char * properties, const char * entrance) {
+                int mediation, const char * mediationId, double value, const char * currency, const char * precision, const char * properties, const char * entrance) {
     NSDictionary *dict = nil;
     if (properties) {
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportPaid:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] value:[NSString stringWithUTF8String:value] currency:[NSString stringWithUTF8String:currency] precision:[NSString stringWithUTF8String:precision] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportPaid:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] value:value currency:[NSString stringWithUTF8String:currency] precision:[NSString stringWithUTF8String:precision] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
 }
 
 void reportPaidWithMediation(const char * adId, int type, int platform, const char * adgroupType, const char * location,
                              const char * seq,
-                             int mediation, const char * mediationId, const char * value, const char * currency, const char * precision, const char * country,
+                             int mediation, const char * mediationId, double value, const char * currency, const char * precision, const char * country,
                              const char * properties, const char * entrance) {
     NSDictionary *dict = nil;
     if (properties) {
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportPaid:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] value:[NSString stringWithUTF8String:value]  precision:[NSString stringWithUTF8String:precision] country:[NSString stringWithUTF8String:country] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportPaid:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] value:value  precision:[NSString stringWithUTF8String:precision] country:[NSString stringWithUTF8String:country] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
 }
 }
