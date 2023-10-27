@@ -124,7 +124,7 @@ namespace DataTower
             _reportConversionByRewarded(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
         }
 
-        public void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq, string value,
+        public void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq, double value,
             string currency, string precision, string entrance = "",
             Dictionary<string, object> properties = null, 
             AdMediation mediation = AdMediation.IDLE, 
@@ -135,7 +135,7 @@ namespace DataTower
 
         public void ReportPaid(string id, AdType type, string platform, string adgroupName, string adgroupType,
             string location, string seq,
-            AdMediation mediation, string mediationId, string value, string currency, string precision, string country,
+            AdMediation mediation, string mediationId, double value, string currency, string precision, string country,
             string entrance = "",
             Dictionary<string, object> properties = null)
         {
@@ -145,7 +145,7 @@ namespace DataTower
         }
 
         public void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq,
-            AdMediation mediation, string mediationId, string value,
+            AdMediation mediation, string mediationId, double value,
             string precision, string country, Dictionary<string, object> properties = null)
         {
             _reportPaid(id, type, platform, location, seq, mediation, mediationId, value, precision, country,

@@ -352,7 +352,7 @@ namespace DataTower
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq,
-            string value, string currency, string precision, string entrance = "",
+            double value, string currency, string precision, string entrance = "",
             Dictionary<string, object> properties = null, 
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
@@ -382,7 +382,7 @@ namespace DataTower
         /// <param name="properties">自定义属性</param>
         public static void ReportPaid(string id, AdType type, string platform, string adgroupName, string adgroupType,
             string location, string seq,
-            AdMediation mediation, string mediationId, string value, string currency, string precision, string country,
+            AdMediation mediation, string mediationId, double value, string currency, string precision, string country,
             string entrance = "", Dictionary<string, object> properties = null)
         {
             DTAdReportWrapper.Instance.ReportPaid(id, type, platform, adgroupName, adgroupType, location, seq,
@@ -405,7 +405,7 @@ namespace DataTower
         /// <param name="country">国家</param>
         /// <param name="properties">自定义属性</param>
         public static void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq,
-            AdMediation mediation, string mediationId, string value, string precision, string country,
+            AdMediation mediation, string mediationId, double value, string precision, string country,
             Dictionary<string, object> properties = null)
         {
             DTAdReportWrapper.Instance.ReportPaid(id, type, platform, location, seq, mediation, mediationId, value,

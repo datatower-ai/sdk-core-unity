@@ -41,7 +41,7 @@ public class Ad_Sample : MonoBehaviour
         
         buttons1[4].onClick.AddListener(delegate { 
             R_Log.Debug("ReportPaid");
-           DTAdReport.ReportPaid("0130", AdType.BANNER, AdPlatform.MOPUB, "home2", "2000", "01", "1", seq, "center3");
+           DTAdReport.ReportPaid("0130", AdType.BANNER, AdPlatform.MOPUB, "home2", "2000", 0.1, "1", seq, "center3");
         });
         
         buttons1[5].onClick.AddListener(delegate { 
