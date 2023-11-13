@@ -69,21 +69,6 @@ public class Test
 {
     public void TestEvent()
     {
-        List<object> lst = new List<object>();
-        lst.Add(new TestOnlyObj()
-        {
-            id = 1, name = "test", value = 1.9
-        });
-        lst.Add(new TestOnlyObj()
-        {
-            id = 2, name = "test 2", value = 2.8
-        });
-        Dictionary<string, object> dic = new Dictionary<string, object>();
-        dic.Add("obj_test", lst.ToArray());
-        dic.Add("another_prop", true);
-        dic.Add("third_prop", "I'm good");
-        DTAnalytics.Track("TEST_OBJ", dic);
-        
         List<object> lst2 = new List<object>();
         lst2.Add(new TestOnlyObj()
         {
@@ -98,6 +83,22 @@ public class Test
         dic2.Add("another_prop", true);
         dic2.Add("third_prop", "I'm good");
         DTAnalytics.Track("TEST_OBJ_DICT", dic2);
+        
+        
+        List<object> lst = new List<object>();
+        lst.Add(new TestOnlyObj()
+        {
+            id = 1, name = "test", value = 1.9
+        });
+        lst.Add(new TestOnlyObj()
+        {
+            id = 2, name = "test 2", value = 2.8
+        });
+        Dictionary<string, object> dic = new Dictionary<string, object>();
+        dic.Add("obj_test", lst.ToArray());
+        dic.Add("another_prop", true);
+        dic.Add("third_prop", "I'm good");
+        DTAnalytics.Track("TEST_OBJ", dic);
     }
 }
 

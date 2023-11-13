@@ -194,7 +194,7 @@ namespace DataTower
             return map;
         }
 
-        private static Regex keyRegex = new Regex("^[a-zA-Z][a-zA-Z\\d_#]{0,49}", RegexOptions.IgnoreCase);
+        private static readonly Regex KeyRegex = new Regex("^[a-zA-Z][a-zA-Z\\d_#]{0,49}", RegexOptions.IgnoreCase);
         public static void ValidateJsonDictionary(Dictionary<string, object> dictionary)
         {
             R_Log.Debug("Validating given dictionary...");
@@ -227,8 +227,13 @@ namespace DataTower
                         "BUT: pls check the printed jsonified dictionary is the same as you expect!");
         }
 
-        private static void ValidateJsonKey(string key)
+        private static void ValidateJsonKey(object obj)
         {
+            if (!(obj is string key))
+            {
+                throw new ArgumentException($"Json check failed (key must be a string, given: {obj})");
+            }
+
             if (key.Length == 0)
             {
                 throw new ArgumentException($"Json check failed (key is empty)");
@@ -239,7 +244,7 @@ namespace DataTower
                 throw new ArgumentException($"Json check failed (key cannot starts with '#' or '$') for {key}");
             }
 
-            if (!keyRegex.IsMatch(key))
+            if (!KeyRegex.IsMatch(key))
             {
                 throw new ArgumentException(
                     $"Json check failed (key must starts with english letter, and only contains letter, number, and '_', with maximum length 50) for {key}");
@@ -248,14 +253,31 @@ namespace DataTower
         
         private static void ValidateJsonValue(object value, string key)
         {
-            if (!(value is string || IsNumeric(value) || value is bool || value is DateTime || value is ICollection ||
+            if (!(value is string || IsNumeric(value) || value is bool || value is IList ||
                   value is IDictionary || value == null))
             {
                 throw new ArgumentException(
-                    $"Property value must be type String, Number, Boolean, Date, List, Dictionary or null. Invalid pair: \"{key}\" = {value}");
+                    $"Property value must be type String, Number, Boolean, List, Dictionary or null. Invalid pair: \"{key}\" = {value}");
             }
 
-            if (IsNumeric(value) && value != null)
+            if (value is IList list)
+            {
+                foreach (var obj in list)
+                {
+                    ValidateJsonValue(obj, key);
+                }
+            }
+
+            if (value is IDictionary dict)
+            {
+                foreach (var k in dict.Keys)
+                {
+                    ValidateJsonKey(k);
+                    ValidateJsonValue(dict[k], key);
+                }
+            }
+
+            if (value != null && IsNumeric(value))
             {
                 var d = double.Parse(value.ToString());
                 if (d > 9999999999999.999 || d < -9999999999999.999)
@@ -278,7 +300,7 @@ namespace DataTower
             }
         }
 
-        private const string INDENT_STRING = "    ";
+        private const string IndentString = "    ";
         private static string PrettyJson(string json)
         {
             var indent = 0;
@@ -295,7 +317,7 @@ namespace DataTower
                         if (!quoted)
                         {
                             stringBuilder.AppendLine();
-                            Enumerable.Range(0, ++indent).ForEach(item => stringBuilder.Append(INDENT_STRING));
+                            Enumerable.Range(0, ++indent).ForEach(item => stringBuilder.Append(IndentString));
                         }
                         break;
                     case '}':
@@ -303,7 +325,7 @@ namespace DataTower
                         if (!quoted)
                         {
                             stringBuilder.AppendLine();
-                            Enumerable.Range(0, --indent).ForEach(item => stringBuilder.Append(INDENT_STRING));
+                            Enumerable.Range(0, --indent).ForEach(item => stringBuilder.Append(IndentString));
                         }
                         stringBuilder.Append(ch);
                         break;
@@ -321,7 +343,7 @@ namespace DataTower
                         if (!quoted)
                         {
                             stringBuilder.AppendLine();
-                            Enumerable.Range(0, indent).ForEach(item => stringBuilder.Append(INDENT_STRING));
+                            Enumerable.Range(0, indent).ForEach(item => stringBuilder.Append(IndentString));
                         }
                         break;
                     case ':':
