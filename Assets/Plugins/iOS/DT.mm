@@ -6,9 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <DataTowerAICore/DTAnalytics.h>
-#import <DataTowerAICore/DT.h>
-#import <DataTowerAICore/DTAnalyticsUtils.h>
+#import <datatower_ai_core/DTAnalytics.h>
+#import <datatower_ai_core/DT.h>
+#import <datatower_ai_core/DTAnalyticsUtils.h>
 
 
  NS_ENUM(NSInteger, UnityLogLevel)

@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <DataTowerAICore/DTIAPReport.h>
+#import <datatower_ai_core/DTIAPReport.h>
 
 extern "C" {
 
