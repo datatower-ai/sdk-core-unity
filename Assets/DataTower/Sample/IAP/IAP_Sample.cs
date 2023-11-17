@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using DataTower;
+using DataTower.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class IAP_Sample : MonoBehaviour
 {
     public Button[] buttons2;
-    private readonly string order = "7345062sdf";
-    private readonly string seq = "123456";
+    private const string Order = "7345062sdf";
 
     // Start is called before the first frame update
     private void Awake()
@@ -17,17 +16,11 @@ public class IAP_Sample : MonoBehaviour
         
         buttons2[0].onClick.AddListener(delegate
         {
-            var dict = new Dictionary<string, object>();
-            dict.Add("test_properties", "property value");
-            DTIAPReport.ReportPurchaseSuccess(order, "sdk123", 3.32, "rmb", dict); 
+            var dict = new Dictionary<string, object> { { "test_properties", "property value" } };
+            DTIAPReport.ReportPurchaseSuccess(Order, "sdk123", 3.32, "rmb", dict); 
         }
         );
 
         buttons2[1].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Sample"); });
-    }
-
-
-    private void Start()
-    {
     }
 }

@@ -1,4 +1,4 @@
-﻿using DataTower;
+﻿using DataTower.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,23 +21,5 @@ public class Sample : MonoBehaviour
             SceneManager.LoadSceneAsync("Utils_Sample");
         });
         buttons1[5].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("User_Set_Sample"); });
-    }
-
-    private void OnEnable()
-    {
-    }
-
-    private void OnDisable()
-    {
-    }
-
-    private void OnAdIsEnable(bool enable)
-    {
-        R_Log.Debug("DT Rewarded OnAdIsEnable--Sample" + enable);
-    }
-
-    private void OnAdRewarded(string placement)
-    {
-        R_Log.Debug("DT Rewarded OnAdRewarded--Sample,placement" + placement);
     }
 }

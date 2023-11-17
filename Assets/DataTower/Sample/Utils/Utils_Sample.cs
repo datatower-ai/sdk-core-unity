@@ -1,6 +1,5 @@
-using System;
 using System.Collections.Generic;
-using DataTower;
+using DataTower.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,11 +15,9 @@ public class Utils_Sample : MonoBehaviour
         print("sample awake====");
 
 
-        var eventName = "test_for_timer";
-        var dictionary = new Dictionary<string, object>();
+        const string eventName = "test_for_timer";
+        var dictionary = new Dictionary<string, object> { { "country", "中国" } };
 
-        dictionary.Add("country", "中国");
-        
         DTAnalytics.GetDataTowerId(id =>
         {
             dictionary.Add("roq_id", id);
@@ -28,11 +25,11 @@ public class Utils_Sample : MonoBehaviour
         buttons1[0].onClick.AddListener(delegate
         {
             print("trackTimerStart====");
-            DTAnalyticsUtils.trackTimerStart(eventName);
+            DTAnalyticsUtils.TrackTimerStart(eventName);
         });
-        buttons1[1].onClick.AddListener(delegate { DTAnalyticsUtils.trackTimerPause(eventName); });
-        buttons1[2].onClick.AddListener(delegate { DTAnalyticsUtils.trackTimerResume(eventName); });
-        buttons1[3].onClick.AddListener(delegate { DTAnalyticsUtils.trackTimerEnd(eventName, dictionary); });
+        buttons1[1].onClick.AddListener(delegate { DTAnalyticsUtils.TrackTimerPause(eventName); });
+        buttons1[2].onClick.AddListener(delegate { DTAnalyticsUtils.TrackTimerResume(eventName); });
+        buttons1[3].onClick.AddListener(delegate { DTAnalyticsUtils.TrackTimerEnd(eventName, dictionary); });
 
         buttons1[4].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Sample"); });
     }

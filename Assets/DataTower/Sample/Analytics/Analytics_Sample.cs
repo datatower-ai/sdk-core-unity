@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization.Json;
-using DataTower;
+using DataTower.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 
 public class Analytics_Sample : MonoBehaviour
@@ -22,15 +20,18 @@ public class Analytics_Sample : MonoBehaviour
             DTAnalytics.GetDataTowerId(
                 id =>
                 {
-                    var dictionary = new Dictionary<string, object>();
+                    var dictionary = new Dictionary<string, object>
+                    {
+                        { "login_pro_1", "中国" },
+                        { "roq_id", id }
+                    };
 
-                    dictionary.Add("login_pro_1", "中国");
-                    dictionary.Add("roq_id", id);
-
-                    var list = new List<int>();
-                    list.Add(1);
-                    list.Add(2);
-                    list.Add(3);
+                    var list = new List<int>
+                    {
+                        1,
+                        2,
+                        3
+                    };
                     dictionary.Add("list", list);
                     dictionary.Add("number", 1);
 
@@ -39,12 +40,13 @@ public class Analytics_Sample : MonoBehaviour
                 }
                 );
 
-            var dictionary = new Dictionary<string, object>();
-            dictionary.Add("login_pro_1", "中国");
-            var list = new List<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
+            var dictionary = new Dictionary<string, object> { { "login_pro_1", "中国" } };
+            var list = new List<int>
+            {
+                1,
+                2,
+                3
+            };
             dictionary.Add("list", list);
             print("Track an Event.");
             DTAnalytics.Track("test2", dictionary);
@@ -69,51 +71,59 @@ public class Test
 {
     public void TestEvent()
     {
-        List<object> lst2 = new List<object>();
-        lst2.Add(new TestOnlyObj()
+        List<object> lst2 = new List<object>
         {
-            id = 1, name = "test", value = 1.9
-        }.ToDictionary());
-        lst2.Add(new TestOnlyObj()
+            new TestOnlyObj
+            {
+                ID = 1, Name = "test", Value = 1.9
+            }.ToDictionary(),
+            new TestOnlyObj
+            {
+                ID = 2, Name = "test 2", Value = 2.8
+            }.ToDictionary()
+        };
+        Dictionary<string, object> dic2 = new Dictionary<string, object>
         {
-            id = 2, name = "test 2", value = 2.8
-        }.ToDictionary());
-        Dictionary<string, object> dic2 = new Dictionary<string, object>();
-        dic2.Add("obj_test", lst2.ToArray());
-        dic2.Add("another_prop", true);
-        dic2.Add("third_prop", "I'm good");
+            { "obj_test", lst2.ToArray() },
+            { "another_prop", true },
+            { "third_prop", "I'm good" }
+        };
         DTAnalytics.Track("TEST_OBJ_DICT", dic2);
         
         
-        List<object> lst = new List<object>();
-        lst.Add(new TestOnlyObj()
+        List<object> lst = new List<object>
         {
-            id = 1, name = "test", value = 1.9
-        });
-        lst.Add(new TestOnlyObj()
+            new TestOnlyObj
+            {
+                ID = 1, Name = "test", Value = 1.9
+            },
+            new TestOnlyObj
+            {
+                ID = 2, Name = "test 2", Value = 2.8
+            }
+        };
+        Dictionary<string, object> dic = new Dictionary<string, object>
         {
-            id = 2, name = "test 2", value = 2.8
-        });
-        Dictionary<string, object> dic = new Dictionary<string, object>();
-        dic.Add("obj_test", lst.ToArray());
-        dic.Add("another_prop", true);
-        dic.Add("third_prop", "I'm good");
+            { "obj_test", lst.ToArray() },
+            { "another_prop", true },
+            { "third_prop", "I'm good" }
+        };
         DTAnalytics.Track("TEST_OBJ", dic);
     }
 }
 
 public class TestOnlyObj
 {
-    public int id;
-    public string name;
-    public double value;
+    public int ID;
+    public string Name;
+    public double Value;
 
     public Dictionary<string, object> ToDictionary()
     {
-        return new Dictionary<string, object>(){
-            { "id", id },
-            { "name", name },
-            { "value", value }
+        return new Dictionary<string, object>{
+            { "id", ID },
+            { "name", Name },
+            { "value", Value }
         };
     }
 }

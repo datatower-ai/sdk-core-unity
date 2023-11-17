@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using DataTower;
+using DataTower.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,12 +19,14 @@ namespace DataTower.Sample.USER_SET
             buttons1[0].onClick.AddListener(delegate
             {
                 print("UserSet---");
-                var dictionary = new Dictionary<string, object>();
+                var dictionary = new Dictionary<string, object>
+                {
+                    { "country", "中国" },
+                    { "course", "history" },
+                    { "user_password", "12138" },
+                    { "user_null", null }
+                };
 
-                dictionary.Add("country", "中国");
-                dictionary.Add("course", "history");
-                dictionary.Add("user_password", "12138");
-                dictionary.Add("user_null", null);
                 DTAnalytics.UserSet(dictionary);
             });
             buttons1[1].onClick.AddListener(delegate
