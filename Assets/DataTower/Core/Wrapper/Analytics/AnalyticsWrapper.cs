@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace DataTower.Core
+namespace DataTower.Core.Wrapper
 {
     class DTIdCallback : AndroidJavaProxy
     {

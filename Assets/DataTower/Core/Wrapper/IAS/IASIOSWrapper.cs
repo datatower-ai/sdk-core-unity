@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
 
-namespace DataTower.Wrapper.IAS
+namespace DataTower.Core.Wrapper
 {
     public partial class DTIASReportWrapper
 

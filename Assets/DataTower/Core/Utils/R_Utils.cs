@@ -56,7 +56,7 @@ namespace DataTower.Core
         /// </summary>
         /// <param name="dictionary">字典</param>
         /// <returns>json 字符串，如果字典不能转换成字符串那么会返回 null。</returns>
-        private static string Parse2JsonStr(Dictionary<string, object> dictionary)
+        public static string Parse2JsonStr(Dictionary<string, object> dictionary)
         {
             if (dictionary == null) return null;
             try
@@ -163,7 +163,7 @@ namespace DataTower.Core
         }
 
 
-        private static bool IsNumeric(object obj)
+        public static bool IsNumeric(object obj)
         {
             return obj is sbyte
                    || obj is byte
@@ -301,7 +301,7 @@ namespace DataTower.Core
         }
 
         private const string IndentString = "    ";
-        private static string PrettyJson(string json)
+        public static string PrettyJson(string json)
         {
             var indent = 0;
             var quoted = false;

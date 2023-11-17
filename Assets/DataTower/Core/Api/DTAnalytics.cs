@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DataTower.Core.Wrapper;
 
 namespace DataTower.Core
 {

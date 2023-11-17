@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DataTower.Wrapper.IAS
+namespace DataTower.Core.Wrapper
 {
     public partial class DTIASReportWrapper
     {

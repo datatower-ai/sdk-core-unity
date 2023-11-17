@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace DataTower.Core
+namespace DataTower.Core.Wrapper
 {
     public partial class DTAdReportWrapper
     {

@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System;
 
-namespace DataTower.Core
+namespace DataTower.Core.Wrapper
 {
     public partial class DTAnalyticsWrapper
     {

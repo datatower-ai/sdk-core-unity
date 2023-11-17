@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DataTower.Core
+namespace DataTower.Core.Wrapper
 {
     public partial class DTAdReportWrapper
     {

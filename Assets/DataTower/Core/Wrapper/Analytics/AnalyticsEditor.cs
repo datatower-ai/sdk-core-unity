@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataTower.Core
+namespace DataTower.Core.Wrapper
 {
     public partial class DTAnalyticsWrapper
     {

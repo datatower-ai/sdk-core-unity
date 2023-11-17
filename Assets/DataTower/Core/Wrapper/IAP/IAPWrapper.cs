@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-namespace DataTower.Core
+namespace DataTower.Core.Wrapper
 {
     
 
