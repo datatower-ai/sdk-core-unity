@@ -75,6 +75,7 @@ namespace DataTower.Core
         TOPON = 4,
         TRADPLUS = 5,
         TOBID = 6,
+        ADMOB = 7,
     }
 
     public class DTAdReport
