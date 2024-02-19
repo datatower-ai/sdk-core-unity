@@ -6,10 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <datatower_ai_core/DTAnalytics.h>
-#import <datatower_ai_core/DT.h>
-#import <datatower_ai_core/DTAnalyticsUtils.h>
-
+#import <DataTowerAICore/DTAnalytics.h>
+#import <DataTowerAICore/DT.h>
+#import <DataTowerAICore/DTAnalyticsUtils.h>
 
  NS_ENUM(NSInteger, UnityLogLevel)
  {
@@ -120,8 +119,15 @@ void setAdjustId(const char* plainStr) {
 
 void trackEvent(const char* eventName, const char* jsonStr) {
     NSString *strParam = [NSString stringWithUTF8String:eventName];
-    NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
-    [DTAnalytics trackEventName:strParam properties:dictParam];
+    if(jsonStr != NULL)
+    {
+        NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
+        [DTAnalytics trackEventName:strParam properties:dictParam];
+    } 
+    else
+    {
+        [DTAnalytics trackEventName:strParam];
+    }
 }
 
 void trackTimerStart(const char* eventName) {
@@ -141,8 +147,15 @@ void trackTimerResume(const char* eventName) {
 
 void trackTimerEnd(const char* eventName, const char* jsonStr) {
     NSString *strParam = [NSString stringWithUTF8String:eventName];
-    NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
-    [DTAnalyticsUtils trackTimerEnd:strParam properties:dictParam];
+    if(jsonStr != NULL)
+    {
+        NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
+        [DTAnalyticsUtils trackTimerEnd:strParam properties:dictParam];
+    }
+    else
+    {
+        [DTAnalyticsUtils trackTimerEnd:strParam];
+    }
 }
 
 }

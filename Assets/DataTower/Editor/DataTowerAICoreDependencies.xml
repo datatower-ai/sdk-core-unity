@@ -19,7 +19,7 @@
             -->
         </androidPackages>
         <iosPods>
-            <iosPod name="DataTowerAiCore" minTargetSdk="11.0" version = "~> 3.0.0" >
+            <iosPod name="DataTowerAiCore" minTargetSdk="11.0" version = "~> 2.1.0" >
            <!-- &lt;!&ndash; Set of source URIs to search for this Cocoapod spec. -->
 <!--                 By default Cocoapods will attempt to fetch the pod specs from:-->
 <!--                 * $HOME/.cocoapods/repos-->

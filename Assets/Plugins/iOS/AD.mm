@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <datatower_ai_core/DTAdReport.h>
+#import <DataTowerAICore/DTAdReport.h>
 
 extern NSDictionary *jsonStr2Dictionary(const char *jsonStr);
 
