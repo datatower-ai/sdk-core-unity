@@ -11,6 +11,10 @@ namespace DataTower.Core.Wrapper
             R_Log.Debug("Editor Log: calling init.");
         }
 
+        private void _enableUpload()
+        {
+            R_Log.Debug("Editor Log: calling enableUpload.");
+        }
 
         private void _track(string eventName, Dictionary<string, object> properties = null)
         {
@@ -69,6 +73,11 @@ namespace DataTower.Core.Wrapper
             R_Log.Debug("Editor Log: calling _setAccountId.");
         }
 
+        private void _setDistinctId(string distinctId)
+        {
+            R_Log.Debug("Editor Log: calling setDistinctId.");
+        }
+
         private void _setFirebaseAppInstanceId(string id)
         {
             R_Log.Debug("Editor Log: calling _setFirebaseAppInstanceId.");
@@ -88,6 +97,16 @@ namespace DataTower.Core.Wrapper
         private void _setAdjustId(string adjustId)
         {
             R_Log.Debug("Editor Log: calling _setAdjustId.");
+        }
+
+        private void _setStaticCommonProperties(Dictionary<string, object> properties)
+        {
+            R_Log.Debug("Editor Log: calling setStaticCommonProperties.");
+        }
+
+        private void _clearStaticCommonProperties()
+        {
+            R_Log.Debug("Editor Log: calling clearStaticCommonProperties.");
         }
 
 #endif

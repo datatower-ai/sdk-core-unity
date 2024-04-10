@@ -8,6 +8,12 @@ public class Analytics_Sample : MonoBehaviour
 {
     public Button[] buttons2;
 
+    private static Dictionary<string, object> _dynamicCommonProps = new Dictionary<string, object>
+    {
+        { "dynamic_props_number", 0 },
+        { "dynamic_props_text", "dynamic!" }
+    };
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -50,8 +56,6 @@ public class Analytics_Sample : MonoBehaviour
             dictionary.Add("list", list);
             print("Track an Event.");
             DTAnalytics.Track("test2", dictionary);
-
-            new Test().TestEvent();
         });
         buttons2[1].onClick.AddListener(delegate { DTAnalytics.SetAccountId("user_account_id_2200"); });
         buttons2[2].onClick.AddListener(delegate { DTAnalytics.SetFirebaseAppInstanceId("fire_base_id_2200"); });
@@ -62,68 +66,42 @@ public class Analytics_Sample : MonoBehaviour
             print("buttons2[5]====");
             DTAnalytics.SetAdjustId("adjust_id");
         });
-
-        buttons2[6].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Sample"); });
-    }
-}
-
-public class Test
-{
-    public void TestEvent()
-    {
-        List<object> lst2 = new List<object>
-        {
-            new TestOnlyObj
-            {
-                ID = 1, Name = "test", Value = 1.9
-            }.ToDictionary(),
-            new TestOnlyObj
-            {
-                ID = 2, Name = "test 2", Value = 2.8
-            }.ToDictionary()
-        };
-        Dictionary<string, object> dic2 = new Dictionary<string, object>
-        {
-            { "obj_test", lst2.ToArray() },
-            { "another_prop", true },
-            { "third_prop", "I'm good" }
-        };
-        DTAnalytics.Track("TEST_OBJ_DICT", dic2);
         
-        
-        List<object> lst = new List<object>
+        buttons2[6].onClick.AddListener(delegate { 
+            DTAnalytics.SetDistinctId("distinct_id_2222"); 
+        });
+        buttons2[7].onClick.AddListener(delegate { 
+            var props = new Dictionary<string, object>
+            {
+                { "static_props_1", "Book" },
+                { "static_props_2", 123 },
+                { "static_props_3", 20.1 },
+                { "static_props_4", new Dictionary<string, object>{{ "static_props_4_sub", 1001 }} },
+                { "static_props_5", new List<string>{ "1_ssp5", "2_ssp6", "3_sss8" } },
+            };
+            DTAnalytics.SetStaticCommonProperties(props); 
+        });
+        buttons2[8].onClick.AddListener(DTAnalytics.ClearStaticCommonProperties);
+        buttons2[9].onClick.AddListener(delegate { 
+            DTAnalytics.SetDynamicCommonProperties(() => _dynamicCommonProps); 
+        });
+        buttons2[10].onClick.AddListener(DTAnalytics.ClearDynamicCommonProperties);
+        buttons2[11].onClick.AddListener(delegate
         {
-            new TestOnlyObj
+            object number = _dynamicCommonProps["dynamic_props_number"];
+            if (number is int num)
             {
-                ID = 1, Name = "test", Value = 1.9
-            },
-            new TestOnlyObj
-            {
-                ID = 2, Name = "test 2", Value = 2.8
+                _dynamicCommonProps["dynamic_props_number"] = num + 1;
             }
-        };
-        Dictionary<string, object> dic = new Dictionary<string, object>
-        {
-            { "obj_test", lst.ToArray() },
-            { "another_prop", true },
-            { "third_prop", "I'm good" }
-        };
-        DTAnalytics.Track("TEST_OBJ", dic);
-    }
-}
+        });
+        buttons2[12].onClick.AddListener(delegate { 
+            object number = _dynamicCommonProps["dynamic_props_number"];
+            if (number is int num)
+            {
+                _dynamicCommonProps["dynamic_props_number"] = num - 1;
+            }
+        });
 
-public class TestOnlyObj
-{
-    public int ID;
-    public string Name;
-    public double Value;
-
-    public Dictionary<string, object> ToDictionary()
-    {
-        return new Dictionary<string, object>{
-            { "id", ID },
-            { "name", Name },
-            { "value", Value }
-        };
+        buttons2[13].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Sample"); });
     }
 }

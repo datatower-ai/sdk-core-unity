@@ -34,6 +34,8 @@ namespace DataTower.Core
 
         [Tooltip("log 级别，默认为 DEBUG，仅在 isDebug = true 有效")] public LogLevel logLevel = LogLevel.DEBUG;
 
+        [Tooltip("是否自行手动开启上传，开启后需自行调用 DTAnalytics.EnableUpload() 来开始上传")] public bool manualEnableUpload = false;
+
         #region internal use
 
         private static DTSDKApi _raInstance;
@@ -53,7 +55,7 @@ namespace DataTower.Core
                 return;
             }
 
-            DTAnalytics.Init(androidAppId, iOSAppId, serverUrl, channel, SDK_VERSION, isDebug, (int)logLevel);
+            DTAnalytics.Init(androidAppId, iOSAppId, serverUrl, channel, SDK_VERSION, isDebug, (int)logLevel, manualEnableUpload);
         }
 
         #endregion

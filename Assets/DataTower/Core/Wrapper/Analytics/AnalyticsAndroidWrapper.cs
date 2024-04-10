@@ -27,7 +27,7 @@ namespace DataTower.Core.Wrapper
             R_Log.Debug(serverUrl);
 
             //调用静态初始化方法 init
-            DT.CallStatic("initSDK", currentContext, androidAppId, serverUrl, channel, isDebug, logLevel, jsonObject);
+            DT.CallStatic("initSDK", currentContext, androidAppId, serverUrl, channel, isDebug, logLevel, manualEnableUpload, jsonObject);
         }
 
         private AndroidJavaObject ToJSONObject(Dictionary<string, object> dic)
@@ -41,7 +41,10 @@ namespace DataTower.Core.Wrapper
             AndroidJavaObject jsonObject = R_Utils.Parse2JavaJSONObject(jsonStr);
             return jsonObject;
         }
-        
+
+        private void _enableUpload() {
+            DT.CallStatic("enableUpload");
+        }        
 
         private void _track(string eventName, Dictionary<string, object> dic = null)
         {
@@ -93,6 +96,11 @@ namespace DataTower.Core.Wrapper
             DTAnalytics.CallStatic("setAccountId", accountId);
         }
 
+        private void _setDistinctId(string distinctId)
+        {
+            DTAnalytics.CallStatic("setDistinctId", distinctId);
+        }
+
 
         private void _setFirebaseAppInstanceId(string id)
         {
@@ -116,6 +124,16 @@ namespace DataTower.Core.Wrapper
         {
             DTAnalytics.CallStatic("setAdjustId", adjustId);
             R_Log.Debug("Editor Log: calling _setAdjustId.");
+        }
+
+        private void _setStaticCommonProperties(Dictionary<string, object> properties)
+        {
+            DTAnalytics.CallStatic("setStaticCommonProperties", ToJSONObject(properties));
+        }
+
+        private void _clearStaticCommonProperties()
+        {
+            DTAnalytics.CallStatic("clearStaticCommonProperties");
         }
 
 #endif

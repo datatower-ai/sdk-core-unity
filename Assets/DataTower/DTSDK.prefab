@@ -40,12 +40,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1474549494639510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36bc3fb973a7749a094a0f0410cf4c04, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c5eea284a59e4fbfb043d4573cfef31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   androidAppId: 
   iOSAppId: 
   serverUrl: 
   channel: 
-  isDebug: 1
-  logLevel: 2
+  isDebug: 0
+  logLevel: 3
+  manualEnableUpload: 0

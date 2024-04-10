@@ -21,5 +21,6 @@ public class Sample : MonoBehaviour
             SceneManager.LoadSceneAsync("Utils_Sample");
         });
         buttons1[5].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("User_Set_Sample"); });
+        buttons1[6].onClick.AddListener(DTAnalytics.EnableUpload);
     }
 }

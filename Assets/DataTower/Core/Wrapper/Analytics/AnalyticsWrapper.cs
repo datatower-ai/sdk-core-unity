@@ -28,6 +28,7 @@ namespace DataTower.Core.Wrapper
         private bool isInitialized;
         public int logLevel = 2;
         public string sdkVersion = "";
+        public bool manualEnableUpload = false;
 
         private DTAnalyticsWrapper()
         {
@@ -36,7 +37,7 @@ namespace DataTower.Core.Wrapper
         public static DTAnalyticsWrapper Instance => Nested.instance;
 
 
-        public void Init(string androidAppId, string iOSAppId, string serverUrl, string channel, string sdkVersion, bool isDebug, int logLevel)
+        public void Init(string androidAppId, string iOSAppId, string serverUrl, string channel, string sdkVersion, bool isDebug, int logLevel, bool manualEnableUpload)
         {
             if (!isInitialized)
             {
@@ -47,6 +48,7 @@ namespace DataTower.Core.Wrapper
                 this.sdkVersion = sdkVersion;
                 this.isDebug = isDebug;
                 this.logLevel = logLevel;
+                this.manualEnableUpload = manualEnableUpload;
                 R_Log.IsLogEnalbe(isDebug);
                 _init();
                 R_Log.Debug(" DT Report  init,  androidAppId:" + androidAppId + ",iOSAppId" + iOSAppId +
@@ -57,8 +59,14 @@ namespace DataTower.Core.Wrapper
             }
         }
 
+        public void EnableUpload()
+        {
+            _enableUpload();
+        }
+
         public void Track(string eventName, Dictionary<string, object> properties = null)
         {
+            DT_CommonProps.InsertDynamicProperties(properties);
             _track(eventName, properties);
         }
 
@@ -131,6 +139,11 @@ namespace DataTower.Core.Wrapper
             _setAccountId(accountId);
         }
 
+        public void SetDistinctId(string distinctId)
+        {
+            _setDistinctId(distinctId);
+        }
+
 
         public void SetFirebaseAppInstanceId(string id)
         {
@@ -152,6 +165,26 @@ namespace DataTower.Core.Wrapper
         public void SetAdjustId(string adjustId)
         {
             _setAdjustId(adjustId);
+        }
+
+        public void SetStaticCommonProperties(Dictionary<string, object> properties)
+        {
+            _setStaticCommonProperties(properties);
+        }
+
+        public void ClearStaticCommonProperties()
+        {
+            _clearStaticCommonProperties();
+        }
+
+        public void SetDynamicCommonProperties(Func<Dictionary<string, object>> getter)
+        {
+            DT_CommonProps.SetDynamicCommonPropertiesGetter(getter);
+        }
+
+        public void ClearDynamicCommonProperties()
+        {
+            DT_CommonProps.ClearDynamicCommonPropertiesGetter();
         }
 
         private class Nested

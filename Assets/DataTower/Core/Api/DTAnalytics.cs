@@ -9,9 +9,17 @@ namespace DataTower.Core
         private static Action<long, string> onFinishedAction;
 
         public static void Init(string androidAppId, string iOSAppId, string serverUrl, string channel, string sdkVersion, bool isDebug,
-            int logLeve)
+            int logLeve, bool manualEnableUpload)
         {
-            DTAnalyticsWrapper.Instance.Init(androidAppId, iOSAppId, serverUrl, channel, sdkVersion, isDebug, logLeve);
+            DTAnalyticsWrapper.Instance.Init(androidAppId, iOSAppId, serverUrl, channel, sdkVersion, isDebug, logLeve, manualEnableUpload);
+        }
+
+        /// <summary>
+        ///     手动开启上传，只在初始化时设置手动开启标识位为 true 时生效，且仅生效一次。
+        /// </summary>
+        public static void EnableUpload()
+        {
+            DTAnalyticsWrapper.Instance.EnableUpload();
         }
 
         /// <summary>
@@ -108,7 +116,7 @@ namespace DataTower.Core
         /// <summary>
         ///     设置自有用户id
         /// </summary>
-        /// <param name="accountId">用户id</param>
+        /// <param name="accountId">用户 id</param>
         public static void SetAccountId(string accountId)
         {
             DTAnalyticsWrapper.Instance.SetAccountId(accountId);
@@ -116,7 +124,17 @@ namespace DataTower.Core
 
 
         /// <summary>
-        ///     设置Firebase的app_instance_id
+        ///     设置自有访客id
+        /// </summary>
+        /// <param name="distinctId">访客 id</param>
+        public static void SetDistinctId(string distinctId)
+        {
+            DTAnalyticsWrapper.Instance.SetDistinctId(distinctId);
+        }
+
+
+        /// <summary>
+        ///     设置 Firebase的app_instance_id
         /// </summary>
         /// <param name="id">app_instance_id</param>
         public static void SetFirebaseAppInstanceId(string id)
@@ -126,7 +144,7 @@ namespace DataTower.Core
 
 
         /// <summary>
-        ///     设置AppsFlyer id
+        ///     设置 AppsFlyer id
         /// </summary>
         /// <param name="id">AppsFlyer id</param>
         public static void SetAppsFlyerId(string id)
@@ -136,7 +154,7 @@ namespace DataTower.Core
 
 
         /// <summary>
-        ///     设置Kochava id
+        ///     设置 Kochava id
         /// </summary>
         /// <param name="id">Kochava id</param>
         public static void SetKochavaId(string id)
@@ -145,7 +163,7 @@ namespace DataTower.Core
         }
 
         /// <summary>
-        ///     设置自有用户id
+        ///     设置 Adjust id
         /// </summary>
         /// <param name="adjustId">用户id</param>
         public static void SetAdjustId(string adjustId)
@@ -153,7 +171,38 @@ namespace DataTower.Core
             DTAnalyticsWrapper.Instance.SetAdjustId(adjustId);
         }
         
+        /// <summary>
+        ///     设置静态通用属性（持久化）
+        /// </summary>
+        /// <param name="properties">通用属性</param>
+        public static void SetStaticCommonProperties(Dictionary<string, object> properties)
+        {
+            DTAnalyticsWrapper.Instance.SetStaticCommonProperties(properties);
+        }
+
+        /// <summary>
+        ///     清除静态通用属性
+        /// </summary>
+        public static void ClearStaticCommonProperties()
+        {
+            DTAnalyticsWrapper.Instance.ClearStaticCommonProperties();
+        }
         
-        
+        /// <summary>
+        ///     设置动态通用属性
+        /// </summary>
+        /// <param name="getter">动态通用属性的获取器</param>
+        public static void SetDynamicCommonProperties(Func<Dictionary<string, object>> getter)
+        {
+            DTAnalyticsWrapper.Instance.SetDynamicCommonProperties(getter);
+        }
+
+        /// <summary>
+        ///     清除静态通用属性
+        /// </summary>
+        public static void ClearDynamicCommonProperties()
+        {
+            DTAnalyticsWrapper.Instance.ClearDynamicCommonProperties();
+        }
     }
 }
