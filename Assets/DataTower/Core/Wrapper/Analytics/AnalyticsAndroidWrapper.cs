@@ -96,18 +96,11 @@ namespace DataTower.Core.Wrapper
             DTAnalytics.CallStatic("setAccountId", accountId);
         }
 
-        private void _setDistinctId(string distinctId)
-        {
-            DTAnalytics.CallStatic("setDistinctId", distinctId);
-        }
-
-
         private void _setFirebaseAppInstanceId(string id)
         {
             DTAnalytics.CallStatic("setFirebaseAppInstanceId", id);
         }
 
-     
         
         private void _setAppsFlyerId(string id)
         {

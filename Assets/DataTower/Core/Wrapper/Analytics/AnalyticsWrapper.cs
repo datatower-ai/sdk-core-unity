@@ -139,12 +139,6 @@ namespace DataTower.Core.Wrapper
             _setAccountId(accountId);
         }
 
-        public void SetDistinctId(string distinctId)
-        {
-            _setDistinctId(distinctId);
-        }
-
-
         public void SetFirebaseAppInstanceId(string id)
         {
             _setFirebaseAppInstanceId(id);

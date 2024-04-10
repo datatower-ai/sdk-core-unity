@@ -122,17 +122,6 @@ namespace DataTower.Core
             DTAnalyticsWrapper.Instance.SetAccountId(accountId);
         }
 
-
-        /// <summary>
-        ///     设置自有访客id
-        /// </summary>
-        /// <param name="distinctId">访客 id</param>
-        public static void SetDistinctId(string distinctId)
-        {
-            DTAnalyticsWrapper.Instance.SetDistinctId(distinctId);
-        }
-
-
         /// <summary>
         ///     设置 Firebase的app_instance_id
         /// </summary>

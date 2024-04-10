@@ -68,9 +68,6 @@ public class Analytics_Sample : MonoBehaviour
         });
         
         buttons2[6].onClick.AddListener(delegate { 
-            DTAnalytics.SetDistinctId("distinct_id_2222"); 
-        });
-        buttons2[7].onClick.AddListener(delegate { 
             var props = new Dictionary<string, object>
             {
                 { "static_props_1", "Book" },
@@ -81,12 +78,12 @@ public class Analytics_Sample : MonoBehaviour
             };
             DTAnalytics.SetStaticCommonProperties(props); 
         });
-        buttons2[8].onClick.AddListener(DTAnalytics.ClearStaticCommonProperties);
-        buttons2[9].onClick.AddListener(delegate { 
+        buttons2[7].onClick.AddListener(DTAnalytics.ClearStaticCommonProperties);
+        buttons2[8].onClick.AddListener(delegate { 
             DTAnalytics.SetDynamicCommonProperties(() => _dynamicCommonProps); 
         });
-        buttons2[10].onClick.AddListener(DTAnalytics.ClearDynamicCommonProperties);
-        buttons2[11].onClick.AddListener(delegate
+        buttons2[9].onClick.AddListener(DTAnalytics.ClearDynamicCommonProperties);
+        buttons2[10].onClick.AddListener(delegate
         {
             object number = _dynamicCommonProps["dynamic_props_number"];
             if (number is int num)
@@ -94,7 +91,7 @@ public class Analytics_Sample : MonoBehaviour
                 _dynamicCommonProps["dynamic_props_number"] = num + 1;
             }
         });
-        buttons2[12].onClick.AddListener(delegate { 
+        buttons2[11].onClick.AddListener(delegate { 
             object number = _dynamicCommonProps["dynamic_props_number"];
             if (number is int num)
             {
@@ -102,6 +99,6 @@ public class Analytics_Sample : MonoBehaviour
             }
         });
 
-        buttons2[13].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Sample"); });
+        buttons2[12].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Sample"); });
     }
 }

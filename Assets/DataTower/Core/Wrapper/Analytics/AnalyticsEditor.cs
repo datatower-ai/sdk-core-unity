@@ -73,11 +73,6 @@ namespace DataTower.Core.Wrapper
             R_Log.Debug("Editor Log: calling _setAccountId.");
         }
 
-        private void _setDistinctId(string distinctId)
-        {
-            R_Log.Debug("Editor Log: calling setDistinctId.");
-        }
-
         private void _setFirebaseAppInstanceId(string id)
         {
             R_Log.Debug("Editor Log: calling _setFirebaseAppInstanceId.");
