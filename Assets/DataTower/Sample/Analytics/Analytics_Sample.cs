@@ -14,7 +14,6 @@ public class Analytics_Sample : MonoBehaviour
     {
         print("sample awake====");
 
-
         buttons2[0].onClick.AddListener(delegate
         {
             DTAnalytics.GetDataTowerId(
@@ -53,14 +52,62 @@ public class Analytics_Sample : MonoBehaviour
 
             new Test().TestEvent();
         });
-        buttons2[1].onClick.AddListener(delegate { DTAnalytics.SetAccountId("user_account_id_2200"); });
-        buttons2[2].onClick.AddListener(delegate { DTAnalytics.SetFirebaseAppInstanceId("fire_base_id_2200"); });
-        buttons2[3].onClick.AddListener(delegate { DTAnalytics.SetAppsFlyerId("appsFlyer_id_2200"); });
-        buttons2[4].onClick.AddListener(delegate { DTAnalytics.SetKochavaId("kochava_id_2200"); });
+        buttons2[1].onClick.AddListener(delegate
+        {
+            if (ConfigMgr.IsReportNullData)
+            {
+                DTAnalytics.SetAccountId(null);
+            }
+            else
+            {
+                DTAnalytics.SetAccountId("user_account_id_2200");
+            }
+        });
+        buttons2[2].onClick.AddListener(delegate
+        {
+            if (ConfigMgr.IsReportNullData)
+            {
+                DTAnalytics.SetFirebaseAppInstanceId(null);
+            }
+            else
+            {
+                DTAnalytics.SetFirebaseAppInstanceId("fire_base_id_2200");
+            }
+        });
+        buttons2[3].onClick.AddListener(delegate
+        {
+            if (ConfigMgr.IsReportNullData)
+            {
+                DTAnalytics.SetAppsFlyerId(null);
+            }
+            else
+            {
+                DTAnalytics.SetAppsFlyerId("appsFlyer_id_2200");
+            }
+        });
+        buttons2[4].onClick.AddListener(delegate
+        {
+            if (ConfigMgr.IsReportNullData)
+            {
+                DTAnalytics.SetKochavaId(null);
+            }
+            else
+            {
+                DTAnalytics.SetKochavaId("kochava_id_2200");
+            }
+        });
+
         buttons2[5].onClick.AddListener(delegate
         {
             print("buttons2[5]====");
-            DTAnalytics.SetAdjustId("adjust_id");
+            if (ConfigMgr.IsReportNullData)
+            {
+                DTAnalytics.SetAdjustId(null);
+            }
+            else
+            {
+                DTAnalytics.SetAdjustId("adjust_id");
+            }
         });
 
         buttons2[6].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Sample"); });
@@ -89,8 +136,8 @@ public class Test
             { "third_prop", "I'm good" }
         };
         DTAnalytics.Track("TEST_OBJ_DICT", dic2);
-        
-        
+
+
         List<object> lst = new List<object>
         {
             new TestOnlyObj
@@ -109,6 +156,10 @@ public class Test
             { "third_prop", "I'm good" }
         };
         DTAnalytics.Track("TEST_OBJ", dic);
+
+        DTAnalytics.Track("TEST_OBJ_null", null);
+
+        DTAnalytics.Track(null, null);
     }
 }
 

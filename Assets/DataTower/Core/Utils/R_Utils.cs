@@ -58,7 +58,7 @@ namespace DataTower.Core
         /// <returns>json 字符串，如果字典不能转换成字符串那么会返回 null。</returns>
         public static string Parse2JsonStr(Dictionary<string, object> dictionary)
         {
-            if (dictionary == null) return null;
+            if (dictionary == null) return "{}";
             try
             {
                 return Json.Serialize(dictionary);
@@ -68,12 +68,12 @@ namespace DataTower.Core
                 R_Log.Error(e.Message);
             }
 
-            return null;
+            return "{}";
         }
 
         public static string ParseList2JsonStr(List<string> listStr)
         {
-            if (listStr == null) return null;
+            if (listStr == null) return "[]";
             try
             {
                 return Json.Serialize(listStr);
@@ -83,7 +83,7 @@ namespace DataTower.Core
                 R_Log.Error(e.Message);
             }
 
-            return null;
+            return "[]";
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace DataTower.Core
             {
                 throw new ArgumentException($"Json check failed (cannot convert to json string) for @{dictionary}");
             }
-            
+
             R_Log.Debug("Received dictionary w/ jsonified: " + PrettyJson(jsonStr));
 
             // key & value check
@@ -218,11 +218,11 @@ namespace DataTower.Core
             {
                 // check for key
                 ValidateJsonKey(entry.Key);
-                
+
                 // check for value
                 ValidateJsonValue(entry.Value, entry.Key);
             }
-            
+
             R_Log.Debug("No issue found in preset validation, " +
                         "BUT: pls check the printed jsonified dictionary is the same as you expect!");
         }
@@ -250,7 +250,7 @@ namespace DataTower.Core
                     $"Json check failed (key must starts with english letter, and only contains letter, number, and '_', with maximum length 50) for {key}");
             }
         }
-        
+
         private static void ValidateJsonValue(object value, string key)
         {
             if (!(value is string || IsNumeric(value) || value is bool || value is IList ||
@@ -286,7 +286,7 @@ namespace DataTower.Core
                 }
             }
         }
-        
+
         public static void ValidateListOnlyProp(Dictionary<string, object> properties)
         {
             foreach (KeyValuePair<string, object> entry in properties)
@@ -359,9 +359,9 @@ namespace DataTower.Core
             return stringBuilder.ToString();
         }
     }
-    
-    
-        
+
+
+
     static class Extensions
     {
         internal static void ForEach<T>(this IEnumerable<T> ie, Action<T> action)

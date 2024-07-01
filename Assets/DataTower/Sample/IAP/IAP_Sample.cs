@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DataTower.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,11 +14,21 @@ public class IAP_Sample : MonoBehaviour
     private void Awake()
     {
         print("sample awake====");
-        
+
         buttons2[0].onClick.AddListener(delegate
         {
             var dict = new Dictionary<string, object> { { "test_properties", "property value" } };
-            DTIAPReport.ReportPurchaseSuccess(Order, "sdk123", 3.32, "rmb", dict); 
+            if (ConfigMgr.IsReportNullData)
+            {
+                DTIAPReport.ReportPurchaseSuccess(Order, null, 3.32, "rmb", dict);
+                DTIAPReport.ReportPurchaseSuccess(Order, "sdk123", 3.32, null, dict);
+                DTIAPReport.ReportPurchaseSuccess(Order, "sdk123", 3.32, "rmb", null);
+                DTIAPReport.ReportPurchaseSuccess(Order, null, 3.32, null, null);
+            }
+            else
+            {
+                DTIAPReport.ReportPurchaseSuccess(Order, "sdk123", 3.32, "rmb", dict);
+            }
         }
         );
 

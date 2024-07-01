@@ -10,6 +10,8 @@
 
 extern NSDictionary *jsonStr2Dictionary(const char *jsonStr);
 
+extern NSString *SafeStringWithUTF8String(const char*);
+
 extern "C" {
 void reportLoadBegin(const char *adid, int type, int platform, const char * seq, int mediation, const char * mediationId, const char * properties) {
     
@@ -18,7 +20,7 @@ void reportLoadBegin(const char *adid, int type, int platform, const char * seq,
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportLoadBegin:[NSString stringWithUTF8String:adid] type:(DTAdType)type platform:(DTAdPlatform)platform seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId]  properties:dict];
+    [DTAdReport reportLoadBegin:SafeStringWithUTF8String(adid) type:(DTAdType)type platform:(DTAdPlatform)platform seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId)  properties:dict];
 }
 
 void reportLoadEnd(const char * adId, int type, int platform, long duration, bool result, const char * seq, int mediation, const char * mediationId, int errorCode, const char * errorMessage, const char * properties) {
@@ -28,7 +30,7 @@ void reportLoadEnd(const char * adId, int type, int platform, long duration, boo
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportLoadEnd:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform duration:@(duration) result:result seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId]  errorCode:errorCode errorMessage:[NSString stringWithUTF8String:errorMessage] properties:dict];
+    [DTAdReport reportLoadEnd:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform duration:@(duration) result:result seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId)  errorCode:errorCode errorMessage:SafeStringWithUTF8String(errorMessage) properties:dict];
 }
 
 
@@ -38,7 +40,7 @@ void reportShowFailed(const char * adId, int type, int platform, const char * lo
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportAdShowFail:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] errorCode: errorCode errorMessage:[NSString stringWithUTF8String:errorMessage] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportAdShowFail:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) errorCode: errorCode errorMessage:SafeStringWithUTF8String(errorMessage) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 
 void reportToShow(const char * adId, int type, int platform, const char * location, const char * seq,
@@ -48,7 +50,7 @@ void reportToShow(const char * adId, int type, int platform, const char * locati
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportToShow:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportToShow:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 
 }
 
@@ -59,7 +61,7 @@ void reportShow(const char * adId, int type, int platform, const char * location
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportShow:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportShow:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 
 void reportAdShowFail(const char * adId, int type, int platform, const char * location, const char * seq,
@@ -69,7 +71,7 @@ void reportAdShowFail(const char * adId, int type, int platform, const char * lo
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportAdShowFail:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] errorCode:errorCode errorMessage:[NSString stringWithUTF8String:errorMessage] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportAdShowFail:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) errorCode:errorCode errorMessage:SafeStringWithUTF8String(errorMessage) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 
 void reportImpression(const char * id, int type, int platform, const char * location, const char * seq,
@@ -84,7 +86,7 @@ void reportClose(const char * adId, int type, int platform, const char * locatio
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportClose:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportClose:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) properties:dict entrance:SafeStringWithUTF8String(entrance)];
     
 }
 
@@ -96,7 +98,7 @@ void reportClick(const char * adId, int type, int platform, const char * locatio
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportClick:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportClick:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 
 void reportRewarded(const char * adId, int type, int platform, const char * location, const char * seq,
@@ -106,7 +108,7 @@ void reportRewarded(const char * adId, int type, int platform, const char * loca
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportRewarded:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportRewarded:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 
 void reportLeftApp(const char * adId, int type, int platform, const char * location, const char * seq,
@@ -116,7 +118,7 @@ void reportLeftApp(const char * adId, int type, int platform, const char * locat
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportLeftApp:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportLeftApp:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 
 void reportConversionByClick(const char * adId, int type, int platform, const char * location,
@@ -126,7 +128,7 @@ void reportConversionByClick(const char * adId, int type, int platform, const ch
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportConversionByClick:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportConversionByClick:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 
 void reportConversionByLeftApp(const char * adId, int type, int platform, const char * location,
@@ -136,7 +138,7 @@ void reportConversionByLeftApp(const char * adId, int type, int platform, const 
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportConversionByLeftApp:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportConversionByLeftApp:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 
 void reportConversionByRewarded(const char * adId, int type, int platform, const char * location,
@@ -146,7 +148,7 @@ void reportConversionByRewarded(const char * adId, int type, int platform, const
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportConversionByRewarded:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportConversionByRewarded:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 
 void reportPaid(const char * adId, int type, int platform, const char * location, const char * seq,
@@ -156,7 +158,7 @@ void reportPaid(const char * adId, int type, int platform, const char * location
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportPaid:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] value:value currency:[NSString stringWithUTF8String:currency] precision:[NSString stringWithUTF8String:precision] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportPaid:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) value:value currency:SafeStringWithUTF8String(currency) precision:SafeStringWithUTF8String(precision) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 
 void reportPaidWithMediation(const char * adId, int type, int platform, const char * adgroupType, const char * location,
@@ -168,6 +170,6 @@ void reportPaidWithMediation(const char * adId, int type, int platform, const ch
         dict = jsonStr2Dictionary(properties);
     }
     
-    [DTAdReport reportPaid:[NSString stringWithUTF8String:adId] type:(DTAdType)type platform:(DTAdPlatform)platform location:[NSString stringWithUTF8String:location] seq:[NSString stringWithUTF8String:seq] mediation:(DTAdMediation)mediation mediationId:[NSString stringWithUTF8String:mediationId] value:value  precision:[NSString stringWithUTF8String:precision] country:[NSString stringWithUTF8String:country] properties:dict entrance:[NSString stringWithUTF8String:entrance]];
+    [DTAdReport reportPaid:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) value:value  precision:SafeStringWithUTF8String(precision) country:SafeStringWithUTF8String(country) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
 }

@@ -25,11 +25,52 @@ public class Utils_Sample : MonoBehaviour
         buttons1[0].onClick.AddListener(delegate
         {
             print("trackTimerStart====");
-            DTAnalyticsUtils.TrackTimerStart(eventName);
+
+            if (ConfigMgr.IsReportNullData)
+            {
+                DTAnalyticsUtils.TrackTimerStart(null);
+            }
+            else
+            {
+                DTAnalyticsUtils.TrackTimerStart(eventName);
+            }
         });
-        buttons1[1].onClick.AddListener(delegate { DTAnalyticsUtils.TrackTimerPause(eventName); });
-        buttons1[2].onClick.AddListener(delegate { DTAnalyticsUtils.TrackTimerResume(eventName); });
-        buttons1[3].onClick.AddListener(delegate { DTAnalyticsUtils.TrackTimerEnd(eventName, dictionary); });
+        buttons1[1].onClick.AddListener(delegate
+        {
+
+            if (ConfigMgr.IsReportNullData)
+            {
+                DTAnalyticsUtils.TrackTimerPause(null);
+            }
+            else
+            {
+                DTAnalyticsUtils.TrackTimerPause(eventName);
+            }
+        });
+        buttons1[2].onClick.AddListener(delegate
+        {
+            if (ConfigMgr.IsReportNullData)
+            {
+                DTAnalyticsUtils.TrackTimerResume(null);
+            }
+            else
+            {
+                DTAnalyticsUtils.TrackTimerResume(eventName);
+            }
+        });
+        buttons1[3].onClick.AddListener(delegate
+        {
+            if (ConfigMgr.IsReportNullData)
+            {
+                DTAnalyticsUtils.TrackTimerEnd(eventName, null);
+                DTAnalyticsUtils.TrackTimerEnd(null, null);
+            }
+            else
+            {
+                DTAnalyticsUtils.TrackTimerEnd(eventName, dictionary);
+            }
+
+        });
 
         buttons1[4].onClick.AddListener(delegate { SceneManager.LoadSceneAsync("Sample"); });
     }

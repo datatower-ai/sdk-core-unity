@@ -21,13 +21,20 @@
      ASSERT = 7
  };
 
+NSString *SafeStringWithUTF8String(const char *cStr) {
+    if(NULL == cStr)
+        return @"";
+    
+    return [NSString stringWithUTF8String:cStr];
+}
+
 NSDictionary *jsonStr2Dictionary(const char *jsonStr) {
     if(NULL == jsonStr)
     {
         return [NSDictionary new];
     }
     
-    NSString *jsonString = [NSString stringWithUTF8String:jsonStr];
+    NSString *jsonString = SafeStringWithUTF8String(jsonStr);
     NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *ret = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     return ret;
@@ -49,9 +56,9 @@ void initSDK(const char *appId, const char* serverUrl, bool isDebug, int logLeve
     DTLoggingLevel iOSLogLevel = convertUnityLogLevel((enum UnityLogLevel)logLevel);
     if (jsonStr != NULL) {
         NSDictionary *props = jsonStr2Dictionary(jsonStr);
-        [DT initSDK:[NSString stringWithUTF8String:appId] serverUrl:[NSString stringWithUTF8String:serverUrl] channel:DTChannelAppStore isDebug:isDebug logLevel:iOSLogLevel commonProperties:props];
+        [DT initSDK:SafeStringWithUTF8String(appId) serverUrl:SafeStringWithUTF8String(serverUrl) channel:DTChannelAppStore isDebug:isDebug logLevel:iOSLogLevel commonProperties:props];
     } else {
-        [DT initSDK:[NSString stringWithUTF8String:appId] serverUrl:[NSString stringWithUTF8String:serverUrl] channel:DTChannelAppStore isDebug:isDebug logLevel:iOSLogLevel];
+        [DT initSDK:SafeStringWithUTF8String(appId) serverUrl:SafeStringWithUTF8String(serverUrl) channel:DTChannelAppStore isDebug:isDebug logLevel:iOSLogLevel];
     }
 }
 
@@ -73,39 +80,29 @@ void userUniqAppend(const char *jsonStr) {
 }
 
 void userSet(const char *jsonStr) {
-    if(NULL == jsonStr)
-        return;
     
     NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
     [DTAnalytics userSet:dictParam];
 }
 
 void userAdd(const char* jsonStr) {
-    if(NULL == jsonStr)
-        return;
     
     NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
     [DTAnalytics userAdd:dictParam];
 }
 
 void userSetOnce(const char* jsonStr) {
-    if(NULL == jsonStr)
-        return;
     
     NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
     [DTAnalytics userSetOnce:dictParam];
 }
 
 void userUnset(const char* jsonStr) {
-    if(NULL == jsonStr)
-        return;
     
-    [DTAnalytics userUnset:[NSString stringWithUTF8String:jsonStr]];
+    [DTAnalytics userUnset:SafeStringWithUTF8String(jsonStr)];
 }
 
 void userAppend(const char* jsonStr) {
-    if(NULL == jsonStr)
-        return;
     
     NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
     [DTAnalytics userAppend:dictParam];
@@ -116,52 +113,43 @@ void userDelete() {
 }
 
 void setAccountId(const char* plainStr) {
-    if(NULL == plainStr)
-        return;
     
-    NSString *strParam = [NSString stringWithUTF8String:plainStr];
+    NSString *strParam = SafeStringWithUTF8String(plainStr);
     [DTAnalytics setAccountId:strParam];
 }
 
 void setFirebaseAppInstanceId(const char* plainStr) {
-    if(NULL == plainStr)
-        return;
     
-    NSString *strParam = [NSString stringWithUTF8String:plainStr];
+    NSString *strParam = SafeStringWithUTF8String(plainStr);
     [DTAnalytics setFirebaseAppInstanceId:strParam];
 }
 
 void setAppsFlyerId(const char* plainStr) {
-    if(NULL == plainStr)
-        return;
     
-    NSString *strParam = [NSString stringWithUTF8String:plainStr];
+    NSString *strParam = SafeStringWithUTF8String(plainStr);
     [DTAnalytics setAppsFlyerId:strParam];
 }
 
 void setKochavaId(const char* plainStr) {
-    if(NULL == plainStr)
-        return;
     
-    NSString *strParam = [NSString stringWithUTF8String:plainStr];
+    NSString *strParam = SafeStringWithUTF8String(plainStr);
     [DTAnalytics setKochavaId:strParam];
 }
 
 void setAdjustId(const char* plainStr) {
-    if(NULL == plainStr)
-        return;
     
-    NSString *strParam = [NSString stringWithUTF8String:plainStr];
+    NSString *strParam = SafeStringWithUTF8String(plainStr);
     [DTAnalytics setAdjustId:strParam];
 }
 
 void trackEvent(const char* eventName, const char* jsonStr) {
-    NSString *strParam = [NSString stringWithUTF8String:eventName];
+    
+    NSString *strParam = SafeStringWithUTF8String(eventName);
     if(jsonStr != NULL)
     {
         NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
         [DTAnalytics trackEventName:strParam properties:dictParam];
-    }
+    } 
     else
     {
         [DTAnalytics trackEventName:strParam];
@@ -169,28 +157,24 @@ void trackEvent(const char* eventName, const char* jsonStr) {
 }
 
 void trackTimerStart(const char* eventName) {
-    if(NULL == eventName)
-        return;
     
-    NSString *strParam = [NSString stringWithUTF8String:eventName];
+    NSString *strParam = SafeStringWithUTF8String(eventName);
     [DTAnalyticsUtils trackTimerStart:strParam];
 }
 
 void trackTimerPause(const char* eventName) {
-    if(NULL == eventName)
-        return;
     
-    NSString *strParam = [NSString stringWithUTF8String:eventName];
+    NSString *strParam = SafeStringWithUTF8String(eventName);
     [DTAnalyticsUtils trackTimerPause:strParam];
 }
 
 void trackTimerResume(const char* eventName) {
-    NSString *strParam = [NSString stringWithUTF8String:eventName];
+    NSString *strParam = SafeStringWithUTF8String(eventName);
     [DTAnalyticsUtils trackTimerResume:strParam];
 }
 
 void trackTimerEnd(const char* eventName, const char* jsonStr) {
-    NSString *strParam = [NSString stringWithUTF8String:eventName];
+    NSString *strParam = SafeStringWithUTF8String(eventName);
     if(jsonStr != NULL)
     {
         NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
