@@ -22,6 +22,11 @@
  };
 
 NSDictionary *jsonStr2Dictionary(const char *jsonStr) {
+    if(NULL == jsonStr)
+    {
+        return [NSDictionary new];
+    }
+    
     NSString *jsonString = [NSString stringWithUTF8String:jsonStr];
     NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *ret = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -60,30 +65,48 @@ char* getDataTowerId() {
 }
 
 void userUniqAppend(const char *jsonStr) {
-     NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
+    if(NULL == jsonStr)
+        return;
+    
+    NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
     [DTAnalytics userUniqAppend:dictParam];
 }
 
 void userSet(const char *jsonStr) {
+    if(NULL == jsonStr)
+        return;
+    
     NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
     [DTAnalytics userSet:dictParam];
 }
 
 void userAdd(const char* jsonStr) {
+    if(NULL == jsonStr)
+        return;
+    
     NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
     [DTAnalytics userAdd:dictParam];
 }
 
 void userSetOnce(const char* jsonStr) {
+    if(NULL == jsonStr)
+        return;
+    
     NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
     [DTAnalytics userSetOnce:dictParam];
 }
 
 void userUnset(const char* jsonStr) {
+    if(NULL == jsonStr)
+        return;
+    
     [DTAnalytics userUnset:[NSString stringWithUTF8String:jsonStr]];
 }
 
 void userAppend(const char* jsonStr) {
+    if(NULL == jsonStr)
+        return;
+    
     NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
     [DTAnalytics userAppend:dictParam];
 }
@@ -93,26 +116,41 @@ void userDelete() {
 }
 
 void setAccountId(const char* plainStr) {
+    if(NULL == plainStr)
+        return;
+    
     NSString *strParam = [NSString stringWithUTF8String:plainStr];
     [DTAnalytics setAccountId:strParam];
 }
 
 void setFirebaseAppInstanceId(const char* plainStr) {
+    if(NULL == plainStr)
+        return;
+    
     NSString *strParam = [NSString stringWithUTF8String:plainStr];
     [DTAnalytics setFirebaseAppInstanceId:strParam];
 }
 
 void setAppsFlyerId(const char* plainStr) {
+    if(NULL == plainStr)
+        return;
+    
     NSString *strParam = [NSString stringWithUTF8String:plainStr];
     [DTAnalytics setAppsFlyerId:strParam];
 }
 
 void setKochavaId(const char* plainStr) {
+    if(NULL == plainStr)
+        return;
+    
     NSString *strParam = [NSString stringWithUTF8String:plainStr];
     [DTAnalytics setKochavaId:strParam];
 }
 
 void setAdjustId(const char* plainStr) {
+    if(NULL == plainStr)
+        return;
+    
     NSString *strParam = [NSString stringWithUTF8String:plainStr];
     [DTAnalytics setAdjustId:strParam];
 }
@@ -123,7 +161,7 @@ void trackEvent(const char* eventName, const char* jsonStr) {
     {
         NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
         [DTAnalytics trackEventName:strParam properties:dictParam];
-    } 
+    }
     else
     {
         [DTAnalytics trackEventName:strParam];
@@ -131,11 +169,17 @@ void trackEvent(const char* eventName, const char* jsonStr) {
 }
 
 void trackTimerStart(const char* eventName) {
+    if(NULL == eventName)
+        return;
+    
     NSString *strParam = [NSString stringWithUTF8String:eventName];
     [DTAnalyticsUtils trackTimerStart:strParam];
 }
 
 void trackTimerPause(const char* eventName) {
+    if(NULL == eventName)
+        return;
+    
     NSString *strParam = [NSString stringWithUTF8String:eventName];
     [DTAnalyticsUtils trackTimerPause:strParam];
 }
