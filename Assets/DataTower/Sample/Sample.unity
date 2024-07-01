@@ -751,8 +751,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087947596658616696, guid: fe9db6fb518c6451bb5eb595d03d903f,
         type: 3}
+      propertyPath: channel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087947596658616696, guid: fe9db6fb518c6451bb5eb595d03d903f,
+        type: 3}
       propertyPath: isDebug
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087947596658616696, guid: fe9db6fb518c6451bb5eb595d03d903f,
+        type: 3}
+      propertyPath: iOSAppId
+      value: dt_72d4ea7cc24fd77e
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087947596658616696, guid: fe9db6fb518c6451bb5eb595d03d903f,
+        type: 3}
+      propertyPath: serverUrl
+      value: https://test.roiquery.com
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087947596658616696, guid: fe9db6fb518c6451bb5eb595d03d903f,
+        type: 3}
+      propertyPath: androidAppId
+      value: dt_72d4ea7cc24fd77e
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
