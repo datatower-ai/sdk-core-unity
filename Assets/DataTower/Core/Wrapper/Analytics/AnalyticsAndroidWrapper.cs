@@ -27,7 +27,7 @@ namespace DataTower.Core.Wrapper
             R_Log.Debug(serverUrl);
 
             //调用静态初始化方法 init
-            DT.CallStatic("initSDK", currentContext, androidAppId, serverUrl, channel, isDebug, logLevel, jsonObject);
+            DT.CallStatic("initSDK", currentContext, androidAppId, serverUrl, channel, isDebug, logLevel, false, jsonObject);
         }
 
         private AndroidJavaObject ToJSONObject(Dictionary<string, object> dic)
