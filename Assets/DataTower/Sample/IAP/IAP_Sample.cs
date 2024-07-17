@@ -17,7 +17,24 @@ public class IAP_Sample : MonoBehaviour
 
         buttons2[0].onClick.AddListener(delegate
         {
-            var dict = new Dictionary<string, object> { { "test_properties", "property value" } };
+            var dict = new Dictionary<string, object>
+            {
+                { "test_properties", "property value" }, 
+                { "test_int", 123 }, 
+                { "test_float", 123.4F }, 
+                { "test_double", 123.4D }, 
+                { "test_bool", true },
+                { "test_list", new List<int>{1, 2, 3} },
+                { "test_dict", new Dictionary<string, object> { { "a", "b"}, { "c", 2 } } },
+                { "test_long", 1000L },
+                { "test_byte", 0x20 },
+                { "test_uint", 20U },
+                { "test_ulong", 20UL },
+                { "test_short", (short) 20 },
+                { "test_ushort", (ushort) 20 },
+                { "test_sbyte", (sbyte) 5 },
+                { "test_char", (char) 'A' },
+            };
             if (ConfigMgr.IsReportNullData)
             {
                 DTIAPReport.ReportPurchaseSuccess(Order, null, 3.32, "rmb", dict);

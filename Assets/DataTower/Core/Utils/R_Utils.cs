@@ -178,7 +178,7 @@ namespace DataTower.Core
                    || obj is float;
         }
 
-        public static AndroidJavaObject ParseDic2Map(Dictionary<string, object> dictionary)
+        public static AndroidJavaObject ParseDic2Map(IDictionary<string, object> dictionary)
         {
             if (dictionary == null)
             {
@@ -186,12 +186,126 @@ namespace DataTower.Core
             }
 
             AndroidJavaObject map = new AndroidJavaObject("java.util.HashMap");
+            IntPtr putMethod = AndroidJNIHelper.GetMethodID(
+                map.GetRawClass(), 
+                "put", 
+                "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            );
+            
+            object[] args = new object[2];
             foreach (KeyValuePair<string, object> pair in dictionary)
             {
-                map.Call<string>("put", pair.Key, pair.Value);
+                using (AndroidJavaObject k = new AndroidJavaObject("java.lang.String", pair.Key))
+                {
+                    AndroidJavaObject v = Parse2AndroidJavaObject(pair.Value);
+                    if (v == null)
+                    {
+                        R_Log.Warn($"Cannot convert ({pair.Value}) for key ({pair.Key}) to java object");
+                    }
+                    else
+                    {
+                        args[0] = k;
+                        args[1] = v;
+                        AndroidJNI.CallObjectMethod(map.GetRawObject(), putMethod,
+                            AndroidJNIHelper.CreateJNIArgArray(args));
+                    }
+                }
             }
 
             return map;
+        }
+
+        public static AndroidJavaObject ParseList2ArrayList(IList list)
+        {
+            AndroidJavaObject ajo = new AndroidJavaObject("java.util.ArrayList");
+            if (list == null)
+            {
+                return ajo;
+            }
+            
+            IntPtr addMethod = AndroidJNIHelper.GetMethodID(
+                ajo.GetRawClass(), 
+                "add", 
+                "(Ljava/lang/Object;)Z"
+            );
+            
+            object[] args = new object[2];
+            foreach (object item in list)
+            {
+                AndroidJavaObject v = Parse2AndroidJavaObject(item);
+                if (v == null)
+                {
+                    R_Log.Warn($"Cannot convert ({item}) to java object, from list: {list}");
+                }
+                else
+                {
+                    args[0] = v;
+                    AndroidJNI.CallObjectMethod(ajo.GetRawObject(), addMethod, 
+                        AndroidJNIHelper.CreateJNIArgArray(args));
+                }
+            }
+
+            return ajo;
+        }
+
+        public static AndroidJavaObject Parse2AndroidJavaObject(object obj)
+        {
+            if (obj is string)
+            {                
+                return new AndroidJavaObject("java.lang.String", obj);
+            }
+            
+            if (obj is bool)
+            {
+                return new AndroidJavaObject("java.lang.Boolean", obj);
+            } 
+            
+            if (obj is double or ulong)
+            {
+                return new AndroidJavaObject("java.lang.Double", Convert.ToDouble(obj));
+            }
+            
+            if (obj is float)
+            {
+                return new AndroidJavaObject("java.lang.Float", obj);
+            }
+            
+            if (obj is int or ushort)
+            {
+                return new AndroidJavaObject("java.lang.Integer", Convert.ToInt32(obj));
+            }
+            
+            if (obj is long or uint)
+            {
+                return new AndroidJavaObject("java.lang.Long", Convert.ToInt64(obj));
+            }
+
+            if (obj is short)
+            {
+                return new AndroidJavaObject("java.lang.Short", obj);
+            }
+            
+            if (obj is byte or sbyte)
+            {
+                return new AndroidJavaObject("java.lang.Byte", obj);
+            }
+
+            if (obj is char)
+            {
+                return new AndroidJavaObject("java.lang.Character", obj);
+            }
+
+            if (obj is IDictionary<string, object> objects)
+            {
+                return ParseDic2Map(objects);
+            }
+
+            if (obj is IList list)
+            {
+                return ParseList2ArrayList(list);
+            }
+
+            return null;
         }
 
         private static readonly Regex KeyRegex = new Regex("^[a-zA-Z][a-zA-Z\\d_#]{0,49}", RegexOptions.IgnoreCase);
