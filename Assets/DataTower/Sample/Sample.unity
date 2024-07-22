@@ -148,7 +148,7 @@ MonoBehaviour:
   channel: 
   isDebug: 1
   logLevel: 3
-  manualEnableUpload: 1
+  manualEnableUpload: 0
 --- !u!1 &48210602
 GameObject:
   m_ObjectHideFlags: 0
