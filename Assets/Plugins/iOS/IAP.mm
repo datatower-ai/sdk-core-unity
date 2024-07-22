@@ -6,27 +6,30 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <datatower_ai_core/DTIAPReport.h>
+#import <DataTowerAICore/DTIAPReport.h>
+
+extern NSString *SafeStringWithUTF8String(const char*);
 
 extern "C" {
 
 void reportIapEntrance(const char * order, const char * sku, double price, const char * currency, const char * seq,
                        const char * entrance) {
-    [DTIAPReport reportEntrance:[NSString stringWithUTF8String:order] sku:[NSString stringWithUTF8String:sku] price:@(price) currency:[NSString stringWithUTF8String:currency] seq:[NSString stringWithUTF8String:seq] placement:[NSString stringWithUTF8String:entrance]];
+    [DTIAPReport reportEntrance:SafeStringWithUTF8String(order) sku:SafeStringWithUTF8String(sku) price:@(price) currency:SafeStringWithUTF8String(currency) seq:SafeStringWithUTF8String(seq) placement:SafeStringWithUTF8String(entrance)];
+    [DTIAPReport reportEntrance:SafeStringWithUTF8String(order) sku:SafeStringWithUTF8String(sku) price:@(price) currency:SafeStringWithUTF8String(currency) seq:SafeStringWithUTF8String(seq) placement:SafeStringWithUTF8String(entrance)];
 }
 
 void reportToPurchase(const char * order, const char * sku, double price, const char * currency, const char * seq,
                       const char * entrance) {
-    [DTIAPReport reportToPurchase:[NSString stringWithUTF8String:order] sku:[NSString stringWithUTF8String:sku] price:@(price) currency:[NSString stringWithUTF8String:currency] seq:[NSString stringWithUTF8String:seq] placement:[NSString stringWithUTF8String:entrance]];
+    [DTIAPReport reportToPurchase:SafeStringWithUTF8String(order) sku:SafeStringWithUTF8String(sku) price:@(price) currency:SafeStringWithUTF8String(currency) seq:SafeStringWithUTF8String(seq) placement:SafeStringWithUTF8String(entrance)];
 }
 
 void reportPurchased(const char * order, const char * sku, double price, const char * currency, const char * seq,
                      const char * entrance) {
-    [DTIAPReport reportPurchased:[NSString stringWithUTF8String:order] sku:[NSString stringWithUTF8String:sku] price:@(price) currency:[NSString stringWithUTF8String:currency] seq:[NSString stringWithUTF8String:seq] placement:[NSString stringWithUTF8String:entrance]];
+    [DTIAPReport reportPurchased:SafeStringWithUTF8String(order) sku:SafeStringWithUTF8String(sku) price:@(price) currency:SafeStringWithUTF8String(currency) seq:SafeStringWithUTF8String(seq) placement:SafeStringWithUTF8String(entrance)];
 }
 
 void reportNotToPurchased(const char * order, const char * sku, double price, const char * currency,
                           const char * seq, const char * code, const char * entrance, const char * msg) {
-    [DTIAPReport reportNotToPurchased:[NSString stringWithUTF8String:order] sku:[NSString stringWithUTF8String:seq] price:@(price) currency:[NSString stringWithUTF8String:currency] seq:[NSString stringWithUTF8String:seq] code:[NSString stringWithUTF8String:code] msg:[NSString stringWithUTF8String:msg] placement:[NSString stringWithUTF8String:entrance]];
+    [DTIAPReport reportNotToPurchased:SafeStringWithUTF8String(order) sku:SafeStringWithUTF8String(seq) price:@(price) currency:SafeStringWithUTF8String(currency) seq:SafeStringWithUTF8String(seq) code:SafeStringWithUTF8String(code) msg:SafeStringWithUTF8String(msg) placement:SafeStringWithUTF8String(entrance)];
 }
 }
