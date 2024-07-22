@@ -10,16 +10,16 @@
 #import <DataTowerAICore/DT.h>
 #import <DataTowerAICore/DTAnalyticsUtils.h>
 
- NS_ENUM(NSInteger, UnityLogLevel)
- {
-     DEFAULT = 2,
-     VERBOSE = 2,
-     DEBUG = 3,
-     INFO = 4,
-     WARN = 5,
-     ERROR = 6,
-     ASSERT = 7
- };
+NS_ENUM(NSInteger, UnityLogLevel)
+{
+    DEFAULT = 2,
+    VERBOSE = 2,
+    DEBUG = 3,
+    INFO = 4,
+    WARN = 5,
+    ERROR = 6,
+    ASSERT = 7
+};
 
 NSString *SafeStringWithUTF8String(const char *cStr) {
     if(NULL == cStr)
@@ -51,15 +51,19 @@ DTLoggingLevel convertUnityLogLevel(enum UnityLogLevel level) {
 }
 
 extern "C" {
-void initSDK(const char *appId, const char* serverUrl, bool isDebug, int logLevel, const char *jsonStr) {
+void initSDK(const char *appId, const char* serverUrl, bool isDebug, int logLevel, const char *jsonStr, bool enableUpload) {
     
     DTLoggingLevel iOSLogLevel = convertUnityLogLevel((enum UnityLogLevel)logLevel);
     if (jsonStr != NULL) {
         NSDictionary *props = jsonStr2Dictionary(jsonStr);
-        [DT initSDK:SafeStringWithUTF8String(appId) serverUrl:SafeStringWithUTF8String(serverUrl) channel:DTChannelAppStore isDebug:isDebug logLevel:iOSLogLevel commonProperties:props];
+        [DT initSDK:SafeStringWithUTF8String(appId) serverUrl:SafeStringWithUTF8String(serverUrl) channel:DTChannelAppStore isDebug:isDebug logLevel:iOSLogLevel commonProperties:props enableTrack:enableUpload];
     } else {
-        [DT initSDK:SafeStringWithUTF8String(appId) serverUrl:SafeStringWithUTF8String(serverUrl) channel:DTChannelAppStore isDebug:isDebug logLevel:iOSLogLevel];
+        [DT initSDK:SafeStringWithUTF8String(appId) serverUrl:SafeStringWithUTF8String(serverUrl) channel:DTChannelAppStore isDebug:isDebug logLevel:iOSLogLevel enableTrack:enableUpload];
     }
+}
+
+void enableUpload(bool enable) {
+    [DTAnalytics setEnableTracking:enable];
 }
 
 char* getDataTowerId() {
@@ -149,7 +153,7 @@ void trackEvent(const char* eventName, const char* jsonStr) {
     {
         NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
         [DTAnalytics trackEventName:strParam properties:dictParam];
-    } 
+    }
     else
     {
         [DTAnalytics trackEventName:strParam];
@@ -184,6 +188,11 @@ void trackTimerEnd(const char* eventName, const char* jsonStr) {
     {
         [DTAnalyticsUtils trackTimerEnd:strParam];
     }
+}
+
+void setSuperProperties(const char* jsonStr) {
+    NSDictionary *dictParam = jsonStr2Dictionary(jsonStr);
+    [DTAnalytics setSuperProperties:dictParam];
 }
 
 }
