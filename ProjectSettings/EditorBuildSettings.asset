@@ -5,25 +5,55 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/DataTower/Sample/Sample.unity
     guid: 2a2daf43808584338b4e0ca19f475211
-  - enabled: 1
+  - enabled: 0
     path: Assets/DataTower/Sample/Ad/Ad_Sample.unity
     guid: a94ca97ec1b0c43a2bc49e696fe92c15
-  - enabled: 1
+  - enabled: 0
     path: Assets/DataTower/Sample/Analytics/Analytics_Sample.unity
     guid: d6be320c1068b4b80b1f1fe9a5e034fa
-  - enabled: 1
+  - enabled: 0
     path: Assets/DataTower/Sample/Utils/Utils_Sample.unity
     guid: 80faff1c7850c439cb8255b388e617cc
-  - enabled: 1
+  - enabled: 0
     path: Assets/DataTower/Sample/IAP/IAP_Sample.unity
     guid: 7e75546d054114508abd50eb19093340
-  - enabled: 1
+  - enabled: 0
     path: Assets/DataTower/Sample/IAS/IAS_Sample.unity
     guid: 1c7d61ffd1bb24e81afbddc569ba5928
-  - enabled: 1
+  - enabled: 0
     path: Assets/DataTower/Sample/USER_SET/User_Set_Sample.unity
     guid: 8631c93a586544442be06522a96e673c
+  - enabled: 1
+    path: Assets/DataTower/Sample2/Entry.unity
+    guid: b8c46854374ce4fb7867751f2f4a9cf0
+  - enabled: 1
+    path: Assets/DataTower/Sample2/Home.unity
+    guid: 24287851bd6af4ff1914670dff9dfe0a
+  - enabled: 1
+    path: Assets/DataTower/Sample2/EventTrack.unity
+    guid: f59d872ea2b184a3c93b6d1c69278e27
+  - enabled: 1
+    path: Assets/DataTower/Sample2/UserTrack.unity
+    guid: e9316bf3500aa4bfcae3df7c3f1ed386
+  - enabled: 1
+    path: Assets/DataTower/Sample2/CommonProperty.unity
+    guid: bbbbf5f939a164f2e896ab68a9647f6a
+  - enabled: 1
+    path: Assets/DataTower/Sample2/AllApis.unity
+    guid: 9498e2649cf9d4c9bb38c99b360e3ce4
+  - enabled: 1
+    path: Assets/DataTower/Sample2/TimedEventTrack.unity
+    guid: 988ad0ee3c09d4850b02dea547053bdd
+  - enabled: 1
+    path: Assets/DataTower/Sample2/AdScene.unity
+    guid: fdf2e03e6549f4a08b6483b873e02726
+  - enabled: 1
+    path: Assets/DataTower/Sample2/IasScene.unity
+    guid: 2402d8d7af97d4f318b74b8895818cfb
+  - enabled: 1
+    path: Assets/DataTower/Sample2/IapScene.unity
+    guid: 1aca6059390854f07acaced3e5e31baa
   m_configObjects: {}
