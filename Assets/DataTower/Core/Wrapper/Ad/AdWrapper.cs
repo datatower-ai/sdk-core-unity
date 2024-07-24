@@ -133,17 +133,6 @@ namespace DataTower.Core.Wrapper
             _reportPaid(id, type, platform, location, seq, value, currency, precision, entrance, properties, mediation, mediationId);
         }
 
-        public void ReportPaid(string id, AdType type, string platform, string adgroupName, string adgroupType,
-            string location, string seq,
-            AdMediation mediation, string mediationId, double value, string currency, string precision, string country,
-            string entrance = "",
-            Dictionary<string, object> properties = null)
-        {
-            _reportPaid(id, type, platform, adgroupName, adgroupType, location, seq, mediation, mediationId, value,
-                currency,
-                precision, country, entrance, properties);
-        }
-
         public void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq,
             AdMediation mediation, string mediationId, double value,
             string precision, string country, Dictionary<string, object> properties = null)

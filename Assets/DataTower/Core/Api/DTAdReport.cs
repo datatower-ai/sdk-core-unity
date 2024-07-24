@@ -363,35 +363,6 @@ namespace DataTower.Core
                 entrance, properties, mediation, mediationId);
         }
 
-
-        /// <summary>
-        ///     上报 广告展示价值，适用于聚合广告平台
-        /// </summary>
-        /// <param name="id">广告最小单元id</param>
-        /// <param name="type">广告类型</param>
-        /// <param name="platform">广告平台</param>
-        /// <param name="adgroupName">广告组名称</param>
-        /// <param name="adgroupType">广告组类别</param>
-        /// <param name="location">广告位</param>
-        /// <param name="seq">系列行为标识</param>
-        /// <param name="mediation">聚合平台</param>
-        /// <param name="mediationId">聚合平台广告id</param>
-        /// <param name="value">价值</param>
-        /// <param name="currency">货币</param>
-        /// <param name="precision">精确度</param>
-        /// <param name="country">国家</param>
-        /// <param name="entrance">广告入口</param>
-        /// <param name="properties">自定义属性</param>
-        public static void ReportPaid(string id, AdType type, string platform, string adgroupName, string adgroupType,
-            string location, string seq,
-            AdMediation mediation, string mediationId, double value, string currency, string precision, string country,
-            string entrance = "", Dictionary<string, object> properties = null)
-        {
-            DTAdReportWrapper.Instance.ReportPaid(id, type, platform, adgroupName, adgroupType, location, seq,
-                mediation, mediationId,
-                value, currency, precision, country, entrance, properties);
-        }
-
         /// <summary>
         ///     上报 广告展示价值，适用于聚合广告平台 max
         /// </summary>
