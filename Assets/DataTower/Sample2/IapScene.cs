@@ -14,11 +14,12 @@ namespace DataTower.Sample2
     {
         private readonly List<string> _allParams = new()
         {
-            "Order", "Sku", "Price", "Currency", "Properties"
+            "Order", "Sku", "Price", "Currency", "Properties", "Seq", "Entrance"
         };
         private readonly Dictionary<string, List<string>> _apis = new ()
         {
-            { "ReportPurchaseSuccess", new List<string> { "Order", "Sku", "Price", "Currency", "Properties" } }
+            { "ReportPurchaseSuccessAndroid", new List<string> { "Order", "Sku", "Price", "Currency", "Properties" } },
+            { "ReportPurchaseSuccessIos", new List<string> { "Order", "Sku", "Price", "Currency", "Seq", "Entrance" } }
         };
         private string _api = "ReportPurchaseSuccess";
         private Dictionary<string, GameObject> _gameObjects = new ();
@@ -28,6 +29,8 @@ namespace DataTower.Sample2
         private double _price;
         private string _currency;
         private Dictionary<string, object> _properties;
+        private string _seq;
+        private string _entrance;
         
         private void Start()
         {
@@ -41,6 +44,8 @@ namespace DataTower.Sample2
             RegisterInputField("Sku", it => { _sku = it; });
             RegisterInputField("Price", it => { double.TryParse(it, out _price); });
             RegisterInputField("Currency", it => { _currency = it; });
+            RegisterInputField("Seq", it => { _seq = it; });
+            RegisterInputField("Entrance", it => { _entrance = it; });
             
             RegisterProperties();
             RegisterTrackButton();
@@ -114,8 +119,11 @@ namespace DataTower.Sample2
             {
                 switch (_api)
                 {
-                    case "ReportPurchaseSuccess": 
-                        DTIAPReport.ReportPurchaseSuccess(_order, _sku, _price, _currency, _properties);
+                    case "ReportPurchaseSuccessAndroid": 
+                        DTIAPReport.ReportPurchaseSuccessAndroid(_order, _sku, _price, _currency, _properties);
+                        break;
+                    case "ReportPurchaseSuccessIos":
+                        DTIAPReport.ReportPurchaseSuccessIos(_order, _sku, _price, _currency, _seq, _entrance);
                         break;
                 }
             });

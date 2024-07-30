@@ -135,9 +135,7 @@ namespace DataTower.Sample2
 
         private void RegisterProperties()
         {
-            Debug.LogWarning("Canvas/Properties/InputField");
             var inputFieldProperties = GameObject.Find("Canvas/Properties/InputField").GetComponent<TMP_InputField>();
-            Debug.LogWarning("Canvas/Properties/Toggle");
             var toggleProperties = GameObject.Find("Canvas/Properties/Toggle").GetComponent<Toggle>();
             inputFieldProperties.onValueChanged.AddListener(str =>
             {

@@ -37,14 +37,14 @@ public class IAP_Sample : MonoBehaviour
             };
             if (ConfigMgr.IsReportNullData)
             {
-                DTIAPReport.ReportPurchaseSuccess(Order, null, 3.32, "rmb", dict);
-                DTIAPReport.ReportPurchaseSuccess(Order, "sdk123", 3.32, null, dict);
-                DTIAPReport.ReportPurchaseSuccess(Order, "sdk123", 3.32, "rmb", null);
-                DTIAPReport.ReportPurchaseSuccess(Order, null, 3.32, null, null);
+                DTIAPReport.ReportPurchaseSuccessAndroid(Order, null, 3.32, "rmb", dict);
+                DTIAPReport.ReportPurchaseSuccessAndroid(Order, "sdk123", 3.32, null, dict);
+                DTIAPReport.ReportPurchaseSuccessAndroid(Order, "sdk123", 3.32, "rmb", null);
+                DTIAPReport.ReportPurchaseSuccessAndroid(Order, null, 3.32, null, null);
             }
             else
             {
-                DTIAPReport.ReportPurchaseSuccess(Order, "sdk123", 3.32, "rmb", dict);
+                DTIAPReport.ReportPurchaseSuccessAndroid(Order, "sdk123", 3.32, "rmb", dict);
             }
         }
         );

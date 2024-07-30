@@ -24,9 +24,17 @@ namespace DataTower.Sample2
             inputFieldEventName.onValueChanged.AddListener(delegate { _eventName = inputFieldEventName.text; });
             
             var inputFieldProperties = GameObject.Find($"Canvas/InputFieldProperties").GetComponent<TMP_InputField>();
+            var toggleProperties = GameObject.Find("Canvas/ToggleProperties").GetComponent<Toggle>();
             inputFieldProperties.onValueChanged.AddListener(delegate
             {
                 _properties = (Dictionary<string, object>) Json.Deserialize(inputFieldProperties.text);
+                toggleProperties.isOn = false;
+            });
+            toggleProperties.onValueChanged.AddListener(isOn =>
+            {
+                if (!isOn) return;
+                _properties = null;
+                inputFieldProperties.text = "";
             });
             
             GameObject.Find("Canvas/ButtonTrackStart").GetComponent<Button>()
