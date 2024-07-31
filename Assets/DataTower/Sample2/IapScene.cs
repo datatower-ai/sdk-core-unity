@@ -21,7 +21,7 @@ namespace DataTower.Sample2
             { "ReportPurchaseSuccessAndroid", new List<string> { "Order", "Sku", "Price", "Currency", "Properties" } },
             { "ReportPurchaseSuccessIos", new List<string> { "Order", "Sku", "Price", "Currency", "Seq", "Entrance" } }
         };
-        private string _api = "ReportPurchaseSuccess";
+        private string _api = "ReportPurchaseSuccessAndroid";
         private Dictionary<string, GameObject> _gameObjects = new ();
 
         private string _order;
