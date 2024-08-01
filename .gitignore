@@ -164,9 +164,6 @@ mzdsandbox/
 .objs/
 Publish.json
 
-# Unity auto-generated
-*.meta
-
 .vsconfig
 
 # MemoryCaptures can get excessive in size.
