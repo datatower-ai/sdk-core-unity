@@ -20,6 +20,7 @@ public class Analytics_Sample : MonoBehaviour
     {
         print("sample awake====");
 
+
         buttons2[0].onClick.AddListener(delegate
         {
             DTAnalytics.GetDataTowerId(
@@ -56,62 +57,14 @@ public class Analytics_Sample : MonoBehaviour
             print("Track an Event.");
             DTAnalytics.Track("test2", dictionary);
         });
-        buttons2[1].onClick.AddListener(delegate
-        {
-            if (ConfigMgr.IsReportNullData)
-            {
-                DTAnalytics.SetAccountId(null);
-            }
-            else
-            {
-                DTAnalytics.SetAccountId("user_account_id_2200");
-            }
-        });
-        buttons2[2].onClick.AddListener(delegate
-        {
-            if (ConfigMgr.IsReportNullData)
-            {
-                DTAnalytics.SetFirebaseAppInstanceId(null);
-            }
-            else
-            {
-                DTAnalytics.SetFirebaseAppInstanceId("fire_base_id_2200");
-            }
-        });
-        buttons2[3].onClick.AddListener(delegate
-        {
-            if (ConfigMgr.IsReportNullData)
-            {
-                DTAnalytics.SetAppsFlyerId(null);
-            }
-            else
-            {
-                DTAnalytics.SetAppsFlyerId("appsFlyer_id_2200");
-            }
-        });
-        buttons2[4].onClick.AddListener(delegate
-        {
-            if (ConfigMgr.IsReportNullData)
-            {
-                DTAnalytics.SetKochavaId(null);
-            }
-            else
-            {
-                DTAnalytics.SetKochavaId("kochava_id_2200");
-            }
-        });
-
+        buttons2[1].onClick.AddListener(delegate { DTAnalytics.SetAccountId("user_account_id_2200"); });
+        buttons2[2].onClick.AddListener(delegate { DTAnalytics.SetFirebaseAppInstanceId("fire_base_id_2200"); });
+        buttons2[3].onClick.AddListener(delegate { DTAnalytics.SetAppsFlyerId("appsFlyer_id_2200"); });
+        buttons2[4].onClick.AddListener(delegate { DTAnalytics.SetKochavaId("kochava_id_2200"); });
         buttons2[5].onClick.AddListener(delegate
         {
             print("buttons2[5]====");
-            if (ConfigMgr.IsReportNullData)
-            {
-                DTAnalytics.SetAdjustId(null);
-            }
-            else
-            {
-                DTAnalytics.SetAdjustId("adjust_id");
-            }
+            DTAnalytics.SetAdjustId("adjust_id");
         });
         
         buttons2[6].onClick.AddListener(delegate { 

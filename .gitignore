@@ -206,7 +206,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-/Assets/Plugins/Android/*.aar
-/Assets/Plugins/Android/*.aar.meta
-/Assets/Plugins/Android/*.jar
-/Assets/Plugins/Android/*.jar.meta
+**/*.jar
+**/*.jar.meta
+**/*.aar
+**/*.aar.meta

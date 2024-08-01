@@ -64,7 +64,12 @@ namespace DataTower.Core.Wrapper
         [DllImport("__Internal")]
         private static extern void reportPaid(string id, int type, int platform, string location, string seq,
             int mediation, string mediationId, double value, string currency, string precision, string properties, string entrance);
-        
+
+
+        [DllImport("__Internal")]
+        private static extern void reportPaidWithCountry(string id, int type, int platform, string location, string seq,
+            int mediation, string mediationId, double value, string precision, string country, string properties, string entrance);
+
         // [DllImport("__Internal")]
         // private static extern void reportPaidWithMediation(string id, int type, int platform,string adgroupType, string location,
         //     string seq,
@@ -207,17 +212,12 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation, string mediationId, double value, string currency, string precision, string country,
             string entrance = "",Dictionary<string, object> properties = null)
         {
-            // int intPlatform = platformFromString(platform);
-            // reportPaidWithMediation(id, (int) type, intPlatform, adgroupType, location, seq, (int) mediation, mediationId, value,
-            //     currency,
-            //     precision, country,  R_Utils.Parse2JsonStr(properties), entrance);
-            // R_Log.Debug("Editor Log: calling reportPaid.");
         }
 
-        private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq,AdMediation mediation, string mediationId,  double value,
-            string precision, string country, Dictionary<string, object> properties = null)
+        private void _reportPaid(string id, AdType type, AdPlatform platform, string location, string seq,AdMediation mediation, string mediationId,  double value, string precision, string country, Dictionary<string, object> properties = null)
         {
-            // R_Log.Debug("Editor Log: calling reportPaid.");
+            reportPaidWithCountry(id, (int) type, (int) platform, location, seq, (int)mediation, mediationId, value, precision, country,  R_Utils.Parse2JsonStr(properties),  "");
+            R_Log.Debug("Editor Log: calling reportPaidWithCountry.");
         }
 
         private void _reportReturnApp()

@@ -8,7 +8,10 @@ namespace DataTower.Core.Wrapper
     {
 #if UNITY_IOS && !(UNITY_EDITOR)
         [DllImport("__Internal")]
-        private static extern void initSDK(string appId, string serverUrl, bool isDebug, int logLevel, string properties);
+        private static extern void initSDK(string appId, string serverUrl, bool isDebug, int logLevel, string properties, bool enableUpload);
+
+       [DllImport("__Internal")]
+        private static extern void enableUpload(bool enable);
 
         [DllImport("__Internal")]
         private static extern string getDataTowerId();
@@ -51,6 +54,9 @@ namespace DataTower.Core.Wrapper
         
         [DllImport("__Internal")]
         private static extern void trackEvent(string eventName, string jsonStr);
+
+        [DllImport("__Internal")]
+        private static extern void setSuperProperties(string jsonStr);
    
         private void _init()
         {
@@ -60,9 +66,15 @@ namespace DataTower.Core.Wrapper
             properties.Add("#sdk_version_name", sdkVersion);
             string jsonStr = R_Utils.Parse2JsonStr(properties);
 
-            initSDK(iOSAppId, serverUrl, isDebug, logLevel, jsonStr);
+            var enableUpload = !manualEnableUpload;
+
+            initSDK(iOSAppId, serverUrl, isDebug, logLevel, jsonStr, enableUpload);
         }
 
+        private void _enableUpload()
+        {
+            enableUpload(true);
+        }
 
         private void _track(string eventName, Dictionary<string, object> properties = null)
         {
@@ -138,10 +150,21 @@ namespace DataTower.Core.Wrapper
         {
             setKochavaId(id);
         }
-          private void _setAdjustId(string id)
+        private void _setAdjustId(string id)
         {
             setAdjustId(id);
         }
+
+        private void _setStaticCommonProperties(Dictionary<string, object> properties)
+        {
+            setSuperProperties(R_Utils.Parse2JsonStr(properties));
+        }
+
+        private void _clearStaticCommonProperties()
+        {
+            setSuperProperties(null);
+        }
+
 #endif
     }
 }

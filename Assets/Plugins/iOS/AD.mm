@@ -172,4 +172,15 @@ void reportPaidWithMediation(const char * adId, int type, int platform, const ch
     
     [DTAdReport reportPaid:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId) value:value  precision:SafeStringWithUTF8String(precision) country:SafeStringWithUTF8String(country) properties:dict entrance:SafeStringWithUTF8String(entrance)];
 }
+
+void reportPaidWithCountry(const char *adId, int type, int platform, const char *location, const char *seq,
+            int mediation, const char *mediationId, double value, const char *precision, const char *country, const char *properties, const char *entrance) {
+    NSDictionary *dict = nil;
+    if (properties) {
+        dict = jsonStr2Dictionary(properties);
+    }
+    
+    [DTAdReport reportPaid:SafeStringWithUTF8String(adId) type:(DTAdType)type platform:(DTAdPlatform)platform location:SafeStringWithUTF8String(location) seq:SafeStringWithUTF8String(seq) mediation:(DTAdMediation)mediation mediationId:SafeStringWithUTF8String(mediationId)  value:value precision:SafeStringWithUTF8String(precision) country:SafeStringWithUTF8String(country) properties:dict entrance:SafeStringWithUTF8String(entrance)];
+}
+
 }
