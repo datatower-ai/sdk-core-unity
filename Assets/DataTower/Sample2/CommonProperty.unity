@@ -1980,6 +1980,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddac614b39c13452bbbb8d431839b756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBack: {fileID: 473843358}
+  inputFieldDynProperties: {fileID: 1308081334}
+  buttonDynSet: {fileID: 177800457}
+  buttonDynClear: {fileID: 1317562210}
+  inputFieldStaProperties: {fileID: 1595729858}
+  buttonStaSet: {fileID: 2114126650}
+  buttonStaClear: {fileID: 2018012355}
 --- !u!1 &1595729856
 GameObject:
   m_ObjectHideFlags: 0

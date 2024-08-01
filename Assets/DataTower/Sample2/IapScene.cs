@@ -5,6 +5,7 @@ using DataTower.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,17 +13,43 @@ namespace DataTower.Sample2
 {
     public class IapScene : MonoBehaviour
     {
-        private readonly List<string> _allParams = new()
+        public Button buttonBack;
+        public TMP_Dropdown dropdownApi;
+        public Button buttonTrack;
+        
+        public TMP_InputField inputFieldProperties;
+        public Toggle toggleProperties;
+        public TMP_InputField inputFieldOrder;
+        public TMP_InputField inputFieldSku;
+        public TMP_InputField inputPrice;
+        public TMP_InputField inputCurrency;
+        public TMP_InputField inputSeq;
+        public TMP_InputField inputEntrance;
+
+        private List<UIBehaviour> _allParams()
         {
-            "Order", "Sku", "Price", "Currency", "Properties", "Seq", "Entrance"
-        };
-        private readonly Dictionary<string, List<string>> _apis = new ()
+            return new()
+            {
+                inputFieldOrder, inputFieldSku, inputPrice, inputCurrency, inputSeq, inputEntrance, inputFieldProperties, toggleProperties
+            };
+        }
+
+        private Dictionary<string, List<UIBehaviour>> _apis()
         {
-            { "ReportPurchaseSuccessAndroid", new List<string> { "Order", "Sku", "Price", "Currency", "Properties" } },
-            { "ReportPurchaseSuccessIos", new List<string> { "Order", "Sku", "Price", "Currency", "Seq", "Entrance" } }
-        };
+            return new()
+            {
+                {
+                    "ReportPurchaseSuccessAndroid",
+                    new List<UIBehaviour> { inputFieldOrder, inputFieldSku, inputPrice, inputCurrency, inputFieldProperties, toggleProperties }
+                },
+                {
+                    "ReportPurchaseSuccessIos",
+                    new List<UIBehaviour> { inputFieldOrder, inputFieldSku, inputPrice, inputCurrency, inputSeq, inputEntrance }
+                }
+            };
+        }
+
         private string _api = "ReportPurchaseSuccessAndroid";
-        private Dictionary<string, GameObject> _gameObjects = new ();
 
         private string _order;
         private string _sku;
@@ -34,58 +61,50 @@ namespace DataTower.Sample2
         
         private void Start()
         {
-            GameObject.Find("Canvas/ButtonBack").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");
                 });
             
-            RegisterInputField("Order", it => { _order = it; });
-            RegisterInputField("Sku", it => { _sku = it; });
-            RegisterInputField("Price", it => { double.TryParse(it, out _price); });
-            RegisterInputField("Currency", it => { _currency = it; });
-            RegisterInputField("Seq", it => { _seq = it; });
-            RegisterInputField("Entrance", it => { _entrance = it; });
+            RegisterInputField(inputFieldOrder, it => { _order = it; });
+            RegisterInputField(inputFieldSku, it => { _sku = it; });
+            RegisterInputField(inputPrice, it => { double.TryParse(it, out _price); });
+            RegisterInputField(inputCurrency, it => { _currency = it; });
+            RegisterInputField(inputSeq, it => { _seq = it; });
+            RegisterInputField(inputEntrance, it => { _entrance = it; });
             
             RegisterProperties();
             RegisterTrackButton();
             
             ShowGOs(_api);
             
-            var options = _apis.Keys.Select(key => new TMP_Dropdown.OptionData(key)).ToList();
-            var dda = GameObject.Find("Canvas/DropdownAPI").GetComponent<TMP_Dropdown>();
-            dda.options = options;
-            dda.onValueChanged.AddListener(delegate
+            var options = _apis().Keys.Select(key => new TMP_Dropdown.OptionData(key)).ToList();
+            dropdownApi.options = options;
+            dropdownApi.onValueChanged.AddListener(delegate
             {
-                _api = options[dda.value].text;
+                _api = options[dropdownApi.value].text;
                 ShowGOs(_api);
             });
         }
-    
+        
         private void ShowGOs(string api)
         {
-            foreach (var param in _allParams)
+            foreach (var ui in _allParams())
             {
-                if (!_gameObjects.ContainsKey(param))
-                {
-                    _gameObjects[param] = GameObject.Find($"Canvas/{param}");
-                }
-                _gameObjects[param].SetActive(false);
+                ui.enabled = false;
             }
 
-            foreach (var param in _apis[api])
+            foreach (var ui in _apis()[api])
             {
-                _gameObjects[param].SetActive(true);
+                ui.enabled = true;
             }
         }
 
-        private static void RegisterInputField(string group, UnityAction<string> onChanged)
+        private static void RegisterInputField(TMP_InputField inputField, UnityAction<string> onChanged)
         {
-            Debug.LogWarning($"group: {group}");
             try
             {
-                GameObject.Find($"Canvas/{group}/InputField").GetComponent<TMP_InputField>()
-                    .onValueChanged.AddListener(onChanged);
+                inputField.onValueChanged.AddListener(onChanged);
             }
             catch (Exception e)
             {
@@ -95,14 +114,17 @@ namespace DataTower.Sample2
 
         private void RegisterProperties()
         {
-            Debug.LogWarning("Canvas/Properties/InputField");
-            var inputFieldProperties = GameObject.Find("Canvas/Properties/InputField").GetComponent<TMP_InputField>();
-            Debug.LogWarning("Canvas/Properties/Toggle");
-            var toggleProperties = GameObject.Find("Canvas/Properties/Toggle").GetComponent<Toggle>();
             inputFieldProperties.onValueChanged.AddListener(str =>
             {
                 if (str.Length == 0) return;
-                _properties = (Dictionary<string, object>)Json.Deserialize(str);
+                try
+                {
+                    _properties = (Dictionary<string, object>)Json.Deserialize(str);
+                } catch (Exception ex)
+                {
+                    Debug.LogError(ex);
+                }
+
                 toggleProperties.isOn = false;
             });
             toggleProperties.onValueChanged.AddListener(isOn =>
@@ -115,7 +137,7 @@ namespace DataTower.Sample2
 
         private void RegisterTrackButton()
         {
-            GameObject.Find("Canvas/ButtonTrack").GetComponent<Button>().onClick.AddListener(delegate
+            buttonTrack.onClick.AddListener(delegate
             {
                 switch (_api)
                 {

@@ -10,7 +10,36 @@ namespace DataTower.Sample2
 {
     public class Home : MonoBehaviour
     {
-        private TMP_Text _textDtId;
+        public Button buttonGetDtId;
+        public TMP_Text textDtId;
+        public TMP_InputField inputFieldAcid;
+        public Button buttonAcidSet;
+        public Button buttonAcidClear;
+        public TMP_InputField inputFieldFirebaseiid;
+        public Button buttonFirebaseiidSet;
+        public Button buttonFirebaseiidClear;
+        public TMP_InputField inputFieldAppflyerId;
+        public Button buttonAppflyerIdSet;
+        public Button buttonAppflyerIdClear;
+        public TMP_InputField inputFieldKochavaId;
+        public Button buttonKochavaIdSet;
+        public Button buttonKochavaIdClear;
+        public TMP_InputField inputFieldAdjustId;
+        public Button buttonAdjustIdSet;
+        public Button buttonAdjustIdClear;
+
+        public Button buttonTrackSimpleEvent;
+        public Button buttonTrackEvent;
+        public Button buttonTrackTimedEvent;
+        public Button buttonTrackAd;
+        public Button buttonTrackIap;        
+        public Button buttonTrackIas;
+        public Button buttonTrackUser;
+        public Button buttonCommonProperties;
+        public Button buttonEnableUpload;
+        public Button buttonAllApis;
+        
+        
         private String _dtId;
         
         private void Start()
@@ -26,13 +55,12 @@ namespace DataTower.Sample2
         {
             if (_dtId != null)
             {
-                _textDtId.text = $"dt_id: {_dtId}";
+                textDtId.text = $"dt_id: {_dtId}";
             }
         }
 
         private void RegisterGetDtId()
         {
-            var buttonGetDtId = GameObject.Find("Canvas/DtIdGroup/ButtonGetDtId").GetComponent<Button>();
             buttonGetDtId.onClick.AddListener(delegate
             {
                 DTAnalytics.GetDataTowerId(id =>
@@ -40,8 +68,6 @@ namespace DataTower.Sample2
                     _dtId = id;
                 });
             });
-
-            _textDtId = GameObject.Find("Canvas/DtIdGroup/TextDtId").GetComponent<TMP_Text>();
         }
 
         private string _acid;
@@ -52,57 +78,51 @@ namespace DataTower.Sample2
         private void RegisterUserPropsGroup()
         {
             RegisterUserProps(
-                "AcidGroup",
+                inputFieldAcid, buttonAcidSet, buttonAcidClear,
                 value => { _acid = value; },
                 delegate { DTAnalytics.SetAccountId(_acid); },
                 delegate { DTAnalytics.SetAccountId(null); }
             );
             
             RegisterUserProps(
-                "FirebaseGroup",
+                inputFieldFirebaseiid, buttonFirebaseiidSet, buttonFirebaseiidClear,
                 value => { _firebaseIId = value; },
                 delegate { DTAnalytics.SetFirebaseAppInstanceId(_firebaseIId); },
                 delegate { DTAnalytics.SetFirebaseAppInstanceId(null); }
             );
             
             RegisterUserProps(
-                "AppsflyerGroup",
+                inputFieldAppflyerId, buttonAppflyerIdSet, buttonAppflyerIdClear,
                 value => { _appsflyerId = value; },
                 delegate { DTAnalytics.SetAppsFlyerId(_appsflyerId); },
                 delegate { DTAnalytics.SetAppsFlyerId(null); }
             );
             
             RegisterUserProps(
-                "KochavaGroup",
+                inputFieldKochavaId, buttonKochavaIdSet, buttonKochavaIdClear,
                 value => { _kochavaId = value; },
                 delegate { DTAnalytics.SetKochavaId(_kochavaId); },
                 delegate { DTAnalytics.SetKochavaId(null); }
             );
             
             RegisterUserProps(
-                "AdjustGroup",
+                inputFieldAdjustId, buttonAdjustIdSet, buttonAdjustIdClear,
                 value => { _adjustId = value; },
                 delegate { DTAnalytics.SetAdjustId(_adjustId); },
                 delegate { DTAnalytics.SetAdjustId(null); }
             );
         }
 
-        private static void RegisterUserProps(string group, Action<string> onValueUpdate, Action onSet, Action onClear)
+        private void RegisterUserProps(TMP_InputField inputField, Button buttonSet, Button buttonClear, Action<string> onValueUpdate, Action onSet, Action onClear)
         {
-            var inputField = GameObject.Find($"Canvas/UserPropertiesGroup/{group}/InputField").GetComponent<TMP_InputField>();
             inputField.onValueChanged.AddListener(delegate { onValueUpdate(inputField.text); });
-
-            var buttonSet = GameObject.Find($"Canvas/UserPropertiesGroup/{group}/ButtonSet").GetComponent<Button>();
             buttonSet.onClick.AddListener(delegate { onSet(); });
-
-            var buttonClear = GameObject.Find($"Canvas/UserPropertiesGroup/{group}/ButtonClear").GetComponent<Button>();
             buttonClear.onClick.AddListener(delegate { onClear(); });
         } 
         
-        private static void RegisterEventTracking()
+        private void RegisterEventTracking()
         {
-            GameObject.Find("Canvas/EventTrackingGroup/ButtonTrackSimpleEvent").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonTrackSimpleEvent.onClick.AddListener(delegate
                 {
                     DTAnalytics.Track(
                         "dt_track_simple", 
@@ -140,59 +160,50 @@ namespace DataTower.Sample2
                     );
                 });
 
-            GameObject.Find("Canvas/EventTrackingGroup/ButtonTrackEvent").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonTrackEvent.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/EventTrack");
                 });
             
-            GameObject.Find("Canvas/EventTrackingGroup/ButtonTrackTimedEvent").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonTrackTimedEvent.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/TimedEventTrack");
                 });
             
-            GameObject.Find("Canvas/EventTrackingGroup/ButtonTrackAd").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonTrackAd.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/AdScene");
                 });
             
-            GameObject.Find("Canvas/EventTrackingGroup/ButtonTrackIAP").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonTrackIap.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/IapScene");
                 });
             
-            GameObject.Find("Canvas/EventTrackingGroup/ButtonTrackIAS").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonTrackIas.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/IasScene");
                 });
         }
 
-        private static void RegisterUserTracking()
+        private void RegisterUserTracking()
         {
-            GameObject.Find("Canvas/UserTrackingGroup/ButtonTrackUser").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonTrackUser.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/UserTrack");
                 });
         }
 
-        private static void RegisterOthers()
+        private void RegisterOthers()
         {
-            GameObject.Find("Canvas/OthersGroup/ButtonCommonProperties").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonCommonProperties.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/CommonProperty");
                 });
             
-            GameObject.Find("Canvas/OthersGroup/ButtonEnableUpload").GetComponent<Button>()
-                .onClick.AddListener(DTAnalytics.EnableUpload);
+            buttonEnableUpload.onClick.AddListener(DTAnalytics.EnableUpload);
             
-            GameObject.Find("Canvas/OthersGroup/ButtonAllApis").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonAllApis.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/AllApis");
                 });

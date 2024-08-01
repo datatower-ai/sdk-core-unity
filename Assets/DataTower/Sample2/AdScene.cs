@@ -5,6 +5,7 @@ using DataTower.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static System.Double;
@@ -13,34 +14,74 @@ namespace DataTower.Sample2
 {
     public class AdScene : MonoBehaviour
     {
-        private readonly List<string> _allParams = new()
+        public Button buttonBack;
+        public TMP_Dropdown dropdownApi;
+        public TMP_InputField inputFieldId;
+        public TMP_InputField inputFieldAdMediationId;
+        public TMP_InputField inputFieldSeq;
+        public TMP_InputField inputFieldLocation;
+        public TMP_InputField inputFieldValue;
+        public TMP_InputField inputFieldCurrency;
+        public TMP_InputField inputFieldPrecision;
+        public TMP_InputField inputFieldEntrance;
+        public TMP_InputField inputFieldCountry;
+        public TMP_InputField inputFieldErrorCode;
+        public TMP_InputField inputFieldErrorMessage;
+        public TMP_InputField inputFieldDuration;
+        public TMP_InputField inputFieldProperties;
+        public Toggle toggleProperties;
+        public TMP_Dropdown adTypeDropdown;
+        public TMP_Dropdown adPlatformDropdown;
+        public TMP_Dropdown adMediationDropdown;
+        public Toggle toggleResult;
+        public Button buttonTrack;
+        
+        private List<UIBehaviour> _allParams()
         {
-            "Id", "AdType", "AdPlatform", 
-            "AdMediation", "AdMediationId", "Seq", 
-            "Properties", "Location", "Value", 
-            "Currency", "Precision", "Entrance", 
-            "Country", "ErrorCode", "ErrorMessage",
-            "Duration", "Result"
-        };
-        private readonly Dictionary<string, List<string>> _apis = new ()
+            return new()
+            {
+                inputFieldId,
+                inputFieldAdMediationId,
+                inputFieldSeq,
+                inputFieldLocation,
+                inputFieldValue,
+                inputFieldCurrency,
+                inputFieldPrecision,
+                inputFieldEntrance,
+                inputFieldCountry,
+                inputFieldErrorCode,
+                inputFieldErrorMessage,
+                inputFieldDuration,
+                inputFieldProperties,
+                toggleProperties,
+                adTypeDropdown,
+                adPlatformDropdown,
+                adMediationDropdown,
+                toggleResult,
+            };
+        }
+
+        private Dictionary<string, List<UIBehaviour>> _apis()
         {
-            { "ReportLoadBegin", new List<string> { "Id", "AdType", "AdPlatform", "Seq", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportLoadEnd", new List<string> { "Id", "AdType", "AdPlatform", "Duration", "Result", "Seq", "ErrorCode", "ErrorMessage", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportToShow", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportShow", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportShowFailed", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "ErrorCode", "ErrorMessage", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportClose", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportClick", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportRewarded", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportLeftApp", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportConversionByClick", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportConversionByLeftApp", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportConversionByRewarded", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportPaid", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "Value", "Currency", "Precision", "Entrance", "Properties", "AdMediation", "AdMediationId" } },
-            { "ReportPaid2", new List<string> { "Id", "AdType", "AdPlatform", "Location", "Seq", "AdMediation", "AdMediationId", "Value", "Precision", "Country", "Properties" } },
-        };
+            return new() {
+                { "ReportLoadBegin", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldSeq, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportLoadEnd", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldDuration, toggleResult, inputFieldSeq, inputFieldErrorCode, inputFieldErrorMessage, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportToShow", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportShow", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportShowFailed", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldErrorCode, inputFieldErrorMessage, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportClose", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportClick", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportRewarded", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportLeftApp", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportConversionByClick", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportConversionByLeftApp", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportConversionByRewarded", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportPaid", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, inputFieldValue, inputFieldCurrency, inputFieldPrecision, inputFieldEntrance, inputFieldProperties, toggleProperties, adMediationDropdown, inputFieldAdMediationId } },
+                { "ReportPaid2", new List<UIBehaviour> { inputFieldId, adTypeDropdown, adPlatformDropdown, inputFieldLocation, inputFieldSeq, adMediationDropdown, inputFieldAdMediationId, inputFieldValue, inputFieldPrecision, inputFieldCountry, inputFieldProperties, toggleProperties } },
+            };
+        }
+        
         private string _api = "ReportLoadBegin";
-        private Dictionary<string, GameObject> _gameObjects = new ();
 
         private string _id;
         private AdType _adType;
@@ -62,26 +103,25 @@ namespace DataTower.Sample2
         
         private void Start()
         {
-            GameObject.Find("Canvas/ButtonBack").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");
                 });
 
-            RegisterInputField("Id", str => { _id = str; });
-            RegisterInputField("AdMediationId", str => { _adMediationId = str; });
-            RegisterInputField("Seq", str => { _seq = str; });
-            RegisterInputField("Location", str => { _location = str; });
-            RegisterInputField("Value", str => { TryParse(str, out _value); });
-            RegisterInputField("Currency", str => { _currency = str; });
-            RegisterInputField("Precision", str => { _precision = str; });
-            RegisterInputField("Entrance", str => { _entrance = str; });
-            RegisterInputField("Country", str => { _country = str; });
-            RegisterInputField("ErrorCode", str => { int.TryParse(str, out _errorCode); });
-            RegisterInputField("ErrorMessage", str => { _errorMessage = str; });
-            RegisterInputField("Duration", str => { long.TryParse(str, out _duration); });
+            RegisterInputField(inputFieldId, str => { _id = str; });
+            RegisterInputField(inputFieldAdMediationId, str => { _adMediationId = str; });
+            RegisterInputField(inputFieldSeq, str => { _seq = str; });
+            RegisterInputField(inputFieldLocation, str => { _location = str; });
+            RegisterInputField(inputFieldValue, str => { TryParse(str, out _value); });
+            RegisterInputField(inputFieldCurrency, str => { _currency = str; });
+            RegisterInputField(inputFieldPrecision, str => { _precision = str; });
+            RegisterInputField(inputFieldEntrance, str => { _entrance = str; });
+            RegisterInputField(inputFieldCountry, str => { _country = str; });
+            RegisterInputField(inputFieldErrorCode, str => { int.TryParse(str, out _errorCode); });
+            RegisterInputField(inputFieldErrorMessage, str => { _errorMessage = str; });
+            RegisterInputField(inputFieldDuration, str => { long.TryParse(str, out _duration); });
             
-            GameObject.Find("Canvas/Result/Toggle").GetComponent<Toggle>().onValueChanged.AddListener(isOn =>
+            toggleResult.onValueChanged.AddListener(isOn =>
             {
                 _result = isOn;
             });
@@ -92,40 +132,33 @@ namespace DataTower.Sample2
             
             ShowGOs("ReportLoadBegin");
 
-            var options = _apis.Keys.Select(key => new TMP_Dropdown.OptionData(key)).ToList();
-            var dda = GameObject.Find("Canvas/DropdownAPI").GetComponent<TMP_Dropdown>();
-            dda.options = options;
-            dda.onValueChanged.AddListener(delegate
+            var options = _apis().Keys.Select(key => new TMP_Dropdown.OptionData(key)).ToList();
+            dropdownApi.options = options;
+            dropdownApi.onValueChanged.AddListener(delegate
             {
-                _api = options[dda.value].text;
+                _api = options[dropdownApi.value].text;
                 ShowGOs(_api);
             });
         }
     
         private void ShowGOs(string api)
         {
-            foreach (var param in _allParams)
+            foreach (var ui in _allParams())
             {
-                if (!_gameObjects.ContainsKey(param))
-                {
-                    _gameObjects[param] = GameObject.Find($"Canvas/{param}");
-                }
-                _gameObjects[param].SetActive(false);
+                ui.enabled = false;
             }
 
-            foreach (var param in _apis[api])
+            foreach (var ui in _apis()[api])
             {
-                _gameObjects[param].SetActive(true);
+                ui.enabled = true;
             }
         }
 
-        private static void RegisterInputField(string group, UnityAction<string> onChanged)
+        private static void RegisterInputField(TMP_InputField inputField, UnityAction<string> onChanged)
         {
-            Debug.LogWarning($"group: {group}");
             try
             {
-                GameObject.Find($"Canvas/{group}/InputField").GetComponent<TMP_InputField>()
-                    .onValueChanged.AddListener(onChanged);
+                inputField.onValueChanged.AddListener(onChanged);
             }
             catch (Exception e)
             {
@@ -135,12 +168,16 @@ namespace DataTower.Sample2
 
         private void RegisterProperties()
         {
-            var inputFieldProperties = GameObject.Find("Canvas/Properties/InputField").GetComponent<TMP_InputField>();
-            var toggleProperties = GameObject.Find("Canvas/Properties/Toggle").GetComponent<Toggle>();
             inputFieldProperties.onValueChanged.AddListener(str =>
             {
                 if (str.Length == 0) return;
-                _properties = (Dictionary<string, object>)Json.Deserialize(str);
+                try
+                {
+                    _properties = (Dictionary<string, object>)Json.Deserialize(str);
+                } catch (Exception ex)
+                {
+                    Debug.LogError(ex);
+                }
                 toggleProperties.isOn = false;
             });
             toggleProperties.onValueChanged.AddListener(isOn =>
@@ -155,8 +192,6 @@ namespace DataTower.Sample2
         {
             var adTypes = Enum.GetValues(typeof(AdType)).Cast<AdType>().ToList();
             var adTypesOptions = adTypes.Select(adType => new TMP_Dropdown.OptionData(adType.ToString())).ToList();
-            Debug.LogWarning($"Canvas/AdType/Dropdown, {adTypes}");
-            var adTypeDropdown = GameObject.Find("Canvas/AdType/Dropdown").GetComponent<TMP_Dropdown>();
             adTypeDropdown.options = adTypesOptions;
             adTypeDropdown.value = 0;
             _adType = adTypes[0];
@@ -167,8 +202,6 @@ namespace DataTower.Sample2
 
             var adPlatforms = Enum.GetValues(typeof(AdPlatform)).Cast<AdPlatform>().ToList();
             var adPlatformOptions = adPlatforms.Select(it => new TMP_Dropdown.OptionData(it.ToString())).ToList();
-            Debug.LogWarning($"Canvas/AdPlatform/Dropdown, {adPlatforms}");
-            var adPlatformDropdown = GameObject.Find("Canvas/AdPlatform/Dropdown").GetComponent<TMP_Dropdown>();
             adPlatformDropdown.options = adPlatformOptions;
             adPlatformDropdown.value = 0;
             _adPlatform = adPlatforms[0];
@@ -179,8 +212,6 @@ namespace DataTower.Sample2
 
             var adMediations = Enum.GetValues(typeof(AdMediation)).Cast<AdMediation>().ToList();
             var adMediationOptions = adMediations.Select(it => new TMP_Dropdown.OptionData(it.ToString())).ToList();
-            Debug.LogWarning($"Canvas/AdMediation/Dropdown, {adMediations}");
-            var adMediationDropdown = GameObject.Find("Canvas/AdMediation/Dropdown").GetComponent<TMP_Dropdown>();
             adMediationDropdown.options = adMediationOptions;
             adMediationDropdown.value = 0;
             _adMediation = adMediations[0];
@@ -192,7 +223,7 @@ namespace DataTower.Sample2
 
         private void RegisterTrackButton()
         {
-            GameObject.Find("Canvas/ButtonTrack").GetComponent<Button>().onClick.AddListener(delegate
+            buttonTrack.onClick.AddListener(delegate
             {
                 switch (_api)
                 {

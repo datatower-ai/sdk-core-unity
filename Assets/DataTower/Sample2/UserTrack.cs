@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DataTower.Core;
 using TMPro;
@@ -9,6 +10,12 @@ namespace DataTower.Sample2
 {
     public class UserTrack : MonoBehaviour
     {
+        public Button buttonBack;
+        public TMP_Dropdown dropdownApi;
+        public TMP_InputField inputFieldProperties;
+        public Toggle toggleProperties;
+        public Button buttonTrack;
+        
         private List<TMP_Dropdown.OptionData> _options = new()
         {
             new("user_set"),
@@ -26,53 +33,56 @@ namespace DataTower.Sample2
     
         void Start()
         {
-            GameObject.Find("Canvas/ButtonBack").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");
                 });
 
-            var dda = GameObject.Find("Canvas/DropdownAPI").GetComponent<TMP_Dropdown>();
-            dda.options = _options;
-            dda.onValueChanged.AddListener(delegate
+            dropdownApi.options = _options;
+            dropdownApi.onValueChanged.AddListener(delegate
             {
-                _api = _options[dda.value].text;
+                _api = _options[dropdownApi.value].text;
             });
         
-            var inputFieldProperties = GameObject.Find($"Canvas/InputFieldProperties").GetComponent<TMP_InputField>();
-            var toggleProperties = GameObject.Find("Canvas/ToggleProperties").GetComponent<Toggle>();
             inputFieldProperties.onValueChanged.AddListener(delegate
             {
                 _propDict = null;
                 _propList = null;
                 _propStr = null;
 
-                var value = inputFieldProperties.text;
-                if (_api == "user_unset")
+                try
                 {
-                    if (value[0] == '[' && value[^1] == ']')
+                    var value = inputFieldProperties.text;
+                    if (_api == "user_unset")
                     {
-                        _propList = new List<string>();
-                        var substring = value.Substring(1, value.Length - 2);
-                        var split = substring.Split(',');
-                    
-                        foreach (var se in split)
+                        if (value[0] == '[' && value[^1] == ']')
                         {
-                            var trim = se.Trim();
-                            var single = trim.Substring(1, trim.Length - 2);
-                            _propList.Add(single);
+                            _propList = new List<string>();
+                            var substring = value.Substring(1, value.Length - 2);
+                            var split = substring.Split(',');
+
+                            foreach (var se in split)
+                            {
+                                var trim = se.Trim();
+                                var single = trim.Substring(1, trim.Length - 2);
+                                _propList.Add(single);
+                            }
                         }
-                    } 
+                        else
+                        {
+                            _propStr = value;
+                        }
+                    }
                     else
                     {
-                        _propStr = value;
+                        _propDict = (Dictionary<string, object>)Json.Deserialize(value);
                     }
-                }
-                else
+                } 
+                catch (Exception ex)
                 {
-                    _propDict = (Dictionary<string, object>)Json.Deserialize(value);
+                    Debug.LogError(ex);
                 }
-            
+
                 toggleProperties.isOn = false;
             });
             toggleProperties.onValueChanged.AddListener(isOn =>
@@ -84,8 +94,7 @@ namespace DataTower.Sample2
                 inputFieldProperties.text = "";
             });
             
-            GameObject.Find("Canvas/ButtonTrack").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonTrack.onClick.AddListener(delegate
                 {
                     if (_api == "user_delete")
                     {

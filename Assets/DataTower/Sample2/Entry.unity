@@ -906,6 +906,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0e76727114f42ee89d0c080433bf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputFieldServerUrl: {fileID: 1062508147}
+  inputFieldAppId: {fileID: 512277355}
+  toggleIsDebug: {fileID: 1763156156}
+  toggleManuallyEnableUpload: {fileID: 179966903}
+  buttonInitialize: {fileID: 167620131}
 --- !u!1 &695621662
 GameObject:
   m_ObjectHideFlags: 0

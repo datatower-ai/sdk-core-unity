@@ -5318,6 +5318,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66dd02a26960b41afa167fc628ed7df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBack: {fileID: 70158567}
+  dropdownApi: {fileID: 857850909}
+  buttonTrack: {fileID: 127663670}
+  inputFieldProperties: {fileID: 1171051133}
+  toggleProperties: {fileID: 2128416370}
+  inputFieldOrder: {fileID: 1824745380}
+  inputFieldSku: {fileID: 1351084697}
+  inputPrice: {fileID: 664544768}
+  inputCurrency: {fileID: 1381295024}
+  inputSeq: {fileID: 781366151}
+  inputEntrance: {fileID: 1252152445}
 --- !u!1 &1439117826
 GameObject:
   m_ObjectHideFlags: 0

@@ -3527,6 +3527,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c25149863684cd3a72e6fd7fead689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBack: {fileID: 1467514781}
+  inputFieldEventName: {fileID: 1247692471}
+  inputFieldProperties: {fileID: 1982435754}
+  toggleProperties: {fileID: 1447537797}
+  buttonStart: {fileID: 2258065}
+  buttonPause: {fileID: 348331884}
+  buttonResume: {fileID: 559179114}
+  buttonEnd: {fileID: 759880017}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

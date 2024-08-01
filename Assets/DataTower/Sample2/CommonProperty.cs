@@ -16,17 +16,23 @@ namespace DataTower.Sample2
     
     public class CommonProperty : MonoBehaviour
     {
+        public Button buttonBack;
+        public TMP_InputField inputFieldDynProperties;
+        public Button buttonDynSet;
+        public Button buttonDynClear;
+        public TMP_InputField inputFieldStaProperties;
+        public Button buttonStaSet;
+        public Button buttonStaClear;
         
         private void Start()
         {
-            GameObject.Find("Canvas/ButtonBack").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");
                 });
             
             RegisterGroup(
-                "DynamicGroup", 
+                inputFieldDynProperties, buttonDynSet, buttonDynClear, 
                 CommonPropertyHolder.dynamicProps,
                 s => CommonPropertyHolder.dynamicProps = (Dictionary<string, object>) Json.Deserialize(s),
                 delegate { DTAnalytics.SetDynamicCommonProperties(() => CommonPropertyHolder.dynamicProps); },
@@ -38,7 +44,7 @@ namespace DataTower.Sample2
             );
             
             RegisterGroup(
-                "StaticGroup", 
+                inputFieldStaProperties, buttonStaSet, buttonStaClear, 
                 CommonPropertyHolder.staticProps,
                 s => CommonPropertyHolder.staticProps = (Dictionary<string, object>) Json.Deserialize(s),
                 delegate { DTAnalytics.SetStaticCommonProperties(CommonPropertyHolder.staticProps); },
@@ -51,23 +57,22 @@ namespace DataTower.Sample2
         }
 
         private static void RegisterGroup(
-            string group, 
+            TMP_InputField inputField,
+            Button buttonSet,
+            Button buttonClear,
             Dictionary<string, object> init, 
             Action<string> onValueUpdate, 
             Action onSet, 
             Action onClear
         ) {
-            var inputField = GameObject.Find($"Canvas/{group}/InputField").GetComponent<TMP_InputField>();
             inputField.onValueChanged.AddListener(delegate { onValueUpdate(inputField.text); });
             if (init != null)
             {
                 inputField.text = Json.Serialize(init);
             }
 
-            var buttonSet = GameObject.Find($"Canvas/{group}/ButtonSet").GetComponent<Button>();
             buttonSet.onClick.AddListener(delegate { onSet(); });
 
-            var buttonClear = GameObject.Find($"Canvas/{group}/ButtonClear").GetComponent<Button>();
             buttonClear.onClick.AddListener(delegate { onClear(); });
         }
     }

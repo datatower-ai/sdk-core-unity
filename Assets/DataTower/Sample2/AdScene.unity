@@ -15325,6 +15325,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317720e19277d4682a598ec3c9520d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBack: {fileID: 1583672357}
+  dropdownApi: {fileID: 1601462911}
+  inputFieldId: {fileID: 1271119924}
+  inputFieldAdMediationId: {fileID: 711535513}
+  inputFieldSeq: {fileID: 1409376556}
+  inputFieldLocation: {fileID: 527725286}
+  inputFieldValue: {fileID: 1494381036}
+  inputFieldCurrency: {fileID: 1538459356}
+  inputFieldPrecision: {fileID: 2137761521}
+  inputFieldEntrance: {fileID: 1277097640}
+  inputFieldCountry: {fileID: 515911097}
+  inputFieldErrorCode: {fileID: 423269197}
+  inputFieldErrorMessage: {fileID: 886131736}
+  inputFieldDuration: {fileID: 1327002008}
+  inputFieldProperties: {fileID: 295976170}
+  toggleProperties: {fileID: 208771735}
+  adTypeDropdown: {fileID: 991034491}
+  adPlatformDropdown: {fileID: 1180654185}
+  adMediationDropdown: {fileID: 1705005420}
+  toggleResult: {fileID: 1909293666}
+  buttonTrack: {fileID: 841880359}
 --- !u!1 &2049616248
 GameObject:
   m_ObjectHideFlags: 0

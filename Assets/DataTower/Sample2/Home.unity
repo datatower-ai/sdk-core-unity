@@ -3018,6 +3018,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a740fca4747f48a69073c3476b177c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonGetDtId: {fileID: 665810449}
+  textDtId: {fileID: 1362758229}
+  inputFieldAcid: {fileID: 1286778674}
+  buttonAcidSet: {fileID: 1917454318}
+  buttonAcidClear: {fileID: 754870457}
+  inputFieldFirebaseiid: {fileID: 249649207}
+  buttonFirebaseiidSet: {fileID: 1789414444}
+  buttonFirebaseiidClear: {fileID: 1532662914}
+  inputFieldAppflyerId: {fileID: 995394910}
+  buttonAppflyerIdSet: {fileID: 1632350953}
+  buttonAppflyerIdClear: {fileID: 1579994381}
+  inputFieldKochavaId: {fileID: 106572470}
+  buttonKochavaIdSet: {fileID: 1634453734}
+  buttonKochavaIdClear: {fileID: 780513059}
+  inputFieldAdjustId: {fileID: 1803691889}
+  buttonAdjustIdSet: {fileID: 1165228302}
+  buttonAdjustIdClear: {fileID: 2016761836}
+  buttonTrackSimpleEvent: {fileID: 1004747011}
+  buttonTrackEvent: {fileID: 400222814}
+  buttonTrackTimedEvent: {fileID: 1455764917}
+  buttonTrackAd: {fileID: 801065775}
+  buttonTrackIap: {fileID: 1729878098}
+  buttonTrackIas: {fileID: 816026090}
+  buttonTrackUser: {fileID: 491684379}
+  buttonCommonProperties: {fileID: 927615020}
+  buttonEnableUpload: {fileID: 2022563669}
+  buttonAllApis: {fileID: 1089377216}
 --- !u!1 &711922754
 GameObject:
   m_ObjectHideFlags: 0

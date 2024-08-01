@@ -1435,6 +1435,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eae6fe5bf39042e48a4ec2f26559cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBack: {fileID: 1348395532}
+  inputFieldEventName: {fileID: 56852844}
+  inputFieldProperties: {fileID: 876685221}
+  toggleProperties: {fileID: 1019746228}
+  buttonTrack: {fileID: 1431956993}
 --- !u!1 &1348395530
 GameObject:
   m_ObjectHideFlags: 0

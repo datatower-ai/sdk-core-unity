@@ -266,7 +266,7 @@ GameObject:
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!81 &99207011
 AudioListener:
@@ -354,6 +354,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e69d0295194343f7bf51e358e46c6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonBack: {fileID: 213786920}
+  dropdownApi: {fileID: 907440763}
+  inputFieldProperties: {fileID: 685561172}
+  toggleProperties: {fileID: 2131761664}
+  buttonTrack: {fileID: 786055718}
 --- !u!1 &160546007
 GameObject:
   m_ObjectHideFlags: 0

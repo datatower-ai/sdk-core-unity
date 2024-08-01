@@ -5,22 +5,22 @@ using DataTower.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 
 namespace DataTower.Sample2
 {
     public class AllApis : MonoBehaviour
     {
+        public Button buttonBack;
+        
+        public TMP_Text textContainer;
+        
         private void Start()
         {
-            GameObject.Find("Canvas/ButtonBack").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");
                 });
-
-            var textContainer = GameObject.Find("Canvas/Scroll View/Viewport/ContentText").GetComponent<TMP_Text>();
 
             textContainer.text = "DTAnalytics\n";
             textContainer.text += DumpMethodsFrom(typeof(DTAnalytics));

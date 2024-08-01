@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DataTower.Core;
 using TMPro;
@@ -9,25 +10,35 @@ namespace DataTower.Sample2
 {
     public class EventTrack : MonoBehaviour
     {
+        public Button buttonBack;
+        public TMP_InputField inputFieldEventName;
+        public TMP_InputField inputFieldProperties;
+        public Toggle toggleProperties;
+        public Button buttonTrack;
+        
         private string _eventName = "";
         private Dictionary<string, object> _properties = null;
         
         private void Start()
         {
-            GameObject.Find("Canvas/ButtonBack").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");
                 });
             
-            var inputFieldEventName = GameObject.Find($"Canvas/InputFieldEventName").GetComponent<TMP_InputField>();
             inputFieldEventName.onValueChanged.AddListener(delegate { _eventName = inputFieldEventName.text; });
             
-            var inputFieldProperties = GameObject.Find($"Canvas/InputFieldProperties").GetComponent<TMP_InputField>();
-            var toggleProperties = GameObject.Find("Canvas/ToggleProperties").GetComponent<Toggle>();
             inputFieldProperties.onValueChanged.AddListener(delegate
             {
-                _properties = (Dictionary<string, object>) Json.Deserialize(inputFieldProperties.text);
+                try
+                {
+                    _properties = (Dictionary<string, object>)Json.Deserialize(inputFieldProperties.text);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError(ex);
+                }
+
                 toggleProperties.isOn = false;
             });
             toggleProperties.onValueChanged.AddListener(isOn =>
@@ -37,8 +48,7 @@ namespace DataTower.Sample2
                 inputFieldProperties.text = "";
             });
             
-            GameObject.Find("Canvas/ButtonTrack").GetComponent<Button>()
-                .onClick.AddListener(delegate
+            buttonTrack.onClick.AddListener(delegate
                 {
                     DTAnalytics.Track(_eventName, _properties);
                 });
