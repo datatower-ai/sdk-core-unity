@@ -110,15 +110,23 @@ namespace DataTower.Sample2
 
             RegisterInputField(inputFieldId, str => { _id = str; });
             RegisterInputField(inputFieldAdMediationId, str => { _adMediationId = str; });
+            inputFieldAdMediationId.text = "";
+            _adMediationId = "";
             RegisterInputField(inputFieldSeq, str => { _seq = str; });
             RegisterInputField(inputFieldLocation, str => { _location = str; });
             RegisterInputField(inputFieldValue, str => { TryParse(str, out _value); });
             RegisterInputField(inputFieldCurrency, str => { _currency = str; });
             RegisterInputField(inputFieldPrecision, str => { _precision = str; });
             RegisterInputField(inputFieldEntrance, str => { _entrance = str; });
+            inputFieldEntrance.text = "";
+            _entrance = "";
             RegisterInputField(inputFieldCountry, str => { _country = str; });
             RegisterInputField(inputFieldErrorCode, str => { int.TryParse(str, out _errorCode); });
+            inputFieldErrorCode.text = "0";
+            _errorCode = 0;
             RegisterInputField(inputFieldErrorMessage, str => { _errorMessage = str; });
+            inputFieldErrorMessage.text = "";
+            _errorMessage = "";
             RegisterInputField(inputFieldDuration, str => { long.TryParse(str, out _duration); });
             
             toggleResult.onValueChanged.AddListener(isOn =>
@@ -213,8 +221,9 @@ namespace DataTower.Sample2
             var adMediations = Enum.GetValues(typeof(AdMediation)).Cast<AdMediation>().ToList();
             var adMediationOptions = adMediations.Select(it => new TMP_Dropdown.OptionData(it.ToString())).ToList();
             adMediationDropdown.options = adMediationOptions;
-            adMediationDropdown.value = 0;
-            _adMediation = adMediations[0];
+            var idx = adMediations.IndexOf(AdMediation.IDLE);
+            adMediationDropdown.value = idx;
+            _adMediation = adMediations[idx];
             adMediationDropdown.onValueChanged.AddListener(v =>
             {
                 _adMediation = adMediations[v];

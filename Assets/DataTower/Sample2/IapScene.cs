@@ -72,6 +72,8 @@ namespace DataTower.Sample2
             RegisterInputField(inputCurrency, it => { _currency = it; });
             RegisterInputField(inputSeq, it => { _seq = it; });
             RegisterInputField(inputEntrance, it => { _entrance = it; });
+            inputEntrance.text = "";
+            _entrance = "";
             
             RegisterProperties();
             RegisterTrackButton();
