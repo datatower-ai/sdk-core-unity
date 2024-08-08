@@ -32,16 +32,19 @@ namespace DataTower.Sample2
         public Button buttonTrackEvent;
         public Button buttonTrackTimedEvent;
         public Button buttonTrackAd;
-        public Button buttonTrackIap;        
+        public Button buttonTrackIap;
         public Button buttonTrackIas;
         public Button buttonTrackUser;
         public Button buttonCommonProperties;
         public Button buttonEnableUpload;
         public Button buttonAllApis;
-        
-        
+
+        public float iOSScale = 0.8f;
+        public RectTransform Bg;
+
+
         private String _dtId;
-        
+
         private void Start()
         {
             RegisterGetDtId();
@@ -49,6 +52,10 @@ namespace DataTower.Sample2
             RegisterEventTracking();
             RegisterUserTracking();
             RegisterOthers();
+
+#if UNITY_IOS
+            Bg.localScale = new Vector3(iOSScale, iOSScale, 1);
+#endif
         }
 
         private void Update()
@@ -83,28 +90,28 @@ namespace DataTower.Sample2
                 delegate { DTAnalytics.SetAccountId(_acid); },
                 delegate { DTAnalytics.SetAccountId(null); }
             );
-            
+
             RegisterUserProps(
                 inputFieldFirebaseiid, buttonFirebaseiidSet, buttonFirebaseiidClear,
                 value => { _firebaseIId = value; },
                 delegate { DTAnalytics.SetFirebaseAppInstanceId(_firebaseIId); },
                 delegate { DTAnalytics.SetFirebaseAppInstanceId(null); }
             );
-            
+
             RegisterUserProps(
                 inputFieldAppflyerId, buttonAppflyerIdSet, buttonAppflyerIdClear,
                 value => { _appsflyerId = value; },
                 delegate { DTAnalytics.SetAppsFlyerId(_appsflyerId); },
                 delegate { DTAnalytics.SetAppsFlyerId(null); }
             );
-            
+
             RegisterUserProps(
                 inputFieldKochavaId, buttonKochavaIdSet, buttonKochavaIdClear,
                 value => { _kochavaId = value; },
                 delegate { DTAnalytics.SetKochavaId(_kochavaId); },
                 delegate { DTAnalytics.SetKochavaId(null); }
             );
-            
+
             RegisterUserProps(
                 inputFieldAdjustId, buttonAdjustIdSet, buttonAdjustIdClear,
                 value => { _adjustId = value; },
@@ -118,43 +125,43 @@ namespace DataTower.Sample2
             inputField.onValueChanged.AddListener(delegate { onValueUpdate(inputField.text); });
             buttonSet.onClick.AddListener(delegate { onSet(); });
             buttonClear.onClick.AddListener(delegate { onClear(); });
-        } 
-        
+        }
+
         private void RegisterEventTracking()
         {
             buttonTrackSimpleEvent.onClick.AddListener(delegate
                 {
                     DTAnalytics.Track(
-                        "dt_track_simple", 
-                        new Dictionary<string, object>() 
+                        "dt_track_simple",
+                        new Dictionary<string, object>()
                         {
-                            { 
-                                "property_object", 
+                            {
+                                "property_object",
                                 new Dictionary<string, object>()
                                 {
                                     { "hero_name", "刘备" },
                                     { "hero_level", 22 },
                                     { "hero_if_support", false },
                                     {
-                                        "hero_equipment", 
+                                        "hero_equipment",
                                         new List<string>() { "雌雄双股剑", "的卢" }
                                     },
                                     {
-                                        "hero_sub_obj", 
+                                        "hero_sub_obj",
                                         new Dictionary<string, object>()
                                         {
                                             { "hero_name", "刘备" },
                                             { "hero_level", 22 },
                                             { "hero_if_support", false },
                                             {
-                                                "hero_equipment", 
+                                                "hero_equipment",
                                                 new List<string>() { "雌雄双股剑", "的卢" }
                                             },
                                             { "res_gold", 100.5 }
                                         }
                                     }
                                 }
-                                
+
                             }
                         }
                     );
@@ -164,22 +171,22 @@ namespace DataTower.Sample2
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/EventTrack");
                 });
-            
+
             buttonTrackTimedEvent.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/TimedEventTrack");
                 });
-            
+
             buttonTrackAd.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/AdScene");
                 });
-            
+
             buttonTrackIap.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/IapScene");
                 });
-            
+
             buttonTrackIas.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/IasScene");
@@ -200,9 +207,9 @@ namespace DataTower.Sample2
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/CommonProperty");
                 });
-            
+
             buttonEnableUpload.onClick.AddListener(DTAnalytics.EnableUpload);
-            
+
             buttonAllApis.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/AllApis");
