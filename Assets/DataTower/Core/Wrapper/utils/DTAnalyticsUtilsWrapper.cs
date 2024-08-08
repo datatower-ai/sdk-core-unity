@@ -28,7 +28,8 @@ namespace DataTower.Core.Wrapper
 
         public void TrackTimerEnd(string eventName, Dictionary<string, object> properties)
         {
-            _trackTimerEnd(eventName, properties);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _trackTimerEnd(eventName, injectedProps);
         }
 
         private class Nested

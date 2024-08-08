@@ -17,7 +17,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportLoadBegin(id, type, platform, seq, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportLoadBegin(id, type, platform, seq, injectedProps, mediation, mediationId);
         }
 
 
@@ -27,7 +28,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportLoadEnd(id, type, platform, duration, result, seq, errorCode, errorMessage, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportLoadEnd(id, type, platform, duration, result, seq, errorCode, errorMessage, injectedProps, mediation, mediationId);
         }
 
         public void ReportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -36,7 +38,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportToShow(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportToShow(id, type, platform, location, seq, entrance, injectedProps, mediation, mediationId);
         }
         
         public void ReportShow(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -45,7 +48,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportShow(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportShow(id, type, platform, location, seq, entrance, injectedProps, mediation, mediationId);
         }
 
         public void ReportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -56,7 +60,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportShowFailed(id, type, platform, location, seq, errorCode, errorMessage, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportShowFailed(id, type, platform, location, seq, errorCode, errorMessage, entrance, injectedProps, mediation, mediationId);
         }
 
 
@@ -66,7 +71,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportClose(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportClose(id, type, platform, location, seq, entrance, injectedProps, mediation, mediationId);
         }
 
         public void ReportClick(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -75,7 +81,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportClick(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportClick(id, type, platform, location, seq, entrance, injectedProps, mediation, mediationId);
         }
 
         public void ReportRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -84,7 +91,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportRewarded(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportRewarded(id, type, platform, location, seq, entrance, injectedProps, mediation, mediationId);
         }
 
         public void ReportLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -93,7 +101,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportLeftApp(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportLeftApp(id, type, platform, location, seq, entrance, injectedProps, mediation, mediationId);
         }
 
         public void ReportConversionByClick(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -102,7 +111,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportConversionByClick(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportConversionByClick(id, type, platform, location, seq, entrance, injectedProps, mediation, mediationId);
         }
 
         public void ReportConversionByLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
@@ -111,7 +121,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportConversionByLeftApp(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportConversionByLeftApp(id, type, platform, location, seq, entrance, injectedProps, mediation, mediationId);
         }
 
 
@@ -121,7 +132,8 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportConversionByRewarded(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportConversionByRewarded(id, type, platform, location, seq, entrance, injectedProps, mediation, mediationId);
         }
 
         public void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq, double value,
@@ -130,15 +142,17 @@ namespace DataTower.Core.Wrapper
             AdMediation mediation = AdMediation.IDLE, 
             string mediationId = "")
         {
-            _reportPaid(id, type, platform, location, seq, value, currency, precision, entrance, properties, mediation, mediationId);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportPaid(id, type, platform, location, seq, value, currency, precision, entrance, injectedProps, mediation, mediationId);
         }
 
         public void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq,
             AdMediation mediation, string mediationId, double value,
             string precision, string country, Dictionary<string, object> properties = null)
         {
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
             _reportPaid(id, type, platform, location, seq, mediation, mediationId, value, precision, country,
-                properties);
+                injectedProps);
         }
 
         public void ReportReturnApp()

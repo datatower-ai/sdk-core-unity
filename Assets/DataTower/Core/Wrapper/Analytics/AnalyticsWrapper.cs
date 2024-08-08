@@ -66,8 +66,8 @@ namespace DataTower.Core.Wrapper
 
         public void Track(string eventName, Dictionary<string, object> properties = null)
         {
-            DT_CommonProps.InsertDynamicProperties(properties);
-            _track(eventName, properties);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _track(eventName, injectedProps);
         }
 
 

@@ -18,18 +18,21 @@ namespace DataTower.Core
             _dynamicCommonPropsGetter = null;
         }
 
-        public static void InsertDynamicProperties(Dictionary<string, object> target)
+        public static Dictionary<string, object> InsertDynamicProperties(Dictionary<string, object> target)
         {
-            if (_dynamicCommonPropsGetter is null || target is null) return;
+            if (_dynamicCommonPropsGetter is null) return target;
 
             Dictionary<string, object> dcp = _dynamicCommonPropsGetter.Invoke();
-            if (dcp is null || dcp.Count == 0) return;
+            if (target == null) return dcp;
+            if (dcp is null || dcp.Count == 0) return target;
             
             foreach (KeyValuePair<string, object> pair in dcp)
             {
                 if (target.ContainsKey(pair.Key)) continue;
                 target[pair.Key] = pair.Value;
             }
+
+            return target;
         }
     }
 }

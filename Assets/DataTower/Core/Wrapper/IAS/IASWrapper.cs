@@ -51,7 +51,8 @@ namespace DataTower.Core.Wrapper
         public void ReportSubscribeSuccess(string originalOrderId, string orderId, string sku, double price,
             string currency, Dictionary<string, object> properties)
         {
-            _reportSubscribeSuccess(originalOrderId, orderId, sku, price, currency, properties);
+            Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);
+            _reportSubscribeSuccess(originalOrderId, orderId, sku, price, currency, injectedProps);
         }
 
         private class Nested
