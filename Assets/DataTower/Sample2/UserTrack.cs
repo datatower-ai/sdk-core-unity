@@ -15,6 +15,8 @@ namespace DataTower.Sample2
         public TMP_InputField inputFieldProperties;
         public Toggle toggleProperties;
         public Button buttonTrack;
+
+        public RectTransform Bg;
         
         private List<TMP_Dropdown.OptionData> _options = new()
         {
@@ -33,6 +35,8 @@ namespace DataTower.Sample2
     
         void Start()
         {
+            AdaptiveUtil.UpdateSceneScale(Bg);
+            
             buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");

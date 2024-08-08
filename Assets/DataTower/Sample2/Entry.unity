@@ -910,6 +910,7 @@ MonoBehaviour:
   toggleIsDebug: {fileID: 1763156156}
   toggleManuallyEnableUpload: {fileID: 179966903}
   buttonInitialize: {fileID: 167620131}
+  Bg: {fileID: 819399650}
 --- !u!1 &695621662
 GameObject:
   m_ObjectHideFlags: 0

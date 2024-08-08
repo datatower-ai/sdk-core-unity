@@ -5328,6 +5328,7 @@ MonoBehaviour:
   inputCurrency: {fileID: 1381295024}
   inputSeq: {fileID: 781366151}
   inputEntrance: {fileID: 1252152445}
+  Bg: {fileID: 1545180617}
 --- !u!1 &1439117826
 GameObject:
   m_ObjectHideFlags: 0

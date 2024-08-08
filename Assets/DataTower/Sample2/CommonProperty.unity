@@ -2065,6 +2065,7 @@ MonoBehaviour:
   inputFieldStaProperties: {fileID: 1595729858}
   buttonStaSet: {fileID: 2114126650}
   buttonStaClear: {fileID: 2018012355}
+  Bg: {fileID: 746292397}
 --- !u!1 &1595729856
 GameObject:
   m_ObjectHideFlags: 0

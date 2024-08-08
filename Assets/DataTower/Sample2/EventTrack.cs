@@ -15,12 +15,16 @@ namespace DataTower.Sample2
         public TMP_InputField inputFieldProperties;
         public Toggle toggleProperties;
         public Button buttonTrack;
+
+        public RectTransform Bg;
         
         private string _eventName = "";
         private Dictionary<string, object> _properties = null;
         
         private void Start()
         {
+            AdaptiveUtil.UpdateSceneScale(Bg);
+            
             buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");

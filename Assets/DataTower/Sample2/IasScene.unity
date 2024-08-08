@@ -909,6 +909,7 @@ MonoBehaviour:
   inputFieldSku: {fileID: 2014574747}
   inputPrice: {fileID: 1466673576}
   inputCurrency: {fileID: 1534676735}
+  Bg: {fileID: 906008564}
 --- !u!1 &394799891
 GameObject:
   m_ObjectHideFlags: 0

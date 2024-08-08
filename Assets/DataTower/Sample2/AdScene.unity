@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15422,6 +15421,7 @@ MonoBehaviour:
   adMediationDropdown: {fileID: 1705005420}
   toggleResult: {fileID: 1909293666}
   buttonTrack: {fileID: 841880359}
+  Bg: {fileID: 1864368672}
 --- !u!1 &2049616248
 GameObject:
   m_ObjectHideFlags: 0

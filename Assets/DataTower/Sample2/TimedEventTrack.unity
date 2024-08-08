@@ -3610,6 +3610,7 @@ MonoBehaviour:
   buttonPause: {fileID: 348331884}
   buttonResume: {fileID: 559179114}
   buttonEnd: {fileID: 759880017}
+  Bg: {fileID: 582028996}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

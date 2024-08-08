@@ -39,7 +39,6 @@ namespace DataTower.Sample2
         public Button buttonEnableUpload;
         public Button buttonAllApis;
 
-        public float iOSScale = 0.8f;
         public RectTransform Bg;
 
 
@@ -47,15 +46,13 @@ namespace DataTower.Sample2
 
         private void Start()
         {
+            AdaptiveUtil.UpdateSceneScale(Bg);
+            
             RegisterGetDtId();
             RegisterUserPropsGroup();
             RegisterEventTracking();
             RegisterUserTracking();
             RegisterOthers();
-
-#if UNITY_IOS
-            Bg.localScale = new Vector3(iOSScale, iOSScale, 1);
-#endif
         }
 
         private void Update()

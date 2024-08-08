@@ -18,6 +18,8 @@ namespace DataTower.Sample2
         public Button buttonPause;
         public Button buttonResume;
         public Button buttonEnd;
+
+        public RectTransform Bg;
         
         
         private string _eventName = "";
@@ -25,6 +27,8 @@ namespace DataTower.Sample2
     
         void Start()
         {
+            AdaptiveUtil.UpdateSceneScale(Bg);
+            
             buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");

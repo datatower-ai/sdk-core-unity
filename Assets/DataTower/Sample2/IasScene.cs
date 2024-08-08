@@ -25,6 +25,8 @@ namespace DataTower.Sample2
         public TMP_InputField inputPrice;
         public TMP_InputField inputCurrency;
 
+        public RectTransform Bg;
+
         private List<UIBehaviour> _allParams()
         {
             return new()
@@ -55,6 +57,8 @@ namespace DataTower.Sample2
         
         private void Start()
         {
+            AdaptiveUtil.UpdateSceneScale(Bg);
+            
             buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");

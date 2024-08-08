@@ -358,6 +358,7 @@ MonoBehaviour:
   inputFieldProperties: {fileID: 685561172}
   toggleProperties: {fileID: 2131761664}
   buttonTrack: {fileID: 786055718}
+  Bg: {fileID: 931025909}
 --- !u!1 &160546007
 GameObject:
   m_ObjectHideFlags: 0

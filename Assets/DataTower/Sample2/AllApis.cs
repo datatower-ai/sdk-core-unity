@@ -14,9 +14,13 @@ namespace DataTower.Sample2
         public Button buttonBack;
         
         public TMP_Text textContainer;
+
+        public RectTransform Bg;
         
         private void Start()
         {
+            AdaptiveUtil.UpdateSceneScale(Bg);
+
             buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");

@@ -23,10 +23,14 @@ namespace DataTower.Sample2
 
         public Button buttonInitialize;
 
+        public RectTransform Bg;
+
 
         // Start is called before the first frame update
         private void Start()
         {
+            AdaptiveUtil.UpdateSceneScale(Bg);
+            
             inputFieldServerUrl.onValueChanged.AddListener(delegate { _serverUrl = inputFieldServerUrl.text; });
             inputFieldServerUrl.text = _serverUrl;
 

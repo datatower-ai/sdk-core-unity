@@ -35,6 +35,8 @@ namespace DataTower.Sample2
         public TMP_Dropdown adMediationDropdown;
         public Toggle toggleResult;
         public Button buttonTrack;
+
+        public RectTransform Bg;
         
         private List<UIBehaviour> _allParams()
         {
@@ -103,6 +105,8 @@ namespace DataTower.Sample2
         
         private void Start()
         {
+            AdaptiveUtil.UpdateSceneScale(Bg);
+                
             buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");
