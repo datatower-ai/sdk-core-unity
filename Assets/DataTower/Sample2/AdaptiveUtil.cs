@@ -4,7 +4,7 @@ namespace DataTower.Sample2
 {
     public static class AdaptiveUtil
     {
-        static float _iOSScale = 0.8f;
+        static float _iOSScale = 1f;
         static float _androidScale = 1f;
 
         public static void UpdateSceneScale(RectTransform bg)
