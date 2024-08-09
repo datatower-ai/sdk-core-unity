@@ -21,15 +21,15 @@ public class IAS_Sample : MonoBehaviour
 
             if (ConfigMgr.IsReportNullData)
             {
-                DTIASReport.ReportSubscribeSuccess(null, "orderId123", "sdu123", 10, "rmb", dict);
-                DTIASReport.ReportSubscribeSuccess("originalOrderId123", null, "sdu123", 10, "rmb", dict);
-                DTIASReport.ReportSubscribeSuccess("originalOrderId123", "orderId123", null, 10, "rmb", dict);
-                DTIASReport.ReportSubscribeSuccess("originalOrderId123", "orderId123", "sdu123", 10, null, dict);
-                DTIASReport.ReportSubscribeSuccess("originalOrderId123", "orderId123", "sdu123", 10, "rmb", null);
+                DTIASReport.ReportSubscribeSuccessAndroid(null, "orderId123", "sdu123", 10, "rmb", dict);
+                DTIASReport.ReportSubscribeSuccessAndroid("originalOrderId123", null, "sdu123", 10, "rmb", dict);
+                DTIASReport.ReportSubscribeSuccessAndroid("originalOrderId123", "orderId123", null, 10, "rmb", dict);
+                DTIASReport.ReportSubscribeSuccessAndroid("originalOrderId123", "orderId123", "sdu123", 10, null, dict);
+                DTIASReport.ReportSubscribeSuccessAndroid("originalOrderId123", "orderId123", "sdu123", 10, "rmb", null);
             }
             else
             {
-                DTIASReport.ReportSubscribeSuccess("originalOrderId123", "orderId123", "sdu123", 10, "rmb", dict);
+                DTIASReport.ReportSubscribeSuccessAndroid("originalOrderId123", "orderId123", "sdu123", 10, "rmb", dict);
             }
         });
 
