@@ -17,21 +17,25 @@ namespace DataTower.Sample2
         public Button buttonTrack;
 
         public RectTransform Bg;
-        
+
+        public CanvasScaler BgScale;
+
         private string _eventName = "";
         private Dictionary<string, object> _properties = null;
-        
+
         private void Start()
         {
             AdaptiveUtil.UpdateSceneScale(Bg);
-            
+
+            AdaptiveUtil.UpdateCanvasScale(BgScale);
+
             buttonBack.onClick.AddListener(delegate
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/Home");
                 });
-            
+
             inputFieldEventName.onValueChanged.AddListener(delegate { _eventName = inputFieldEventName.text; });
-            
+
             inputFieldProperties.onValueChanged.AddListener(delegate
             {
                 try
@@ -51,7 +55,7 @@ namespace DataTower.Sample2
                 _properties = null;
                 inputFieldProperties.text = "";
             });
-            
+
             buttonTrack.onClick.AddListener(delegate
                 {
                     DTAnalytics.Track(_eventName, _properties);

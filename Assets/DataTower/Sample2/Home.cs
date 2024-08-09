@@ -41,13 +41,16 @@ namespace DataTower.Sample2
 
         public RectTransform Bg;
 
+        public CanvasScaler BgScale;
 
         private String _dtId;
 
         private void Start()
         {
             AdaptiveUtil.UpdateSceneScale(Bg);
-            
+
+            AdaptiveUtil.UpdateCanvasScale(BgScale);
+
             RegisterGetDtId();
             RegisterUserPropsGroup();
             RegisterEventTracking();
