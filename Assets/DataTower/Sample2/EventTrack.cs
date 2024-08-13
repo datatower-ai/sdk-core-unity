@@ -27,7 +27,7 @@ namespace DataTower.Sample2
         {
             AdaptiveUtil.UpdateSceneScale(Bg);
 
-            AdaptiveUtil.UpdateCanvasScale(BgScale);
+            // AdaptiveUtil.UpdateCanvasScale(BgScale);
 
             buttonBack.onClick.AddListener(delegate
                 {

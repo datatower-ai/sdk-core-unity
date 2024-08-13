@@ -27,6 +27,9 @@ namespace DataTower.Sample2
         public TMP_InputField inputFieldAdjustId;
         public Button buttonAdjustIdSet;
         public Button buttonAdjustIdClear;
+        public TMP_InputField inputFieldTenjinId;
+        public Button buttonTenjinIdSet;
+        public Button buttonTenjinIdClear;
 
         public Button buttonTrackSimpleEvent;
         public Button buttonTrackEvent;
@@ -48,8 +51,7 @@ namespace DataTower.Sample2
         private void Start()
         {
             AdaptiveUtil.UpdateSceneScale(Bg);
-
-            AdaptiveUtil.UpdateCanvasScale(BgScale);
+            // AdaptiveUtil.UpdateCanvasScale(BgScale);
 
             RegisterGetDtId();
             RegisterUserPropsGroup();
@@ -82,6 +84,8 @@ namespace DataTower.Sample2
         private string _appsflyerId;
         private string _kochavaId;
         private string _adjustId;
+        private string _tenjinId;
+        
         private void RegisterUserPropsGroup()
         {
             RegisterUserProps(
@@ -117,6 +121,13 @@ namespace DataTower.Sample2
                 value => { _adjustId = value; },
                 delegate { DTAnalytics.SetAdjustId(_adjustId); },
                 delegate { DTAnalytics.SetAdjustId(null); }
+            );
+
+            RegisterUserProps(
+                inputFieldTenjinId, buttonTenjinIdSet, buttonTenjinIdClear,
+                value => { _tenjinId = value; },
+                delegate { DTAnalytics.SetTenjinId(_tenjinId); },
+                delegate { DTAnalytics.SetTenjinId(null); }
             );
         }
 

@@ -159,6 +159,15 @@ namespace DataTower.Core
         {
             DTAnalyticsWrapper.Instance.SetAdjustId(adjustId);
         }
+
+        /// <summary>
+        ///     设置 Tenjin id
+        /// </summary>
+        /// <param name="tenjinId">用户id</param>
+        public static void SetTenjinId(string tenjinId)
+        {
+            DTAnalyticsWrapper.Instance.SetTenjinId(tenjinId);
+        }
         
         /// <summary>
         ///     设置静态通用属性（持久化）

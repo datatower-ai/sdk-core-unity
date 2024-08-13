@@ -154,6 +154,10 @@ namespace DataTower.Core.Wrapper
         {
             setAdjustId(id);
         }
+        private void _setTenjinId(string id)
+        {
+            // TODO: Implement this!
+        }
 
         private void _setStaticCommonProperties(Dictionary<string, object> properties)
         {
