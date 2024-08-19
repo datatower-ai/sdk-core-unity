@@ -146,6 +146,12 @@ void setAdjustId(const char* plainStr) {
     [DTAnalytics setAdjustId:strParam];
 }
 
+void setTenjinId(const char* plainStr) {
+    
+    NSString *strParam = SafeStringWithUTF8String(plainStr);
+    [DTAnalytics setTenjinId:strParam];
+}
+
 void trackEvent(const char* eventName, const char* jsonStr) {
     
     NSString *strParam = SafeStringWithUTF8String(eventName);
