@@ -119,6 +119,12 @@ namespace DataTower.Core.Wrapper
             R_Log.Debug("Editor Log: calling _setAdjustId.");
         }
 
+        private void _setTenjinId(string id)
+        {
+            DTAnalytics.CallStatic("setTenjinId", id);
+            R_Log.Debug("Editor Log: calling _setTenjinId");
+        }
+
         private void _setStaticCommonProperties(Dictionary<string, object> properties)
         {
             DTAnalytics.CallStatic("setStaticCommonProperties", ToJSONObject(properties));

@@ -51,6 +51,9 @@ namespace DataTower.Core.Wrapper
 
         [DllImport("__Internal")]
         private static extern void setAdjustId(string plainStr);
+
+        [DllImport("__Internal")]
+        private static extern void setTenjinId(string plainStr);
         
         [DllImport("__Internal")]
         private static extern void trackEvent(string eventName, string jsonStr);
@@ -153,6 +156,10 @@ namespace DataTower.Core.Wrapper
         private void _setAdjustId(string id)
         {
             setAdjustId(id);
+        }
+        private void _setTenjinId(string id)
+        {
+            setTenjinId(id);
         }
 
         private void _setStaticCommonProperties(Dictionary<string, object> properties)

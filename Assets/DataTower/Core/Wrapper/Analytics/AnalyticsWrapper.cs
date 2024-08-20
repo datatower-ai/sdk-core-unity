@@ -154,11 +154,15 @@ namespace DataTower.Core.Wrapper
         {
             _setKochavaId(id);
         }
-
-
+        
         public void SetAdjustId(string adjustId)
         {
             _setAdjustId(adjustId);
+        }
+        
+        public void SetTenjinId(string tenjinId)
+        {
+            _setTenjinId(tenjinId);
         }
 
         public void SetStaticCommonProperties(Dictionary<string, object> properties)
