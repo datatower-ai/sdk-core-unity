@@ -47,8 +47,10 @@ namespace DataTower.Sample2
 
             toggleManuallyEnableUpload.onValueChanged.AddListener(delegate { _manuallyEnableUpload = toggleManuallyEnableUpload.isOn; });
 
-            toggleAppInstall.onValueChanged.AddListener(delegate {
-                if (toggleManuallyEnableUpload.isOn)
+            toggleAppInstall.onValueChanged.AddListener(delegate
+            {
+                PresetEvent.isAppInstallEnabled = toggleAppInstall.isOn;
+                if (toggleAppInstall.isOn)
                 {
                     DTAnalytics.EnableAutoTrack(DTPresetEvent.Install);
                 }
@@ -59,7 +61,8 @@ namespace DataTower.Sample2
             });
 
             toggleSessionStart.onValueChanged.AddListener(delegate { 
-                if (toggleManuallyEnableUpload.isOn)
+                PresetEvent.isSessionStartEnabled = toggleSessionStart.isOn;
+                if (toggleSessionStart.isOn)
                 {
                     DTAnalytics.EnableAutoTrack(DTPresetEvent.SessionStart);
                 }
@@ -70,7 +73,8 @@ namespace DataTower.Sample2
             });
 
             toggleSessionEnd.onValueChanged.AddListener(delegate { 
-                if (toggleManuallyEnableUpload.isOn)
+                PresetEvent.isSessionEndEnabled = toggleSessionEnd.isOn;
+                if (toggleSessionEnd.isOn)
                 {
                     DTAnalytics.EnableAutoTrack(DTPresetEvent.SessionEnd);
                 }
