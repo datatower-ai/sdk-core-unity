@@ -12,6 +12,17 @@ namespace DataTower.Core.Wrapper
         private static readonly AndroidJavaClass DTAnalytics =
             new AndroidJavaClass("ai.datatower.analytics.DTAnalytics");
 
+        private AndroidJavaObject GetPresetEvent(DTPresetEvent presetEvent)
+        {
+            return GetAndroidEnum("ai.datatower.analytics.utils.PresetEvent", presetEvent.ToString());
+        }
+
+        private AndroidJavaObject GetAndroidEnum(string pkg, string name)
+        {
+            AndroidJavaClass enumClass = new AndroidJavaClass(pkg);
+            return enumClass.GetStatic<AndroidJavaObject>(name);
+        }
+
         private void _init()
         {
             //固定写法，获取Android context
@@ -45,6 +56,14 @@ namespace DataTower.Core.Wrapper
         private void _enableUpload() {
             DT.CallStatic("enableUpload");
         }        
+
+        private void _enableAutoTrack(DTPresetEvent presetEvent) {
+            DT.CallStatic("enableAutoTrack", GetPresetEvent(presetEvent));
+        }    
+
+        private void _disableAutoTrack(DTPresetEvent presetEvent) {
+            DT.CallStatic("disableAutoTrack", GetPresetEvent(presetEvent));
+        }
 
         private void _track(string eventName, Dictionary<string, object> dic = null)
         {

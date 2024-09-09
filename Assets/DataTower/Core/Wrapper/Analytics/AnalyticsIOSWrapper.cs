@@ -79,6 +79,14 @@ namespace DataTower.Core.Wrapper
             enableUpload(true);
         }
 
+        private void _enableAutoTrack(DTPresetEvent presetEvent) {
+            // TODO: Implement me
+        }    
+
+        private void _disableAutoTrack(DTPresetEvent presetEvent) {
+            // TODO: Implement me
+        }
+
         private void _track(string eventName, Dictionary<string, object> properties = null)
         {
             string jsonStr = R_Utils.Parse2JsonStr(properties);

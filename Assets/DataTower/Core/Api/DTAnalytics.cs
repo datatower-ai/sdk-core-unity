@@ -21,6 +21,22 @@ namespace DataTower.Core
         {
             DTAnalyticsWrapper.Instance.EnableUpload();
         }
+        
+        /// <summary>
+        ///     开启预置事件
+        /// </summary>
+        public static void EnableAutoTrack(DTPresetEvent presetEvent)
+        {
+            DTAnalyticsWrapper.Instance.EnableAutoTrack(presetEvent);
+        }
+        
+        /// <summary>
+        ///     关闭预置事件
+        /// </summary>
+        public static void DisableAutoTrack(DTPresetEvent presetEvent)
+        {
+            DTAnalyticsWrapper.Instance.DisableAutoTrack(presetEvent);
+        }
 
         /// <summary>
         ///     采集一条事件
@@ -202,5 +218,12 @@ namespace DataTower.Core
         {
             DTAnalyticsWrapper.Instance.ClearDynamicCommonProperties();
         }
+    }
+
+    public enum DTPresetEvent
+    {
+        Install,
+        SessionStart,
+        SessionEnd,
     }
 }

@@ -64,6 +64,16 @@ namespace DataTower.Core.Wrapper
             _enableUpload();
         }
 
+        public void EnableAutoTrack(DTPresetEvent presetEvent)
+        {
+            _enableAutoTrack(presetEvent);
+        }
+
+        public void DisableAutoTrack(DTPresetEvent presetEvent)
+        {
+            _disableAutoTrack(presetEvent);
+        }
+
         public void Track(string eventName, Dictionary<string, object> properties = null)
         {
             Dictionary<string, object> injectedProps = DT_CommonProps.InsertDynamicProperties(properties);

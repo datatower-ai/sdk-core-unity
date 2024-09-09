@@ -24,6 +24,12 @@ namespace DataTower.Sample2
         public Button buttonInitialize;
 
         public RectTransform Bg;
+        
+        public Toggle toggleAppInstall;
+        
+        public Toggle toggleSessionStart;
+        
+        public Toggle toggleSessionEnd;
 
 
         // Start is called before the first frame update
@@ -40,6 +46,39 @@ namespace DataTower.Sample2
             toggleIsDebug.onValueChanged.AddListener(delegate { _isDebug = toggleIsDebug.isOn; });
 
             toggleManuallyEnableUpload.onValueChanged.AddListener(delegate { _manuallyEnableUpload = toggleManuallyEnableUpload.isOn; });
+
+            toggleAppInstall.onValueChanged.AddListener(delegate {
+                if (toggleManuallyEnableUpload.isOn)
+                {
+                    DTAnalytics.EnableAutoTrack(DTPresetEvent.Install);
+                }
+                else
+                {
+                    DTAnalytics.DisableAutoTrack(DTPresetEvent.Install);
+                }
+            });
+
+            toggleSessionStart.onValueChanged.AddListener(delegate { 
+                if (toggleManuallyEnableUpload.isOn)
+                {
+                    DTAnalytics.EnableAutoTrack(DTPresetEvent.SessionStart);
+                }
+                else
+                {
+                    DTAnalytics.DisableAutoTrack(DTPresetEvent.SessionStart);
+                }
+            });
+
+            toggleSessionEnd.onValueChanged.AddListener(delegate { 
+                if (toggleManuallyEnableUpload.isOn)
+                {
+                    DTAnalytics.EnableAutoTrack(DTPresetEvent.SessionEnd);
+                }
+                else
+                {
+                    DTAnalytics.DisableAutoTrack(DTPresetEvent.SessionEnd);
+                }
+            });
 
             buttonInitialize.onClick.AddListener(delegate
                 {
