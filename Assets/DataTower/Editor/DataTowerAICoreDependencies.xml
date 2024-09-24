@@ -8,7 +8,7 @@
                 <repository>https://repo.maven.apache.org/maven2</repository>
             </repositories>
             
-            <androidPackage spec="ai.datatower:core:3.0.+" />
+            <androidPackage spec="ai.datatower:core:3.1.+" />
             
             <!-- The "spec" attribute is *required* and provides the Maven package
                  specification.

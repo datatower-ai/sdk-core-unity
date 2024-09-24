@@ -24,6 +24,12 @@ namespace DataTower.Sample2
         public Button buttonInitialize;
 
         public RectTransform Bg;
+        
+        public Toggle toggleAppInstall;
+        
+        public Toggle toggleSessionStart;
+        
+        public Toggle toggleSessionEnd;
 
 
         // Start is called before the first frame update
@@ -40,6 +46,43 @@ namespace DataTower.Sample2
             toggleIsDebug.onValueChanged.AddListener(delegate { _isDebug = toggleIsDebug.isOn; });
 
             toggleManuallyEnableUpload.onValueChanged.AddListener(delegate { _manuallyEnableUpload = toggleManuallyEnableUpload.isOn; });
+
+            toggleAppInstall.onValueChanged.AddListener(delegate
+            {
+                PresetEvent.isAppInstallEnabled = toggleAppInstall.isOn;
+                if (toggleAppInstall.isOn)
+                {
+                    DTAnalytics.EnableAutoTrack(DTPresetEvent.Install);
+                }
+                else
+                {
+                    DTAnalytics.DisableAutoTrack(DTPresetEvent.Install);
+                }
+            });
+
+            toggleSessionStart.onValueChanged.AddListener(delegate { 
+                PresetEvent.isSessionStartEnabled = toggleSessionStart.isOn;
+                if (toggleSessionStart.isOn)
+                {
+                    DTAnalytics.EnableAutoTrack(DTPresetEvent.SessionStart);
+                }
+                else
+                {
+                    DTAnalytics.DisableAutoTrack(DTPresetEvent.SessionStart);
+                }
+            });
+
+            toggleSessionEnd.onValueChanged.AddListener(delegate { 
+                PresetEvent.isSessionEndEnabled = toggleSessionEnd.isOn;
+                if (toggleSessionEnd.isOn)
+                {
+                    DTAnalytics.EnableAutoTrack(DTPresetEvent.SessionEnd);
+                }
+                else
+                {
+                    DTAnalytics.DisableAutoTrack(DTPresetEvent.SessionEnd);
+                }
+            });
 
             buttonInitialize.onClick.AddListener(delegate
                 {

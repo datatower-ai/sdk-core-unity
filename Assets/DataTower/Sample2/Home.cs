@@ -41,6 +41,7 @@ namespace DataTower.Sample2
         public Button buttonCommonProperties;
         public Button buttonEnableUpload;
         public Button buttonAllApis;
+        public Button buttonPresetEvent;
 
         public RectTransform Bg;
 
@@ -225,6 +226,11 @@ namespace DataTower.Sample2
                 {
                     SceneManager.LoadSceneAsync("DataTower/Sample2/AllApis");
                 });
+
+            buttonPresetEvent.onClick.AddListener(delegate
+            {
+                SceneManager.LoadSceneAsync("DataTower/Sample2/PresetEvent");
+            });
         }
     }
 }

@@ -16,6 +16,14 @@ namespace DataTower.Core.Wrapper
             R_Log.Debug("Editor Log: calling enableUpload.");
         }
 
+        private void _enableAutoTrack(DTPresetEvent presetEvent) {
+            R_Log.Debug($"Editor Log: calling EnableAutoTrack: {presetEvent}");
+        }    
+
+        private void _disableAutoTrack(DTPresetEvent presetEvent) {
+            R_Log.Debug($"Editor Log: calling DisableAutoTrack: {presetEvent}");
+        }
+
         private void _track(string eventName, Dictionary<string, object> properties = null)
         {
             R_Log.Debug("Editor Log: calling track.");
