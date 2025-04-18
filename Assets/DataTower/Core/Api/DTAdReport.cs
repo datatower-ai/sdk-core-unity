@@ -76,6 +76,7 @@ namespace DataTower.Core
         TRADPLUS = 5,
         TOBID = 6,
         ADMOB = 7,
+        IRONSOURCE = 8,
     }
 
     public class DTAdReport
@@ -91,8 +92,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportLoadBegin(string id, AdType type, AdPlatform platform, string seq,
-            Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportLoadBegin(id, type, platform, seq, properties, mediation, mediationId);
@@ -114,8 +115,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportLoadEnd(string id, AdType type, AdPlatform platform, long duration, bool result,
-            string seq, int errorCode = 0, string errorMessage = "", Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            string seq, int errorCode = 0, string errorMessage = "", Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportLoadEnd(id, type, platform, duration, result, seq, errorCode, errorMessage,
@@ -136,8 +137,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportToShow(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            string entrance = "", Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportToShow(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
@@ -157,8 +158,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportShow(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            string entrance = "", Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportShow(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
@@ -181,8 +182,8 @@ namespace DataTower.Core
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportShowFailed(string id, AdType type, AdPlatform platform, string location, string seq,
             int errorCode = 0, string errorMessage = "", string entrance = "",
-            Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportShowFailed(id, type, platform, location, seq, errorCode, errorMessage,
@@ -203,8 +204,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportClose(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            string entrance = "", Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportClose(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
@@ -224,8 +225,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportClick(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            string entrance = "", Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportClick(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
@@ -245,8 +246,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportRewarded(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            string entrance = "", Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportRewarded(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
@@ -266,8 +267,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportLeftApp(string id, AdType type, AdPlatform platform, string location, string seq,
-            string entrance = "", Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            string entrance = "", Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportLeftApp(id, type, platform, location, seq, entrance, properties, mediation, mediationId);
@@ -287,8 +288,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportConversionByClick(string id, AdType type, AdPlatform platform, string location,
-            string seq, string entrance = "", Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            string seq, string entrance = "", Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportConversionByClick(id, type, platform, location, seq, entrance,
@@ -308,8 +309,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportConversionByLeftApp(string id, AdType type, AdPlatform platform, string location,
-            string seq, string entrance = "", Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            string seq, string entrance = "", Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportConversionByLeftApp(id, type, platform, location, seq, entrance,
@@ -329,8 +330,8 @@ namespace DataTower.Core
         /// <param name="mediation">聚合平台</param>
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportConversionByRewarded(string id, AdType type, AdPlatform platform, string location,
-            string seq, string entrance = "", Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            string seq, string entrance = "", Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportConversionByRewarded(id, type, platform, location, seq, entrance,
@@ -355,8 +356,8 @@ namespace DataTower.Core
         /// <param name="mediationId">聚合平台广告id</param>
         public static void ReportPaid(string id, AdType type, AdPlatform platform, string location, string seq,
             double value, string currency, string precision, string entrance = "",
-            Dictionary<string, object> properties = null, 
-            AdMediation mediation = AdMediation.IDLE, 
+            Dictionary<string, object> properties = null,
+            AdMediation mediation = AdMediation.IDLE,
             string mediationId = "")
         {
             DTAdReportWrapper.Instance.ReportPaid(id, type, platform, location, seq, value, currency, precision,
