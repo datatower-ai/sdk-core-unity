@@ -17,7 +17,7 @@ namespace DataTower.Core
         /// <summary>
         ///     当前 DT Core (Unity) 版本
         /// </summary>
-        public static readonly string SDK_VERSION = "3.1.0-beta1";
+        public static readonly string SDK_VERSION = "3.2.0";
 
         [Header("DTSDK-v3.1.0-beta1")]
         [Tooltip("应用id, 由后台分配")]

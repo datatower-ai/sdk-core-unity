@@ -8,7 +8,7 @@
                 <repository>https://repo.maven.apache.org/maven2</repository>
             </repositories>
             
-            <androidPackage spec="ai.datatower:core:3.1.+" />
+            <androidPackage spec="ai.datatower:core:3.2.+" />
             
             <!-- The "spec" attribute is *required* and provides the Maven package
                  specification.
@@ -22,7 +22,7 @@
             -->
         </androidPackages>
         <iosPods>
-            <iosPod name="DataTowerAICore" minTargetSdk="11.0" version = "~> 3.0.3" >
+            <iosPod name="DataTowerAICore" minTargetSdk="11.0" version = "~> 3.0.4" >
            <!-- &lt;!&ndash; Set of source URIs to search for this Cocoapod spec. -->
 <!--                 By default Cocoapods will attempt to fetch the pod specs from:-->
 <!--                 * $HOME/.cocoapods/repos-->
